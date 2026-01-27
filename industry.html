@@ -20,8 +20,8 @@
         theme: {
           extend: {
             colors: {
-              "takagi-blue": "#004098",
-              "takagi-dark": "#0f172a",
+              "takamoku-blue": "#004098",
+              "takamoku-dark": "#0f172a",
               "accent-gold": "#c5a059",
               "light-gray": "#f8fafc",
             },
@@ -188,13 +188,13 @@
         class="container mx-auto px-6 h-24 flex justify-between items-center"
       >
         <div class="flex items-center gap-3">
-          <a
-            href="index.html"
-            class="hover-trigger bg-white px-2 py-1 rounded shadow-sm"
+          <a href="index.html" class="hover-trigger flex items-center"
             ><img
               src="assets/logo.png"
               onerror="this.src = 'assets/logo.jpg'"
-              class="h-8 md:h-10 w-auto object-contain"
+              class="h-8 md:h-10 w-auto object-contain brightness-0 invert transition-all duration-300"
+              id="header-logo"
+              alt="高木株式会社"
           /></a>
         </div>
         <nav
@@ -216,7 +216,7 @@
           >
           <a
             href="index.html#entry"
-            class="hover-trigger bg-white text-takagi-blue px-8 py-3 hover:bg-takagi-dark hover:text-white transition shadow-lg rounded-sm text-xs"
+            class="hover-trigger bg-white text-takamoku-blue px-8 py-3 hover:bg-takamoku-dark hover:text-white transition shadow-lg rounded-sm text-xs"
             >ENTRY</a
           >
         </nav>
@@ -258,7 +258,7 @@
     </div>
 
     <section
-      class="relative h-[60vh] flex items-center justify-center bg-takagi-dark overflow-hidden"
+      class="relative h-[60vh] flex items-center justify-center bg-takamoku-dark overflow-hidden"
     >
       <div class="absolute inset-0">
         <img
@@ -293,7 +293,7 @@
             >01. ROLE</span
           >
           <h2
-            class="text-3xl md:text-4xl font-black font-mincho text-takagi-blue"
+            class="text-3xl md:text-4xl font-black font-mincho text-takamoku-blue"
           >
             ゼネコンの役割
           </h2>
@@ -305,9 +305,9 @@
             </p>
             <div class="grid grid-cols-2 gap-4">
               <div
-                class="bg-light-gray p-4 rounded border-l-4 border-takagi-blue"
+                class="bg-light-gray p-4 rounded border-l-4 border-takamoku-blue"
               >
-                <h4 class="font-bold text-takagi-blue mb-1">作る</h4>
+                <h4 class="font-bold text-takamoku-blue mb-1">作る</h4>
                 <p class="text-xs text-gray-500">学校・病院・商業施設</p>
               </div>
               <div
@@ -340,7 +340,7 @@
       </div>
     </section>
 
-    <section class="py-24 px-6 bg-takagi-dark text-white relative">
+    <section class="py-24 px-6 bg-takamoku-dark text-white relative">
       <div class="container mx-auto max-w-6xl relative z-10">
         <div class="text-center mb-16">
           <span
@@ -356,7 +356,7 @@
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <div
-            class="info-card bg-white/5 border border-white/10 p-8 rounded hover:bg-takagi-blue/40 js-fade-up"
+            class="info-card bg-white/5 border border-white/10 p-8 rounded hover:bg-takamoku-blue/40 js-fade-up"
           >
             <div class="flex justify-between mb-4">
               <h3 class="text-xl font-bold font-mincho">01. 施工計画</h3>
@@ -367,7 +367,7 @@
             </p>
           </div>
           <div
-            class="info-card bg-white/5 border border-white/10 p-8 rounded hover:bg-takagi-blue/40 js-fade-up"
+            class="info-card bg-white/5 border border-white/10 p-8 rounded hover:bg-takamoku-blue/40 js-fade-up"
           >
             <div class="flex justify-between mb-4">
               <h3 class="text-xl font-bold font-mincho">02. 工程管理</h3>
@@ -378,7 +378,7 @@
             </p>
           </div>
           <div
-            class="info-card bg-white/5 border border-white/10 p-8 rounded hover:bg-takagi-blue/40 js-fade-up"
+            class="info-card bg-white/5 border border-white/10 p-8 rounded hover:bg-takamoku-blue/40 js-fade-up"
           >
             <div class="flex justify-between mb-4">
               <h3 class="text-xl font-bold font-mincho">03. 品質管理</h3>
@@ -389,7 +389,7 @@
             </p>
           </div>
           <div
-            class="info-card bg-white/5 border border-white/10 p-8 rounded hover:bg-takagi-blue/40 js-fade-up"
+            class="info-card bg-white/5 border border-white/10 p-8 rounded hover:bg-takamoku-blue/40 js-fade-up"
           >
             <div class="flex justify-between mb-4">
               <h3 class="text-xl font-bold font-mincho">04. 安全管理</h3>
@@ -400,7 +400,7 @@
             </p>
           </div>
           <div
-            class="info-card bg-white/5 border border-white/10 p-8 rounded hover:bg-takagi-blue/40 js-fade-up"
+            class="info-card bg-white/5 border border-white/10 p-8 rounded hover:bg-takamoku-blue/40 js-fade-up"
           >
             <div class="flex justify-between mb-4">
               <h3 class="text-xl font-bold font-mincho">05. 原価管理</h3>
@@ -411,7 +411,7 @@
             </p>
           </div>
           <div
-            class="info-card bg-white/5 border border-white/10 p-8 rounded hover:bg-takagi-blue/40 js-fade-up"
+            class="info-card bg-white/5 border border-white/10 p-8 rounded hover:bg-takamoku-blue/40 js-fade-up"
           >
             <div class="flex justify-between mb-4">
               <h3 class="text-xl font-bold font-mincho">06. 積算</h3>
@@ -435,7 +435,7 @@
             >03. ONE DAY</span
           >
           <h2
-            class="text-3xl md:text-4xl font-black font-mincho text-takagi-blue"
+            class="text-3xl md:text-4xl font-black font-mincho text-takamoku-blue"
           >
             ある1日の流れ
           </h2>
@@ -446,13 +446,13 @@
           ></div>
           <div class="flex flex-col md:flex-row items-center gap-8 js-fade-up">
             <div class="md:w-1/2 md:text-right pl-12 md:pl-0">
-              <span class="text-2xl font-black font-en text-takagi-blue"
+              <span class="text-2xl font-black font-en text-takamoku-blue"
                 >08:00</span
               >
               <h3 class="font-bold">出社・朝礼</h3>
             </div>
             <div
-              class="absolute left-3 w-4 h-4 bg-takagi-blue rounded-full border-4 border-white md:left-1/2 md:-translate-x-[9px]"
+              class="absolute left-3 w-4 h-4 bg-takamoku-blue rounded-full border-4 border-white md:left-1/2 md:-translate-x-[9px]"
             ></div>
             <div class="md:w-1/2 pl-12 md:pl-0">
               <p class="text-sm text-gray-600 bg-white p-4 rounded shadow-sm">
@@ -514,7 +514,7 @@
           </div>
           <div class="flex flex-col md:flex-row items-center gap-8 js-fade-up">
             <div class="md:w-1/2 md:text-right pl-12 md:pl-0">
-              <span class="text-2xl font-black font-en text-takagi-blue"
+              <span class="text-2xl font-black font-en text-takamoku-blue"
                 >17:30</span
               >
               <h3 class="font-bold">退社</h3>
@@ -532,7 +532,7 @@
       </div>
     </section>
 
-    <footer class="bg-takagi-dark text-white py-12 text-sm text-center">
+    <footer class="bg-takamoku-dark text-white py-12 text-sm text-center">
       <div class="container mx-auto px-6">
         <a
           href="index.html"
@@ -540,7 +540,7 @@
           >TAKAMOKU</a
         >
         <p class="opacity-30 text-xs font-en tracking-widest">
-          &copy; TAKAGI CO., LTD.
+          &copy; takamoku CO., LTD.
         </p>
       </div>
     </footer>
@@ -621,6 +621,7 @@
       });
       window.addEventListener("scroll", () => {
         const header = document.getElementById("header");
+        const logo = document.getElementById("header-logo");
         if (window.scrollY > 50) {
           header.classList.add(
             "bg-white/95",
@@ -633,7 +634,9 @@
             .classList.remove("text-white", "mix-blend-difference");
           document
             .getElementById("header-nav")
-            .classList.add("text-takagi-dark");
+            .classList.add("text-takamoku-dark");
+          // ロゴを元の色に戻す（反転を解除）
+          logo.classList.remove("brightness-0", "invert");
         } else {
           header.classList.remove(
             "bg-white/95",
@@ -646,7 +649,9 @@
             .classList.add("text-white", "mix-blend-difference");
           document
             .getElementById("header-nav")
-            .classList.remove("text-takagi-dark");
+            .classList.remove("text-takamoku-dark");
+          // ロゴを白く反転
+          logo.classList.add("brightness-0", "invert");
         }
       });
     </script>

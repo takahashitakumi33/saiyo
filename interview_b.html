@@ -20,8 +20,8 @@
         theme: {
           extend: {
             colors: {
-              "takagi-blue": "#004098",
-              "takagi-dark": "#0f172a",
+              "takamoku-blue": "#004098",
+              "takamoku-dark": "#0f172a",
               "accent-gold": "#c5a059",
               "light-gray": "#f8fafc",
             },
@@ -191,13 +191,13 @@
         class="container mx-auto px-6 h-24 flex justify-between items-center"
       >
         <div class="flex items-center gap-3">
-          <a
-            href="index.html"
-            class="hover-trigger bg-white px-2 py-1 rounded shadow-sm"
+          <a href="index.html" class="hover-trigger flex items-center"
             ><img
               src="assets/logo.png"
               onerror="this.src = 'assets/logo.jpg'"
-              class="h-8 md:h-10 w-auto object-contain"
+              class="h-8 md:h-10 w-auto object-contain brightness-0 invert transition-all duration-300"
+              id="header-logo"
+              alt="高木株式会社"
           /></a>
         </div>
         <nav
@@ -226,7 +226,7 @@
           >
           <a
             href="index.html#entry"
-            class="hover-trigger bg-white text-takagi-blue px-8 py-3 hover:bg-takagi-dark hover:text-white transition shadow-lg rounded-sm text-xs"
+            class="hover-trigger bg-white text-takamoku-blue px-8 py-3 hover:bg-takamoku-dark hover:text-white transition shadow-lg rounded-sm text-xs"
             >ENTRY</a
           >
         </nav>
@@ -267,7 +267,7 @@
       </nav>
     </div>
 
-    <section class="relative h-[85vh] w-full overflow-hidden bg-takagi-dark">
+    <section class="relative h-[85vh] w-full overflow-hidden bg-takamoku-dark">
       <div class="absolute inset-0 z-0">
         <img
           src="assets/interview_b.jpg"
@@ -312,7 +312,7 @@
           <div class="md:w-1/3">
             <div class="sticky top-32">
               <p
-                class="text-takagi-blue font-bold font-en text-sm tracking-widest mb-2 border-b-2 border-accent-gold inline-block pb-1"
+                class="text-takamoku-blue font-bold font-en text-sm tracking-widest mb-2 border-b-2 border-accent-gold inline-block pb-1"
               >
                 PROFILE
               </p>
@@ -331,7 +331,7 @@
           </div>
           <div class="md:w-2/3">
             <p
-              class="text-lg font-bold leading-relaxed mb-8 font-mincho text-takagi-dark js-fade-up"
+              class="text-lg font-bold leading-relaxed mb-8 font-mincho text-takamoku-dark js-fade-up"
             >
               東京のゼネコンで働いていましたが、巨大すぎる組織の中で「自分が何を作っているのか」実感を持てずにいました。地元山形へのUターンを決めた時、高木株式会社の「地域に根ざしながら、先進的な建築に挑む」姿勢に惹かれました。
             </p>
@@ -344,7 +344,7 @@
         <div class="mb-24">
           <div class="js-fade-up mb-12">
             <h3
-              class="text-2xl font-black font-en text-takagi-blue mb-6 flex items-center gap-3"
+              class="text-2xl font-black font-en text-takamoku-blue mb-6 flex items-center gap-3"
             >
               <span class="text-accent-gold text-4xl">Q1</span>仕事の面白さは？
             </h3>
@@ -364,7 +364,7 @@
               class="w-full h-full object-cover img-parallax"
             />
             <div
-              class="absolute bottom-4 left-4 bg-white/90 backdrop-blur px-4 py-2 text-xs font-bold text-takagi-blue shadow-lg"
+              class="absolute bottom-4 left-4 bg-white/90 backdrop-blur px-4 py-2 text-xs font-bold text-takamoku-blue shadow-lg"
             >
               コミュニケーションが鍵
             </div>
@@ -388,7 +388,7 @@
               class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700"
             />
             <div
-              class="absolute inset-0 bg-takagi-blue/80 flex items-center justify-center text-white transition group-hover:bg-takagi-blue/60"
+              class="absolute inset-0 bg-takamoku-blue/80 flex items-center justify-center text-white transition group-hover:bg-takamoku-blue/60"
             >
               <span class="font-bold">入社1年目 Aさん</span>
             </div>
@@ -406,7 +406,7 @@
               class="w-full h-full object-cover transform group-hover:scale-105 transition duration-700"
             />
             <div
-              class="absolute inset-0 bg-takagi-blue/80 flex items-center justify-center text-white transition group-hover:bg-takagi-blue/60"
+              class="absolute inset-0 bg-takamoku-blue/80 flex items-center justify-center text-white transition group-hover:bg-takamoku-blue/60"
             >
               <span class="font-bold">入社5年目 高橋さん</span>
             </div>
@@ -415,7 +415,7 @@
       </div>
     </section>
 
-    <footer class="bg-takagi-dark text-white py-12 text-sm text-center">
+    <footer class="bg-takamoku-dark text-white py-12 text-sm text-center">
       <div class="container mx-auto px-6">
         <a
           href="index.html"
@@ -423,7 +423,7 @@
           >TAKAMOKU</a
         >
         <p class="opacity-30 text-xs font-en tracking-widest">
-          &copy; TAKAGI CO., LTD.
+          &copy; takamoku CO., LTD.
         </p>
       </div>
     </footer>
@@ -504,6 +504,7 @@
       });
       window.addEventListener("scroll", () => {
         const header = document.getElementById("header");
+        const logo = document.getElementById("header-logo");
         if (window.scrollY > 50) {
           header.classList.remove("bg-transparent");
           header.classList.add(
@@ -512,6 +513,8 @@
             "shadow-sm",
             "h-20",
           );
+          // ロゴを元の色に戻す（反転を解除）
+          logo.classList.remove("brightness-0", "invert");
         } else {
           header.classList.add("bg-transparent");
           header.classList.remove(
@@ -520,6 +523,8 @@
             "shadow-sm",
             "h-20",
           );
+          // ロゴを白く反転
+          logo.classList.add("brightness-0", "invert");
         }
       });
     </script>
