@@ -1,0 +1,509 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>社員インタビュー | 高木株式会社</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700;900&family=Oswald:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              "takagi-blue": "#004098",
+              "takagi-dark": "#0f172a",
+              "accent-gold": "#c5a059",
+              "light-gray": "#f8fafc",
+            },
+            fontFamily: {
+              sans: ['"Noto Sans JP"', "sans-serif"],
+              en: ['"Oswald"', "sans-serif"],
+              mincho: ['"Shippori Mincho"', "serif"],
+            },
+            cursor: { none: "none" },
+          },
+        },
+      };
+    </script>
+    <style>
+      body {
+        font-family: "Noto Sans JP", sans-serif;
+        background-color: #ffffff;
+        overflow-x: hidden;
+        cursor: none;
+      }
+      #cursor {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 12px;
+        height: 12px;
+        background-color: #c5a059;
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 9999;
+        transform: translate(-50%, -50%);
+        mix-blend-mode: difference;
+        transition:
+          width 0.3s,
+          height 0.3s;
+      }
+      #cursor-follower {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 40px;
+        height: 40px;
+        border: 1px solid rgba(197, 160, 89, 0.5);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 9998;
+        transform: translate(-50%, -50%);
+        transition:
+          width 0.3s,
+          height 0.3s,
+          border-color 0.3s,
+          background-color 0.3s;
+      }
+      body.hover-link #cursor-follower {
+        width: 60px;
+        height: 60px;
+        background-color: rgba(0, 64, 152, 0.1);
+        border-color: #004098;
+        border-width: 2px;
+      }
+
+      /* ハンバーガーメニュー */
+      #mobile-menu {
+        position: fixed;
+        inset: 0;
+        background-color: rgba(15, 23, 42, 0.95);
+        backdrop-filter: blur(10px);
+        z-index: 49;
+        transform: translateX(100%);
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      #mobile-menu.open {
+        transform: translateX(0);
+      }
+      .hamburger-btn {
+        z-index: 50;
+        position: relative;
+        width: 30px;
+        height: 20px;
+        cursor: pointer;
+      }
+      .hamburger-line {
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        background-color: white;
+        transition: all 0.3s ease;
+      }
+      .hamburger-line:nth-child(1) {
+        top: 0;
+      }
+      .hamburger-line:nth-child(2) {
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      .hamburger-line:nth-child(3) {
+        bottom: 0;
+      }
+      .hamburger-btn.open .hamburger-line:nth-child(1) {
+        top: 50%;
+        transform: translateY(-50%) rotate(45deg);
+      }
+      .hamburger-btn.open .hamburger-line:nth-child(2) {
+        opacity: 0;
+      }
+      .hamburger-btn.open .hamburger-line:nth-child(3) {
+        bottom: 50%;
+        transform: translateY(50%) rotate(-45deg);
+      }
+
+      .hero-dawn-gradient {
+        background: linear-gradient(135deg, #0f172a, #1e3a8a, #fb923c, #8b5cf6);
+        background-size: 400% 400%;
+        animation: dawnAnimation 20s ease infinite;
+        mix-blend-mode: multiply;
+      }
+      @keyframes dawnAnimation {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+      #opening-layer {
+        position: fixed;
+        inset: 0;
+        background: #004098;
+        z-index: 10000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+      }
+    </style>
+  </head>
+  <body class="antialiased text-slate-800">
+    <div id="cursor"></div>
+    <div id="cursor-follower"></div>
+    <div id="opening-layer">
+      <h1 class="text-4xl md:text-6xl font-black font-en tracking-tighter">
+        PEOPLE
+      </h1>
+    </div>
+
+    <header
+      class="fixed top-0 w-full z-50 transition-all duration-500 bg-transparent"
+      id="header"
+    >
+      <div
+        class="container mx-auto px-6 h-24 flex justify-between items-center"
+      >
+        <div class="flex items-center gap-3">
+          <a
+            href="index.html"
+            class="hover-trigger bg-white px-2 py-1 rounded shadow-sm"
+            ><img
+              src="assets/logo.png"
+              onerror="this.src = 'assets/logo.jpg'"
+              class="h-8 md:h-10 w-auto object-contain"
+          /></a>
+        </div>
+        <nav
+          class="hidden md:flex gap-8 text-sm font-bold text-white mix-blend-difference tracking-widest font-en"
+          id="header-nav"
+        >
+          <a
+            href="industry.html"
+            class="hover-trigger hover:text-accent-gold transition"
+            >INDUSTRY</a
+          >
+          <a
+            href="company.html"
+            class="hover-trigger hover:text-accent-gold transition"
+            >ABOUT</a
+          >
+          <a href="interview_list.html" class="hover-trigger text-accent-gold"
+            >INTERVIEW</a
+          >
+          <a
+            href="index.html#entry"
+            class="hover-trigger bg-white text-takagi-blue px-8 py-3 hover:bg-takagi-dark hover:text-white transition shadow-lg rounded-sm text-xs"
+            >ENTRY</a
+          >
+        </nav>
+
+        <div class="md:hidden hamburger-btn hover-trigger" id="hamburger-btn">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </div>
+      </div>
+    </header>
+
+    <div id="mobile-menu">
+      <nav
+        class="flex flex-col gap-8 text-2xl font-bold text-white font-en tracking-widest text-center"
+      >
+        <a
+          href="index.html"
+          class="hover:text-accent-gold transition mobile-link"
+          >TOP</a
+        >
+        <a
+          href="industry.html"
+          class="hover:text-accent-gold transition mobile-link"
+          >INDUSTRY</a
+        >
+        <a
+          href="company.html"
+          class="hover:text-accent-gold transition mobile-link"
+          >ABOUT</a
+        >
+        <a href="interview_list.html" class="text-accent-gold mobile-link"
+          >INTERVIEW</a
+        >
+        <a href="index.html#entry" class="text-accent-gold mobile-link"
+          >ENTRY</a
+        >
+      </nav>
+    </div>
+
+    <section
+      class="relative h-[60vh] flex items-center justify-center bg-takagi-dark overflow-hidden"
+    >
+      <div class="absolute inset-0">
+        <img
+          src="assets/interview_a.jpg"
+          class="w-full h-full object-cover opacity-60"
+        />
+      </div>
+      <div class="absolute inset-0 hero-dawn-gradient opacity-80"></div>
+      <div class="relative z-10 text-center text-white">
+        <p
+          class="text-accent-gold font-bold tracking-[0.3em] text-sm font-en mb-4 js-fade-up"
+        >
+          TAKAMOKU PEOPLE
+        </p>
+        <h1
+          class="text-5xl md:text-7xl font-black font-en tracking-tighter mb-6 js-fade-up"
+        >
+          INTERVIEWS
+        </h1>
+        <p class="font-mincho text-xl font-bold js-fade-up">
+          未来をつくる、挑戦者たち。
+        </p>
+      </div>
+    </section>
+
+    <section class="py-24 px-6 bg-white">
+      <div class="container mx-auto max-w-6xl">
+        <a
+          href="interview_a.html"
+          class="flex flex-col md:flex-row gap-12 items-center mb-32 group hover-trigger"
+        >
+          <div
+            class="md:w-1/2 relative overflow-hidden rounded shadow-2xl h-[400px]"
+          >
+            <img
+              src="assets/interview_a.jpg"
+              class="w-full h-full object-cover transition duration-700 group-hover:scale-110"
+            />
+            <div
+              class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-takagi-dark/80 to-transparent text-white"
+            >
+              <span
+                class="bg-accent-gold text-takagi-dark px-3 py-1 text-xs font-bold mb-2 inline-block"
+                >建築系出身 / 入社1年目</span
+              >
+              <p class="text-lg font-bold">施工管理 Aさん</p>
+            </div>
+          </div>
+          <div class="md:w-1/2 md:pl-10">
+            <span
+              class="text-accent-gold text-sm font-en tracking-widest block mb-2"
+              >01. CHALLENGE</span
+            >
+            <h2
+              class="text-3xl font-black font-mincho text-takagi-dark mb-6 group-hover:text-takagi-blue transition"
+            >
+              「現場が正解なこともある」<br />図面を超える瞬間。
+            </h2>
+            <p class="text-gray-600 leading-relaxed mb-6 line-clamp-3">
+              学生時代は図面を書くことが中心でしたが、実際の現場は生き物のように毎日変化します。ある時、図面通りに収まらない箇所があり悩んでいた私に、先輩は「現場を見て判断しろ」と教えてくれました。
+            </p>
+            <div
+              class="text-takagi-blue font-bold font-en tracking-widest border-b border-takagi-blue inline-block pb-1"
+            >
+              READ STORY
+            </div>
+          </div>
+        </a>
+
+        <a
+          href="interview_b.html"
+          class="flex flex-col md:flex-row-reverse gap-12 items-center mb-32 group hover-trigger"
+        >
+          <div
+            class="md:w-1/2 relative overflow-hidden rounded shadow-2xl h-[400px]"
+          >
+            <img
+              src="assets/interview_b.jpg"
+              class="w-full h-full object-cover transition duration-700 group-hover:scale-110"
+            />
+            <div
+              class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-takagi-dark/80 to-transparent text-white"
+            >
+              <span
+                class="bg-green-600 text-white px-3 py-1 text-xs font-bold mb-2 inline-block"
+                >Uターン・文系出身 / 入社1年目</span
+              >
+              <p class="text-lg font-bold">施工管理 Bさん</p>
+            </div>
+          </div>
+          <div class="md:w-1/2 md:pr-10">
+            <span
+              class="text-accent-gold text-sm font-en tracking-widest block mb-2"
+              >02. U-TURN</span
+            >
+            <h2
+              class="text-3xl font-black font-mincho text-takagi-dark mb-6 group-hover:text-takagi-blue transition"
+            >
+              東京から山形へ。<br />ここでしか作れない未来。
+            </h2>
+            <p class="text-gray-600 leading-relaxed mb-6 line-clamp-3">
+              東京のゼネコンで働いていましたが、巨大すぎる組織の中で「自分が何を作っているのか」実感を持てずにいました。地元山形へのUターンを決めた時、高木株式会社の「地域に根ざしながら、先進的な建築に挑む」姿勢に惹かれました。
+            </p>
+            <div
+              class="text-takagi-blue font-bold font-en tracking-widest border-b border-takagi-blue inline-block pb-1"
+            >
+              READ STORY
+            </div>
+          </div>
+        </a>
+
+        <a
+          href="interview_takahashi.html"
+          class="flex flex-col md:flex-row gap-12 items-center mb-12 group hover-trigger"
+        >
+          <div
+            class="md:w-1/2 relative overflow-hidden rounded shadow-2xl h-[400px]"
+          >
+            <img
+              src="assets/interview_takahashi.jpg"
+              onerror="
+                this.src =
+                  'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800'
+              "
+              class="w-full h-full object-cover transition duration-700 group-hover:scale-110"
+            />
+            <div
+              class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-takagi-dark/80 to-transparent text-white"
+            >
+              <span
+                class="bg-takagi-blue text-white px-3 py-1 text-xs font-bold mb-2 inline-block"
+                >入社5年目 / 主任</span
+              >
+              <p class="text-lg font-bold">施工管理 高橋 健太</p>
+            </div>
+          </div>
+          <div class="md:w-1/2 md:pl-10">
+            <span
+              class="text-accent-gold text-sm font-en tracking-widest block mb-2"
+              >03. LEADER</span
+            >
+            <h2
+              class="text-3xl font-black font-mincho text-takagi-dark mb-6 group-hover:text-takagi-blue transition"
+            >
+              「地図に残る」<br />その重みと誇り。
+            </h2>
+            <p class="text-gray-600 leading-relaxed mb-6 line-clamp-3">
+              入社5年目、現在は現場代理人として、億単位のプロジェクトを任されています。若いうちから責任あるポジションに挑戦できるのが、高木の面白さであり、厳しさでもあります。
+            </p>
+            <div
+              class="text-takagi-blue font-bold font-en tracking-widest border-b border-takagi-blue inline-block pb-1"
+            >
+              READ STORY
+            </div>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <footer class="bg-takagi-dark text-white py-12 text-sm text-center">
+      <div class="container mx-auto px-6">
+        <a
+          href="index.html"
+          class="hover-trigger inline-block text-4xl font-black font-en tracking-widest mb-6 text-white/20 hover:text-white transition"
+          >TAKAMOKU</a
+        >
+        <p class="opacity-30 text-xs font-en tracking-widest">
+          &copy; TAKAGI CO., LTD.
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      const cursor = document.getElementById("cursor"),
+        follower = document.getElementById("cursor-follower"),
+        hoverTriggers = document.querySelectorAll(".hover-trigger");
+      document.addEventListener("mousemove", (e) => {
+        cursor.style.left = e.clientX + "px";
+        cursor.style.top = e.clientY + "px";
+        follower.style.left = e.clientX + "px";
+        follower.style.top = e.clientY + "px";
+      });
+      hoverTriggers.forEach((trigger) => {
+        trigger.addEventListener("mouseenter", () =>
+          document.body.classList.add("hover-link"),
+        );
+        trigger.addEventListener("mouseleave", () =>
+          document.body.classList.remove("hover-link"),
+        );
+      });
+
+      // Hamburger Menu
+      const hamburgerBtn = document.getElementById("hamburger-btn"),
+        mobileMenu = document.getElementById("mobile-menu");
+      hamburgerBtn.addEventListener("click", () => {
+        hamburgerBtn.classList.toggle("open");
+        mobileMenu.classList.toggle("open");
+        document.body.style.overflow = mobileMenu.classList.contains("open")
+          ? "hidden"
+          : "auto";
+      });
+
+      gsap.registerPlugin(ScrollTrigger);
+      gsap.to("#opening-layer", {
+        y: "-100%",
+        duration: 1,
+        ease: "power4.inOut",
+        delay: 0.5,
+      });
+      gsap.utils.toArray(".js-fade-up").forEach((el) => {
+        gsap.fromTo(
+          el,
+          { y: 30, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 1,
+            ease: "power2.out",
+            scrollTrigger: { trigger: el, start: "top 85%" },
+          },
+        );
+      });
+      window.addEventListener("scroll", () => {
+        const header = document.getElementById("header");
+        if (window.scrollY > 50) {
+          header.classList.add(
+            "bg-white/95",
+            "backdrop-blur-md",
+            "shadow-sm",
+            "h-20",
+          );
+          document
+            .getElementById("header-nav")
+            .classList.remove("text-white", "mix-blend-difference");
+          document
+            .getElementById("header-nav")
+            .classList.add("text-takagi-dark");
+        } else {
+          header.classList.remove(
+            "bg-white/95",
+            "backdrop-blur-md",
+            "shadow-sm",
+            "h-20",
+          );
+          document
+            .getElementById("header-nav")
+            .classList.add("text-white", "mix-blend-difference");
+          document
+            .getElementById("header-nav")
+            .classList.remove("text-takagi-dark");
+        }
+      });
+    </script>
+  </body>
+</html>

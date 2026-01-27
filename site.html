@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <style>
+      /* ベースのスタイル */
+      body {
+        font-family:
+          "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans",
+          sans-serif;
+        background-color: #f0f2f5; /* 背景色（仮） */
+        display: flex;
+        justify-content: center;
+        padding: 40px;
+      }
+
+      /* --- ここからがデザイン提案部分 --- */
+
+      /* サイドバー全体のコンテナ */
+      .info-sidebar {
+        width: 320px;
+        background: #ffffff;
+        /* わずかに透過させて背景となじませる場合 */
+        /* background: rgba(255, 255, 255, 0.95); */
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        border-radius: 4px;
+        overflow: hidden;
+        color: #333;
+        font-size: 13px;
+        line-height: 1.6;
+      }
+
+      /* セクション共通 */
+      .sidebar-section {
+        padding: 24px;
+        border-bottom: 1px solid #eee;
+      }
+      .sidebar-section:last-child {
+        border-bottom: none;
+      }
+
+      /* 見出しデザイン */
+      .sidebar-title {
+        font-size: 14px;
+        font-weight: 700;
+        color: #0044cc; /* 企業のブランドカラー（青系）に合わせる */
+        margin-bottom: 12px;
+        display: flex;
+        align-items: center;
+        letter-spacing: 0.05em;
+      }
+      /* 見出しの装飾（左の四角いアクセント） */
+      .sidebar-title::before {
+        content: "";
+        display: block;
+        width: 6px;
+        height: 6px;
+        background: #0044cc;
+        margin-right: 8px;
+        transform: rotate(45deg); /* ひし形にして少しオシャレに */
+      }
+
+      /* データリスト（企業データなど）の整理 */
+      .data-list {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      .data-list li {
+        display: flex;
+        margin-bottom: 6px;
+        align-items: baseline;
+      }
+      .data-label {
+        width: 70px; /* ラベル幅を固定して縦を揃える */
+        font-weight: bold;
+        color: #666;
+        flex-shrink: 0;
+        font-size: 11px;
+      }
+      .data-value {
+        color: #111;
+      }
+      /* 赤字強調の汎用クラス */
+      .highlight-red {
+        color: #e60012;
+        font-weight: bold;
+      }
+
+      /* TSRコメント（引用風デザイン） */
+      .tsr-comment-box {
+        background: #f8f9fa;
+        padding: 15px;
+        border-left: 3px solid #0044cc;
+        border-radius: 0 4px 4px 0;
+        font-style: italic;
+        color: #444;
+      }
+      .tsr-label {
+        display: block;
+        font-size: 10px;
+        color: #888;
+        margin-bottom: 4px;
+        font-style: normal;
+        font-weight: bold;
+      }
+
+      /* 採用情報（一番目立たせる） */
+      .recruit-section {
+        background: #fafbfd; /* 少しだけ色を変えてエリアを区別 */
+      }
+      .recruit-item {
+        margin-bottom: 10px;
+      }
+      .recruit-label {
+        display: block;
+        font-size: 11px;
+        color: #666;
+        font-weight: bold;
+      }
+      .recruit-value {
+        display: block;
+        font-weight: 500;
+      }
+
+      /* スマホ対応などで幅が狭い時用の調整 */
+      @media (max-width: 768px) {
+        .info-sidebar {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <aside class="info-sidebar">
+      <section class="sidebar-section">
+        <h2 class="sidebar-title">企業データ</h2>
+        <ul class="data-list">
+          <li>
+            <span class="data-label">商号</span
+            ><span class="data-value">エムテックスマツムラ(株)</span>
+          </li>
+          <li>
+            <span class="data-label">創業</span
+            ><span class="data-value">1945年3月</span>
+          </li>
+          <li>
+            <span class="data-label">資本金</span
+            ><span class="data-value">4億4965万円</span>
+          </li>
+          <li>
+            <span class="data-label">従業員数</span
+            ><span class="data-value highlight-red">220名</span>
+          </li>
+          <li>
+            <span class="data-label">年商</span
+            ><span class="data-value highlight-red"
+              >140億1613万円<small>(2025年4月期)</small></span
+            >
+          </li>
+          <li>
+            <span class="data-label">事業内容</span>
+            <span class="data-value"
+              >装置事業<br />半導体事業<br />樹脂成型事業</span
+            >
+          </li>
+        </ul>
+      </section>
+
+      <section class="sidebar-section">
+        <div class="tsr-comment-box">
+          <span class="tsr-label">TSRコメント</span>
+          業歴を80年に変更。<br />
+          確かな技術力で、次の時代を切り拓く。
+        </div>
+      </section>
+
+      <section class="sidebar-section recruit-section">
+        <h2 class="sidebar-title">採用情報</h2>
+        <div class="recruit-item">
+          <span class="recruit-label">募集職種</span>
+          <span class="recruit-value"
+            >技術系（製品開発・生産技術・設計など）<br />事務系（営業・生産管理・資材調達など）</span
+          >
+        </div>
+        <div class="recruit-item">
+          <span class="recruit-label">基本給</span>
+          <span class="recruit-value"
+            >大学院修了：<span class="highlight-red">235,600円</span
+            ><br />大学卒：<span class="highlight-red">214,000円</span></span
+          >
+        </div>
+        <div class="recruit-item">
+          <span class="recruit-label">休日休暇</span>
+          <span class="recruit-value highlight-red">年間119日</span>
+          <span class="recruit-value" style="font-size: 11px"
+            >(GW・夏季・年末年始連休あり)</span
+          >
+        </div>
+        <div class="recruit-item">
+          <span class="recruit-label">勤務地</span>
+          <span class="recruit-value">山形県天童市・尾花沢市</span>
+        </div>
+      </section>
+    </aside>
+  </body>
+</html>

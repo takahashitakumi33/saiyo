@@ -1,0 +1,654 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>建設業とは | 高木株式会社</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700;900&family=Oswald:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              "takagi-blue": "#004098",
+              "takagi-dark": "#0f172a",
+              "accent-gold": "#c5a059",
+              "light-gray": "#f8fafc",
+            },
+            fontFamily: {
+              sans: ['"Noto Sans JP"', "sans-serif"],
+              en: ['"Oswald"', "sans-serif"],
+              mincho: ['"Shippori Mincho"', "serif"],
+            },
+            cursor: { none: "none" },
+          },
+        },
+      };
+    </script>
+    <style>
+      body {
+        font-family: "Noto Sans JP", sans-serif;
+        background-color: #ffffff;
+        overflow-x: hidden;
+        cursor: none;
+      }
+      #cursor {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 12px;
+        height: 12px;
+        background-color: #c5a059;
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 9999;
+        transform: translate(-50%, -50%);
+        mix-blend-mode: difference;
+        transition:
+          width 0.3s,
+          height 0.3s;
+      }
+      #cursor-follower {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 40px;
+        height: 40px;
+        border: 1px solid rgba(197, 160, 89, 0.5);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 9998;
+        transform: translate(-50%, -50%);
+        transition:
+          width 0.3s,
+          height 0.3s,
+          border-color 0.3s,
+          background-color 0.3s;
+      }
+      body.hover-link #cursor-follower {
+        width: 60px;
+        height: 60px;
+        background-color: rgba(0, 64, 152, 0.1);
+        border-color: #004098;
+        border-width: 2px;
+      }
+
+      /* ハンバーガーメニュー */
+      #mobile-menu {
+        position: fixed;
+        inset: 0;
+        background-color: rgba(15, 23, 42, 0.95);
+        backdrop-filter: blur(10px);
+        z-index: 49;
+        transform: translateX(100%);
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      #mobile-menu.open {
+        transform: translateX(0);
+      }
+      .hamburger-btn {
+        z-index: 50;
+        position: relative;
+        width: 30px;
+        height: 20px;
+        cursor: pointer;
+      }
+      .hamburger-line {
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        background-color: white;
+        transition: all 0.3s ease;
+      }
+      .hamburger-line:nth-child(1) {
+        top: 0;
+      }
+      .hamburger-line:nth-child(2) {
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      .hamburger-line:nth-child(3) {
+        bottom: 0;
+      }
+      .hamburger-btn.open .hamburger-line:nth-child(1) {
+        top: 50%;
+        transform: translateY(-50%) rotate(45deg);
+      }
+      .hamburger-btn.open .hamburger-line:nth-child(2) {
+        opacity: 0;
+      }
+      .hamburger-btn.open .hamburger-line:nth-child(3) {
+        bottom: 50%;
+        transform: translateY(50%) rotate(-45deg);
+      }
+
+      .hero-dawn-gradient {
+        background: linear-gradient(135deg, #0f172a, #1e3a8a, #fb923c, #8b5cf6);
+        background-size: 400% 400%;
+        animation: dawnAnimation 20s ease infinite;
+        mix-blend-mode: multiply;
+      }
+      @keyframes dawnAnimation {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+      .info-card {
+        transition: all 0.3s ease;
+      }
+      .info-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.1);
+      }
+      #opening-layer {
+        position: fixed;
+        inset: 0;
+        background: #004098;
+        z-index: 10000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+      }
+    </style>
+  </head>
+  <body class="antialiased text-slate-800">
+    <div id="cursor"></div>
+    <div id="cursor-follower"></div>
+    <div id="opening-layer">
+      <h1 class="text-4xl md:text-6xl font-black font-en tracking-tighter">
+        INDUSTRY
+      </h1>
+    </div>
+
+    <header
+      class="fixed top-0 w-full z-50 transition-all duration-500 bg-transparent"
+      id="header"
+    >
+      <div
+        class="container mx-auto px-6 h-24 flex justify-between items-center"
+      >
+        <div class="flex items-center gap-3">
+          <a
+            href="index.html"
+            class="hover-trigger bg-white px-2 py-1 rounded shadow-sm"
+            ><img
+              src="assets/logo.png"
+              onerror="this.src = 'assets/logo.jpg'"
+              class="h-8 md:h-10 w-auto object-contain"
+          /></a>
+        </div>
+        <nav
+          class="hidden md:flex gap-8 text-sm font-bold text-white mix-blend-difference tracking-widest font-en"
+          id="header-nav"
+        >
+          <a href="industry.html" class="hover-trigger text-accent-gold"
+            >INDUSTRY</a
+          >
+          <a
+            href="company.html"
+            class="hover-trigger hover:text-accent-gold transition"
+            >ABOUT</a
+          >
+          <a
+            href="interview_list.html"
+            class="hover-trigger hover:text-accent-gold transition"
+            >INTERVIEW</a
+          >
+          <a
+            href="index.html#entry"
+            class="hover-trigger bg-white text-takagi-blue px-8 py-3 hover:bg-takagi-dark hover:text-white transition shadow-lg rounded-sm text-xs"
+            >ENTRY</a
+          >
+        </nav>
+
+        <div class="md:hidden hamburger-btn hover-trigger" id="hamburger-btn">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </div>
+      </div>
+    </header>
+
+    <div id="mobile-menu">
+      <nav
+        class="flex flex-col gap-8 text-2xl font-bold text-white font-en tracking-widest text-center"
+      >
+        <a
+          href="index.html"
+          class="hover:text-accent-gold transition mobile-link"
+          >TOP</a
+        >
+        <a href="industry.html" class="text-accent-gold mobile-link"
+          >INDUSTRY</a
+        >
+        <a
+          href="company.html"
+          class="hover:text-accent-gold transition mobile-link"
+          >ABOUT</a
+        >
+        <a
+          href="interview_list.html"
+          class="hover:text-accent-gold transition mobile-link"
+          >INTERVIEW</a
+        >
+        <a href="index.html#entry" class="text-accent-gold mobile-link"
+          >ENTRY</a
+        >
+      </nav>
+    </div>
+
+    <section
+      class="relative h-[60vh] flex items-center justify-center bg-takagi-dark overflow-hidden"
+    >
+      <div class="absolute inset-0">
+        <img
+          src="assets/industry_1.jpg"
+          onerror="this.src = 'assets/top_hero_2.jpg'"
+          class="w-full h-full object-cover opacity-60"
+        />
+      </div>
+      <div class="absolute inset-0 hero-dawn-gradient opacity-80"></div>
+      <div class="relative z-10 text-center text-white">
+        <p
+          class="text-accent-gold font-bold tracking-[0.3em] text-sm font-en mb-4 js-fade-up"
+        >
+          CONSTRUCTION
+        </p>
+        <h1
+          class="text-5xl md:text-7xl font-black font-en tracking-tighter mb-6 js-fade-up"
+        >
+          INDUSTRY
+        </h1>
+        <p class="font-mincho text-xl font-bold js-fade-up">
+          建設業という、社会の基盤。
+        </p>
+      </div>
+    </section>
+
+    <section class="py-24 px-6 bg-white">
+      <div class="container mx-auto max-w-5xl">
+        <div class="text-center mb-16">
+          <span
+            class="text-accent-gold font-en font-bold tracking-widest block mb-2"
+            >01. ROLE</span
+          >
+          <h2
+            class="text-3xl md:text-4xl font-black font-mincho text-takagi-blue"
+          >
+            ゼネコンの役割
+          </h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          <div class="js-fade-up">
+            <p class="leading-8 text-gray-600 mb-8 text-justify">
+              ゼネコン（総合建設業）は、多くの専門業者をまとめ上げ、一つの巨大なプロジェクトを完成へと導くリーダーです。「地図に残る仕事」として知られていますが、それだけではありません。道路を整備し、災害から街を守る。インフラは社会に不可欠なため、景気に左右されにくい「安定性」も大きな魅力です。
+            </p>
+            <div class="grid grid-cols-2 gap-4">
+              <div
+                class="bg-light-gray p-4 rounded border-l-4 border-takagi-blue"
+              >
+                <h4 class="font-bold text-takagi-blue mb-1">作る</h4>
+                <p class="text-xs text-gray-500">学校・病院・商業施設</p>
+              </div>
+              <div
+                class="bg-light-gray p-4 rounded border-l-4 border-green-600"
+              >
+                <h4 class="font-bold text-green-600 mb-1">守る</h4>
+                <p class="text-xs text-gray-500">災害対策・防災工事</p>
+              </div>
+              <div class="bg-light-gray p-4 rounded border-l-4 border-gray-500">
+                <h4 class="font-bold text-gray-500 mb-1">支える</h4>
+                <p class="text-xs text-gray-500">道路・橋・インフラ</p>
+              </div>
+              <div
+                class="bg-light-gray p-4 rounded border-l-4 border-orange-500"
+              >
+                <h4 class="font-bold text-orange-500 mb-1">直す</h4>
+                <p class="text-xs text-gray-500">改修・メンテナンス</p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="h-[400px] rounded shadow-2xl overflow-hidden js-img-reveal"
+          >
+            <img
+              src="assets/top_hero_3.jpg"
+              class="w-full h-full object-cover img-parallax"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-24 px-6 bg-takagi-dark text-white relative">
+      <div class="container mx-auto max-w-6xl relative z-10">
+        <div class="text-center mb-16">
+          <span
+            class="text-accent-gold font-en font-bold tracking-widest block mb-2"
+            >02. WORK</span
+          >
+          <h2 class="text-3xl md:text-4xl font-black font-mincho">
+            施工管理の仕事
+          </h2>
+          <p class="mt-4 text-gray-400">
+            現場で作業する仕事ではありません。<br />多くのプロフェッショナルを指揮する「司令塔」です。
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div
+            class="info-card bg-white/5 border border-white/10 p-8 rounded hover:bg-takagi-blue/40 js-fade-up"
+          >
+            <div class="flex justify-between mb-4">
+              <h3 class="text-xl font-bold font-mincho">01. 施工計画</h3>
+              <i class="fas fa-chess-knight text-2xl text-accent-gold"></i>
+            </div>
+            <p class="text-sm text-gray-400 leading-relaxed">
+              工事の進め方や段取りを決める、最初の重要なステップ。方針を固めます。
+            </p>
+          </div>
+          <div
+            class="info-card bg-white/5 border border-white/10 p-8 rounded hover:bg-takagi-blue/40 js-fade-up"
+          >
+            <div class="flex justify-between mb-4">
+              <h3 class="text-xl font-bold font-mincho">02. 工程管理</h3>
+              <i class="fas fa-clock text-2xl text-accent-gold"></i>
+            </div>
+            <p class="text-sm text-gray-400 leading-relaxed">
+              スケジュール通りに進んでいるかを確認し、納期を守るために調整を行います。
+            </p>
+          </div>
+          <div
+            class="info-card bg-white/5 border border-white/10 p-8 rounded hover:bg-takagi-blue/40 js-fade-up"
+          >
+            <div class="flex justify-between mb-4">
+              <h3 class="text-xl font-bold font-mincho">03. 品質管理</h3>
+              <i class="fas fa-check-double text-2xl text-accent-gold"></i>
+            </div>
+            <p class="text-sm text-gray-400 leading-relaxed">
+              設計図通りの性能や強度が満たされているかをチェックし、品質を保証します。
+            </p>
+          </div>
+          <div
+            class="info-card bg-white/5 border border-white/10 p-8 rounded hover:bg-takagi-blue/40 js-fade-up"
+          >
+            <div class="flex justify-between mb-4">
+              <h3 class="text-xl font-bold font-mincho">04. 安全管理</h3>
+              <i class="fas fa-hard-hat text-2xl text-accent-gold"></i>
+            </div>
+            <p class="text-sm text-gray-400 leading-relaxed">
+              現場での事故を防ぎ、職人さんが安全に働ける環境を整えます。最も大切な仕事です。
+            </p>
+          </div>
+          <div
+            class="info-card bg-white/5 border border-white/10 p-8 rounded hover:bg-takagi-blue/40 js-fade-up"
+          >
+            <div class="flex justify-between mb-4">
+              <h3 class="text-xl font-bold font-mincho">05. 原価管理</h3>
+              <i class="fas fa-calculator text-2xl text-accent-gold"></i>
+            </div>
+            <p class="text-sm text-gray-400 leading-relaxed">
+              材料費や人件費を計算し、予算内で工事ができるようコストをコントロールします。
+            </p>
+          </div>
+          <div
+            class="info-card bg-white/5 border border-white/10 p-8 rounded hover:bg-takagi-blue/40 js-fade-up"
+          >
+            <div class="flex justify-between mb-4">
+              <h3 class="text-xl font-bold font-mincho">06. 積算</h3>
+              <i
+                class="fas fa-file-invoice-dollar text-2xl text-accent-gold"
+              ></i>
+            </div>
+            <p class="text-sm text-gray-400 leading-relaxed">
+              必要な費用をすべて見積もり、お客様の予算に合わせて最適な工事内容を提案します。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-24 px-6 bg-light-gray">
+      <div class="container mx-auto max-w-4xl">
+        <div class="text-center mb-16">
+          <span
+            class="text-accent-gold font-en font-bold tracking-widest block mb-2"
+            >03. ONE DAY</span
+          >
+          <h2
+            class="text-3xl md:text-4xl font-black font-mincho text-takagi-blue"
+          >
+            ある1日の流れ
+          </h2>
+        </div>
+        <div class="space-y-8 relative">
+          <div
+            class="absolute left-[19px] top-0 bottom-0 w-0.5 bg-gray-300 md:left-1/2 md:-translate-x-1/2"
+          ></div>
+          <div class="flex flex-col md:flex-row items-center gap-8 js-fade-up">
+            <div class="md:w-1/2 md:text-right pl-12 md:pl-0">
+              <span class="text-2xl font-black font-en text-takagi-blue"
+                >08:00</span
+              >
+              <h3 class="font-bold">出社・朝礼</h3>
+            </div>
+            <div
+              class="absolute left-3 w-4 h-4 bg-takagi-blue rounded-full border-4 border-white md:left-1/2 md:-translate-x-[9px]"
+            ></div>
+            <div class="md:w-1/2 pl-12 md:pl-0">
+              <p class="text-sm text-gray-600 bg-white p-4 rounded shadow-sm">
+                一日の流れや安全確認を共有し、チーム全体でスタート。
+              </p>
+            </div>
+          </div>
+          <div class="flex flex-col md:flex-row items-center gap-8 js-fade-up">
+            <div
+              class="md:w-1/2 md:text-right pl-12 md:pl-0 md:order-1 order-2"
+            >
+              <p class="text-sm text-gray-600 bg-white p-4 rounded shadow-sm">
+                作業状況を確認し、進行の打ち合わせ。
+              </p>
+            </div>
+            <div
+              class="absolute left-3 w-4 h-4 bg-gray-400 rounded-full border-4 border-white md:left-1/2 md:-translate-x-[9px]"
+            ></div>
+            <div class="md:w-1/2 pl-12 md:pl-0 md:order-2 order-1">
+              <span class="text-2xl font-black font-en text-gray-400"
+                >08:30</span
+              >
+              <h3 class="font-bold">現場巡回</h3>
+            </div>
+          </div>
+          <div class="flex flex-col md:flex-row items-center gap-8 js-fade-up">
+            <div class="md:w-1/2 md:text-right pl-12 md:pl-0">
+              <span class="text-2xl font-black font-en text-gray-400"
+                >10:00</span
+              >
+              <h3 class="font-bold">事務所作業</h3>
+            </div>
+            <div
+              class="absolute left-3 w-4 h-4 bg-gray-400 rounded-full border-4 border-white md:left-1/2 md:-translate-x-[9px]"
+            ></div>
+            <div class="md:w-1/2 pl-12 md:pl-0">
+              <p class="text-sm text-gray-600 bg-white p-4 rounded shadow-sm">
+                図面の確認や、翌日の資材手配などのデスクワーク。
+              </p>
+            </div>
+          </div>
+          <div class="flex flex-col md:flex-row items-center gap-8 js-fade-up">
+            <div
+              class="md:w-1/2 md:text-right pl-12 md:pl-0 md:order-1 order-2"
+            >
+              <p class="text-sm text-gray-600 bg-white p-4 rounded shadow-sm">
+                今日の作業箇所の最終確認と、日報の作成。
+              </p>
+            </div>
+            <div
+              class="absolute left-3 w-4 h-4 bg-gray-400 rounded-full border-4 border-white md:left-1/2 md:-translate-x-[9px]"
+            ></div>
+            <div class="md:w-1/2 pl-12 md:pl-0 md:order-2 order-1">
+              <span class="text-2xl font-black font-en text-gray-400"
+                >16:30</span
+              >
+              <h3 class="font-bold">夕礼・記録</h3>
+            </div>
+          </div>
+          <div class="flex flex-col md:flex-row items-center gap-8 js-fade-up">
+            <div class="md:w-1/2 md:text-right pl-12 md:pl-0">
+              <span class="text-2xl font-black font-en text-takagi-blue"
+                >17:30</span
+              >
+              <h3 class="font-bold">退社</h3>
+            </div>
+            <div
+              class="absolute left-3 w-4 h-4 bg-accent-gold rounded-full border-4 border-white md:left-1/2 md:-translate-x-[9px]"
+            ></div>
+            <div class="md:w-1/2 pl-12 md:pl-0">
+              <p class="text-sm text-gray-600 bg-white p-4 rounded shadow-sm">
+                基本的に残業は少なめ。お疲れ様でした。
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="bg-takagi-dark text-white py-12 text-sm text-center">
+      <div class="container mx-auto px-6">
+        <a
+          href="index.html"
+          class="hover-trigger inline-block text-4xl font-black font-en tracking-widest mb-6 text-white/20 hover:text-white transition"
+          >TAKAMOKU</a
+        >
+        <p class="opacity-30 text-xs font-en tracking-widest">
+          &copy; TAKAGI CO., LTD.
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      const cursor = document.getElementById("cursor"),
+        follower = document.getElementById("cursor-follower"),
+        hoverTriggers = document.querySelectorAll(".hover-trigger");
+      document.addEventListener("mousemove", (e) => {
+        cursor.style.left = e.clientX + "px";
+        cursor.style.top = e.clientY + "px";
+        follower.style.left = e.clientX + "px";
+        follower.style.top = e.clientY + "px";
+      });
+      hoverTriggers.forEach((trigger) => {
+        trigger.addEventListener("mouseenter", () =>
+          document.body.classList.add("hover-link"),
+        );
+        trigger.addEventListener("mouseleave", () =>
+          document.body.classList.remove("hover-link"),
+        );
+      });
+
+      // Hamburger Menu
+      const hamburgerBtn = document.getElementById("hamburger-btn"),
+        mobileMenu = document.getElementById("mobile-menu");
+      hamburgerBtn.addEventListener("click", () => {
+        hamburgerBtn.classList.toggle("open");
+        mobileMenu.classList.toggle("open");
+        document.body.style.overflow = mobileMenu.classList.contains("open")
+          ? "hidden"
+          : "auto";
+      });
+
+      gsap.registerPlugin(ScrollTrigger);
+      gsap.to("#opening-layer", {
+        y: "-100%",
+        duration: 1,
+        ease: "power4.inOut",
+        delay: 0.5,
+      });
+      gsap.utils.toArray(".js-fade-up").forEach((el) => {
+        gsap.fromTo(
+          el,
+          { y: 30, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 1,
+            ease: "power2.out",
+            scrollTrigger: { trigger: el, start: "top 85%" },
+          },
+        );
+      });
+      gsap.utils.toArray(".img-parallax").forEach((img) => {
+        gsap.to(img, {
+          yPercent: 20,
+          ease: "none",
+          scrollTrigger: {
+            trigger: img.parentElement,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: true,
+          },
+        });
+      });
+      gsap.utils.toArray(".js-img-reveal").forEach((el) => {
+        gsap.fromTo(
+          el,
+          { clipPath: "inset(0 100% 0 0)" },
+          {
+            clipPath: "inset(0 0% 0 0)",
+            duration: 1.5,
+            ease: "power4.out",
+            scrollTrigger: { trigger: el, start: "top 80%" },
+          },
+        );
+      });
+      window.addEventListener("scroll", () => {
+        const header = document.getElementById("header");
+        if (window.scrollY > 50) {
+          header.classList.add(
+            "bg-white/95",
+            "backdrop-blur-md",
+            "shadow-sm",
+            "h-20",
+          );
+          document
+            .getElementById("header-nav")
+            .classList.remove("text-white", "mix-blend-difference");
+          document
+            .getElementById("header-nav")
+            .classList.add("text-takagi-dark");
+        } else {
+          header.classList.remove(
+            "bg-white/95",
+            "backdrop-blur-md",
+            "shadow-sm",
+            "h-20",
+          );
+          document
+            .getElementById("header-nav")
+            .classList.add("text-white", "mix-blend-difference");
+          document
+            .getElementById("header-nav")
+            .classList.remove("text-takagi-dark");
+        }
+      });
+    </script>
+  </body>
+</html>
