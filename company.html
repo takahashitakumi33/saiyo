@@ -1,9 +1,10 @@
 <!doctype html>
-<html lang="ja">
+<html lang="ja" translate="no">
   <head>
     <meta charset="UTF-8" />
+    <meta name="google" content="notranslate" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>高木について | 高木株式会社</title>
+    <title>高木について | 高木株式会社 | 新卒採用サイト</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link
       href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700;900&family=Oswald:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap"
@@ -126,6 +127,7 @@
       .hamburger-btn.open .hamburger-line:nth-child(1) {
         top: 50%;
         transform: translateY(-50%) rotate(45deg);
+        background-color: white !important;
       }
       .hamburger-btn.open .hamburger-line:nth-child(2) {
         opacity: 0;
@@ -133,6 +135,7 @@
       .hamburger-btn.open .hamburger-line:nth-child(3) {
         bottom: 50%;
         transform: translateY(50%) rotate(-45deg);
+        background-color: white !important;
       }
 
       .hero-dawn-gradient {
@@ -167,10 +170,10 @@
       }
       /* 受賞歴カードの文字を最初からハッキリ見せるための調整 */
       .award-card {
-        background: #161e2d; /* 少し濃くして白文字を際立たせる */
+        background: #161e2d;
       }
       .award-list li {
-        color: #e2e8f0; /* 最初から明るいグレー（ほぼ白） */
+        color: #e2e8f0;
       }
     </style>
   </head>
@@ -202,7 +205,7 @@
           </a>
         </div>
         <nav
-          class="hidden md:flex gap-8 text-sm font-bold text-white mix-blend-difference tracking-widest font-en"
+          class="hidden md:flex gap-8 text-sm font-bold text-white mix-blend-difference tracking-widest font-en uppercase"
           id="header-nav"
         >
           <a
@@ -213,15 +216,27 @@
           <a
             href="industry.html"
             class="hover-trigger hover:text-accent-gold transition"
-            >INDUSTRY</a
+            >建設業について</a
           >
-          <a href="company.html" class="hover-trigger text-accent-gold"
-            >ABOUT</a
+          <a
+            href="company.html"
+            class="hover-trigger hover:text-accent-gold transition"
+            >高木について</a
           >
           <a
             href="interview_list.html"
             class="hover-trigger hover:text-accent-gold transition"
-            >INTERVIEW</a
+            >社員インタビュー</a
+          >
+          <a
+            href="recruit_info.html"
+            class="hover-trigger hover:text-accent-gold transition"
+            >採用情報</a
+          >
+          <a
+            href="faq.html"
+            class="hover-trigger hover:text-accent-gold transition"
+            >よくある質問</a
           >
           <a
             href="index.html#entry"
@@ -240,7 +255,7 @@
 
     <div id="mobile-menu">
       <nav
-        class="flex flex-col gap-8 text-2xl font-bold text-white font-en tracking-widest text-center"
+        class="flex flex-col gap-8 text-2xl font-bold text-white font-en tracking-widest text-center uppercase"
       >
         <a
           href="index.html"
@@ -250,13 +265,25 @@
         <a
           href="industry.html"
           class="hover:text-accent-gold transition mobile-link"
-          >INDUSTRY</a
+          >建設業について</a
         >
-        <a href="company.html" class="text-accent-gold mobile-link">ABOUT</a>
+        <a
+          href="company.html"
+          class="hover:text-accent-gold transition mobile-link"
+          >高木について</a
+        >
         <a
           href="interview_list.html"
           class="hover:text-accent-gold transition mobile-link"
-          >INTERVIEW</a
+          >社員インタビュー</a
+        >
+        <a
+          href="recruit_info.html"
+          class="hover:text-accent-gold transition mobile-link"
+          >採用情報</a
+        >
+        <a href="faq.html" class="hover:text-accent-gold transition mobile-link"
+          >よくある質問</a
         >
         <a href="index.html#entry" class="text-accent-gold mobile-link"
           >ENTRY</a
@@ -317,18 +344,18 @@
             <h3
               class="text-2xl font-black font-mincho mb-4 text-takamoku-dark border-l-4 border-accent-gold pl-4"
             >
-              創業100年。<br />参入障壁の高い業界で築いた信頼。
+              技術力
             </h3>
             <p class="text-gray-600 leading-8 text-justify">
-              建設業は、信頼と実績がなければ新規参入が極めて難しい世界です。私たちは大正時代の創業から1世紀にわたり、山形のインフラを支え続けてきました。<br />
-              多くの公共施設や大型プロジェクトを手掛けてきた実績は、一朝一夕では築けない私たちの財産。この「100年の信用」があるからこそ、私たちは常に大規模な仕事に挑戦し続けることができるのです。
+              グラッピSAGAEやコパルのような特殊な形状の建物の施工や、学校などの大型案件――数多くの住宅まで幅広く対応できる技術力が強みです。<br /><br />
+              近年では技術力が評価され、全国規模の賞も受賞することができました。
             </p>
           </div>
           <div
             class="md:w-1/2 h-64 md:h-80 overflow-hidden rounded shadow-xl relative group"
           >
             <img
-              src="assets/top_hero_1.jpg"
+              src="assets/copal3.jpg"
               class="w-full h-full object-cover transition duration-700 group-hover:scale-110"
             />
             <div
@@ -346,18 +373,19 @@
             <h3
               class="text-2xl font-black font-mincho mb-4 text-takamoku-dark border-l-4 border-takamoku-blue pl-4"
             >
-              曲線美も、巨大建築も。<br />不可能を可能にする「現場力」。
+              実績
             </h3>
             <p class="text-gray-600 leading-8 text-justify">
-              学校や病院などの大型公共案件はもちろん、高い施工技術が求められる「曲線を用いた複雑な建築」も手掛けています。<br />
-              例えば、直近で受賞した「コパル」のような流線型のデザインは、高度な施工管理能力がなければ実現できません。「高木ならできる」と指名される確かな技術力が、私たちの誇りであり、大型案件を連続受注できる理由です。
+              私たちは公共・民間の幅広い実績があります。<br /><br />
+              学校などの大型案件は、同種の実績がない企業は参加できないため新規参入が難しい分野です。<br /><br />
+              高木は多くの実績を持つことで、参加企業が限られるコンペで、高い受注率を維持しています。
             </p>
           </div>
           <div
             class="md:w-1/2 h-64 md:h-80 overflow-hidden rounded shadow-xl relative group"
           >
             <img
-              src="assets/award_copal.jpg"
+              src="assets/sagae-kogyo.jpg"
               class="w-full h-full object-cover transition duration-700 group-hover:scale-110"
             />
             <div
@@ -373,18 +401,19 @@
             <h3
               class="text-2xl font-black font-mincho mb-4 text-takamoku-dark border-l-4 border-green-600 pl-4"
             >
-              元銀行支店長が舵を取る。<br />盤石の「無借金経営」。
+              安定した経営基盤
             </h3>
             <p class="text-gray-600 leading-8 text-justify">
-              当社の代表は元銀行員という異色の経歴の持ち主。数字に強い経営トップのもと、実質無借金経営を続けています。<br />
-              また、「健康経営優良法人」にも認定されており、社員が長く安心して働ける環境整備にも余念がありません。倒産リスクが極めて低く、財務基盤が安定しているからこそ、思い切った若手の登用や、新しい技術への投資が可能になるのです。
+              長年の堅実な経営により、安定した財務基盤を築いてきました。<br /><br />
+              建設事業の経験と蓄えを活かし、不動産収益など複数の柱で経営を支え景気の変化にも強い体制を整えています。<br /><br />
+              代表は元銀行員という背景もあり、数字に強く「安全」と「成長」を両立させる経営を実践しています。
             </p>
           </div>
           <div
             class="md:w-1/2 h-64 md:h-80 overflow-hidden rounded shadow-xl relative group"
           >
             <img
-              src="assets/industry_1.jpg"
+              src="assets/library.jpg"
               onerror="this.src = 'assets/top_hero_2.jpg'"
               class="w-full h-full object-cover transition duration-700 group-hover:scale-110"
             />
@@ -626,15 +655,88 @@
       </div>
     </section>
 
-    <footer class="bg-takamoku-dark text-white py-12 text-sm text-center">
-      <div class="container mx-auto px-6">
-        <a
-          href="index.html"
-          class="hover-trigger inline-block text-4xl font-black font-en tracking-widest mb-6 text-white/20 hover:text-white transition"
-          >TAKAMOKU</a
+    <footer
+      class="bg-takamoku-dark text-white py-20 text-sm border-t border-white/10 relative overflow-hidden"
+    >
+      <div
+        class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"
+      ></div>
+      <div class="container mx-auto px-6 text-center relative z-10">
+        <div class="mb-8">
+          <a
+            href="index.html"
+            class="hover-trigger inline-block transition transform hover:scale-105"
+          >
+            <img
+              src="assets/logo.png"
+              onerror="this.src = 'assets/logo.jpg'"
+              alt="TAKAMOKU"
+              class="h-12 md:h-16 mx-auto object-contain brightness-0 invert"
+            />
+          </a>
+        </div>
+        <p class="font-bold text-lg mb-2">株式会社高木</p>
+        <p class="opacity-60 mb-6">〒991-0043 山形県寒河江市大字島字島東87</p>
+
+        <div class="flex justify-center gap-6 mb-10">
+          <a
+            href="https://www.instagram.com/takamoku_yamagata/?utm_source=hp"
+            target="_blank"
+            class="hover-trigger text-2xl text-white/50 hover:text-accent-gold transition"
+          >
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a
+            href="https://www.youtube.com/@%E6%A0%AA%E5%BC%8F%E4%BC%9A%E7%A4%BE%E9%AB%98%E6%9C%A8"
+            target="_blank"
+            class="hover-trigger text-2xl text-white/50 hover:text-accent-gold transition"
+          >
+            <i class="fab fa-youtube"></i>
+          </a>
+        </div>
+
+        <div
+          class="flex flex-wrap justify-center gap-x-8 gap-y-4 mb-12 font-bold text-gray-400 font-en tracking-widest uppercase"
         >
-        <p class="opacity-30 text-xs font-en tracking-widest">
-          &copy; takamoku CO., LTD.
+          <a
+            href="index.html"
+            class="hover-trigger hover:text-white transition text-xs"
+            >TOP</a
+          >
+          <a
+            href="industry.html"
+            class="hover-trigger hover:text-white transition text-xs"
+            >建設業について</a
+          >
+          <a
+            href="company.html"
+            class="hover-trigger hover:text-white transition text-xs"
+            >高木について</a
+          >
+          <a
+            href="interview_list.html"
+            class="hover-trigger hover:text-white transition text-xs"
+            >社員インタビュー</a
+          >
+          <a
+            href="recruit_info.html"
+            class="hover-trigger hover:text-white transition text-xs"
+            >採用情報</a
+          >
+          <a
+            href="faq.html"
+            class="hover-trigger hover:text-white transition text-xs"
+            >よくある質問</a
+          >
+          <a
+            href="https://www.takamoku.co.jp/"
+            target="_blank"
+            class="hover-trigger hover:text-white transition text-xs border-b border-white/20 pb-0.5"
+            >OFFICIAL HP</a
+          >
+        </div>
+        <p class="opacity-30 text-xs font-en tracking-widest uppercase">
+          &copy; takamoku CO., LTD. ALL RIGHTS RESERVED.
         </p>
       </div>
     </footer>
@@ -705,9 +807,13 @@
           },
         });
       });
+
+      // スクロール時のハンバーガー色切り替えロジック
       window.addEventListener("scroll", () => {
         const header = document.getElementById("header");
         const logo = document.getElementById("header-logo");
+        const hamLines = document.querySelectorAll(".hamburger-line"); // 修正箇所
+
         if (window.scrollY > 50) {
           header.classList.add(
             "bg-white/95",
@@ -723,6 +829,10 @@
             .classList.add("text-takamoku-dark");
           // ロゴを元の色に戻す（反転を解除）
           logo.classList.remove("brightness-0", "invert");
+          // ハンバーガーを紺色にする
+          hamLines.forEach((line) => {
+            line.style.backgroundColor = "#0f172a";
+          });
         } else {
           header.classList.remove(
             "bg-white/95",
@@ -738,6 +848,10 @@
             .classList.remove("text-takamoku-dark");
           // ロゴを白く反転
           logo.classList.add("brightness-0", "invert");
+          // ハンバーガーを白に戻す
+          hamLines.forEach((line) => {
+            line.style.backgroundColor = "white";
+          });
         }
       });
     </script>
