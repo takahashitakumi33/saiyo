@@ -1,7 +1,8 @@
 <!doctype html>
-<html lang="ja">
+<html lang="ja" translate="no">
   <head>
     <meta charset="UTF-8" />
+    <meta name="google" content="notranslate" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>社員インタビュー | 高木株式会社</title>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -20,8 +21,8 @@
         theme: {
           extend: {
             colors: {
-              "takagi-blue": "#004098",
-              "takagi-dark": "#0f172a",
+              "takamoku-blue": "#004098",
+              "takamoku-dark": "#0f172a",
               "accent-gold": "#c5a059",
               "light-gray": "#f8fafc",
             },
@@ -126,6 +127,7 @@
       .hamburger-btn.open .hamburger-line:nth-child(1) {
         top: 50%;
         transform: translateY(-50%) rotate(45deg);
+        background-color: white !important;
       }
       .hamburger-btn.open .hamburger-line:nth-child(2) {
         opacity: 0;
@@ -133,6 +135,7 @@
       .hamburger-btn.open .hamburger-line:nth-child(3) {
         bottom: 50%;
         transform: translateY(50%) rotate(-45deg);
+        background-color: white !important;
       }
 
       .hero-dawn-gradient {
@@ -181,39 +184,54 @@
         class="container mx-auto px-6 h-24 flex justify-between items-center"
       >
         <div class="flex items-center gap-3">
-          <a
-            href="index.html"
-            class="hover-trigger bg-white px-2 py-1 rounded shadow-sm"
-            ><img
+          <a href="index.html" class="hover-trigger flex items-center">
+            <img
               src="assets/logo.png"
               onerror="this.src = 'assets/logo.jpg'"
-              class="h-8 md:h-10 w-auto object-contain"
-          /></a>
+              class="h-8 md:h-10 w-auto object-contain brightness-0 invert transition-all duration-300"
+              id="header-logo"
+              alt="高木株式会社"
+            />
+          </a>
         </div>
         <nav
-          class="hidden md:flex gap-8 text-sm font-bold text-white mix-blend-difference tracking-widest font-en"
+          class="hidden md:flex gap-8 text-sm font-bold text-white mix-blend-difference tracking-widest font-en uppercase"
           id="header-nav"
         >
           <a
+            href="index.html"
+            class="hover-trigger hover:text-accent-gold transition"
+            >TOP</a
+          >
+          <a
             href="industry.html"
             class="hover-trigger hover:text-accent-gold transition"
-            >INDUSTRY</a
+            >建設業について</a
           >
           <a
             href="company.html"
             class="hover-trigger hover:text-accent-gold transition"
-            >ABOUT</a
+            >高木について</a
           >
           <a href="interview_list.html" class="hover-trigger text-accent-gold"
-            >INTERVIEW</a
+            >社員インタビュー</a
           >
           <a
-            href="index.html#entry"
-            class="hover-trigger bg-white text-takagi-blue px-8 py-3 hover:bg-takagi-dark hover:text-white transition shadow-lg rounded-sm text-xs"
+            href="recruit_info.html"
+            class="hover-trigger hover:text-accent-gold transition"
+            >採用情報</a
+          >
+          <a
+            href="faq.html"
+            class="hover-trigger hover:text-accent-gold transition"
+            >よくある質問</a
+          >
+          <a
+            href="#entry"
+            class="hover-trigger bg-white text-takamoku-blue px-8 py-3 hover:bg-takamoku-dark hover:text-white transition shadow-lg rounded-sm text-xs"
             >ENTRY</a
           >
         </nav>
-
         <div class="md:hidden hamburger-btn hover-trigger" id="hamburger-btn">
           <span class="hamburger-line"></span>
           <span class="hamburger-line"></span>
@@ -224,7 +242,7 @@
 
     <div id="mobile-menu">
       <nav
-        class="flex flex-col gap-8 text-2xl font-bold text-white font-en tracking-widest text-center"
+        class="flex flex-col gap-8 text-2xl font-bold text-white font-en tracking-widest text-center uppercase"
       >
         <a
           href="index.html"
@@ -234,28 +252,36 @@
         <a
           href="industry.html"
           class="hover:text-accent-gold transition mobile-link"
-          >INDUSTRY</a
+          >建設業について</a
         >
         <a
           href="company.html"
           class="hover:text-accent-gold transition mobile-link"
-          >ABOUT</a
+          >高木について</a
         >
-        <a href="interview_list.html" class="text-accent-gold mobile-link"
-          >INTERVIEW</a
+        <a
+          href="interview_list.html"
+          class="hover:text-accent-gold transition mobile-link"
+          >社員インタビュー</a
         >
-        <a href="index.html#entry" class="text-accent-gold mobile-link"
-          >ENTRY</a
+        <a
+          href="recruit_info.html"
+          class="hover:text-accent-gold transition mobile-link"
+          >採用情報</a
         >
+        <a href="faq.html" class="hover:text-accent-gold transition mobile-link"
+          >よくある質問</a
+        >
+        <a href="#entry" class="text-accent-gold mobile-link">ENTRY</a>
       </nav>
     </div>
 
     <section
-      class="relative h-[60vh] flex items-center justify-center bg-takagi-dark overflow-hidden"
+      class="relative h-[60vh] flex items-center justify-center bg-takamoku-dark overflow-hidden"
     >
       <div class="absolute inset-0">
         <img
-          src="assets/interview_a.jpg"
+          src="assets/interview_list.jpg"
           class="w-full h-full object-cover opacity-60"
         />
       </div>
@@ -280,41 +306,41 @@
     <section class="py-24 px-6 bg-white">
       <div class="container mx-auto max-w-6xl">
         <a
-          href="interview_a.html"
+          href="interview_st.html"
           class="flex flex-col md:flex-row gap-12 items-center mb-32 group hover-trigger"
         >
           <div
             class="md:w-1/2 relative overflow-hidden rounded shadow-2xl h-[400px]"
           >
             <img
-              src="assets/interview_a.jpg"
+              src="assets/interview_st.jpg"
               class="w-full h-full object-cover transition duration-700 group-hover:scale-110"
             />
             <div
-              class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-takagi-dark/80 to-transparent text-white"
+              class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-takamoku-dark/80 to-transparent text-white"
             >
               <span
-                class="bg-accent-gold text-takagi-dark px-3 py-1 text-xs font-bold mb-2 inline-block"
-                >建築系出身 / 入社1年目</span
+                class="bg-accent-gold text-takamoku-dark px-3 py-1 text-xs font-bold mb-2 inline-block"
+                >建設部 / 2019年入社</span
               >
-              <p class="text-lg font-bold">施工管理 Aさん</p>
+              <p class="text-lg font-bold">施工管理 高橋 翔大</p>
             </div>
           </div>
           <div class="md:w-1/2 md:pl-10">
             <span
-              class="text-accent-gold text-sm font-en tracking-widest block mb-2"
-              >01. CHALLENGE</span
+              class="text-accent-gold text-sm font-en tracking-widest block mb-2 uppercase"
+              >01. STORY</span
             >
             <h2
-              class="text-3xl font-black font-mincho text-takagi-dark mb-6 group-hover:text-takagi-blue transition"
+              class="text-3xl font-black font-mincho text-takamoku-dark mb-6 group-hover:text-takamoku-blue transition"
             >
-              「現場が正解なこともある」<br />図面を超える瞬間。
+              アットホームな社風と、<br />地図に残る感動を。
             </h2>
             <p class="text-gray-600 leading-relaxed mb-6 line-clamp-3">
-              学生時代は図面を書くことが中心でしたが、実際の現場は生き物のように毎日変化します。ある時、図面通りに収まらない箇所があり悩んでいた私に、先輩は「現場を見て判断しろ」と教えてくれました。
+              現在は地元の商業施設のリフォーム工事を担当しています。施工管理として多覚的に業務に携わり、何もない更地に少しずつ建物が組み上がっていく過程を体感できるのは、現場監督ならではの醍醐味です。
             </p>
             <div
-              class="text-takagi-blue font-bold font-en tracking-widest border-b border-takagi-blue inline-block pb-1"
+              class="text-takamoku-blue font-bold font-en tracking-widest border-b border-takamoku-blue inline-block pb-1"
             >
               READ STORY
             </div>
@@ -322,87 +348,41 @@
         </a>
 
         <a
-          href="interview_b.html"
-          class="flex flex-col md:flex-row-reverse gap-12 items-center mb-32 group hover-trigger"
+          href="interview_watanabe.html"
+          class="flex flex-col md:flex-row-reverse gap-12 items-center group hover-trigger"
         >
           <div
             class="md:w-1/2 relative overflow-hidden rounded shadow-2xl h-[400px]"
           >
             <img
-              src="assets/interview_b.jpg"
+              src="assets/interview_w.jpg"
               class="w-full h-full object-cover transition duration-700 group-hover:scale-110"
             />
             <div
-              class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-takagi-dark/80 to-transparent text-white"
+              class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-takamoku-dark/80 to-transparent text-white"
             >
               <span
-                class="bg-green-600 text-white px-3 py-1 text-xs font-bold mb-2 inline-block"
-                >Uターン・文系出身 / 入社1年目</span
+                class="bg-takamoku-blue text-white px-3 py-1 text-xs font-bold mb-2 inline-block"
+                >施工管理 / 2025年入社</span
               >
-              <p class="text-lg font-bold">施工管理 Bさん</p>
+              <p class="text-lg font-bold">施工管理 渡部</p>
             </div>
           </div>
           <div class="md:w-1/2 md:pr-10">
             <span
-              class="text-accent-gold text-sm font-en tracking-widest block mb-2"
-              >02. U-TURN</span
+              class="text-accent-gold text-sm font-en tracking-widest block mb-2 uppercase"
+              >02. WHITE CAREER</span
             >
             <h2
-              class="text-3xl font-black font-mincho text-takagi-dark mb-6 group-hover:text-takagi-blue transition"
+              class="text-3xl font-black font-mincho text-takamoku-dark mb-6 group-hover:text-takamoku-blue transition"
             >
-              東京から山形へ。<br />ここでしか作れない未来。
+              腰を据えて、<br />建設の仕事を続ける。
             </h2>
             <p class="text-gray-600 leading-relaxed mb-6 line-clamp-3">
-              東京のゼネコンで働いていましたが、巨大すぎる組織の中で「自分が何を作っているのか」実感を持てずにいました。地元山形へのUターンを決めた時、高木株式会社の「地域に根ざしながら、先進的な建築に挑む」姿勢に惹かれました。
+              東京の大手ゼネコンから高木へUターンへ　無理のない働き方と現場を大切にする姿勢に共感し、高木での再スタートを決意しました。現在は学校の校舎増設工事という責任ある現場を担っています。
             </p>
             <div
-              class="text-takagi-blue font-bold font-en tracking-widest border-b border-takagi-blue inline-block pb-1"
-            >
-              READ STORY
-            </div>
-          </div>
-        </a>
-
-        <a
-          href="interview_takahashi.html"
-          class="flex flex-col md:flex-row gap-12 items-center mb-12 group hover-trigger"
-        >
-          <div
-            class="md:w-1/2 relative overflow-hidden rounded shadow-2xl h-[400px]"
-          >
-            <img
-              src="assets/interview_takahashi.jpg"
-              onerror="
-                this.src =
-                  'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800'
-              "
-              class="w-full h-full object-cover transition duration-700 group-hover:scale-110"
-            />
-            <div
-              class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-takagi-dark/80 to-transparent text-white"
-            >
-              <span
-                class="bg-takagi-blue text-white px-3 py-1 text-xs font-bold mb-2 inline-block"
-                >入社5年目 / 主任</span
-              >
-              <p class="text-lg font-bold">施工管理 高橋 健太</p>
-            </div>
-          </div>
-          <div class="md:w-1/2 md:pl-10">
-            <span
-              class="text-accent-gold text-sm font-en tracking-widest block mb-2"
-              >03. LEADER</span
-            >
-            <h2
-              class="text-3xl font-black font-mincho text-takagi-dark mb-6 group-hover:text-takagi-blue transition"
-            >
-              「地図に残る」<br />その重みと誇り。
-            </h2>
-            <p class="text-gray-600 leading-relaxed mb-6 line-clamp-3">
-              入社5年目、現在は現場代理人として、億単位のプロジェクトを任されています。若いうちから責任あるポジションに挑戦できるのが、高木の面白さであり、厳しさでもあります。
-            </p>
-            <div
-              class="text-takagi-blue font-bold font-en tracking-widest border-b border-takagi-blue inline-block pb-1"
+              class="text-takamoku-blue font-bold font-en tracking-widest border-b border-takamoku-blue inline-block pb-1"
             >
               READ STORY
             </div>
@@ -411,15 +391,88 @@
       </div>
     </section>
 
-    <footer class="bg-takagi-dark text-white py-12 text-sm text-center">
-      <div class="container mx-auto px-6">
-        <a
-          href="index.html"
-          class="hover-trigger inline-block text-4xl font-black font-en tracking-widest mb-6 text-white/20 hover:text-white transition"
-          >TAKAMOKU</a
+    <footer
+      class="bg-takamoku-dark text-white py-20 text-sm border-t border-white/10 relative overflow-hidden"
+    >
+      <div
+        class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"
+      ></div>
+      <div class="container mx-auto px-6 text-center relative z-10">
+        <div class="mb-8">
+          <a
+            href="index.html"
+            class="hover-trigger inline-block transition transform hover:scale-105"
+          >
+            <img
+              src="assets/logo.png"
+              onerror="this.src = 'assets/logo.jpg'"
+              alt="TAKAMOKU"
+              class="h-12 md:h-16 mx-auto object-contain brightness-0 invert"
+            />
+          </a>
+        </div>
+        <p class="font-bold text-lg mb-2">株式会社高木</p>
+        <p class="opacity-60 mb-6">〒991-0043 山形県寒河江市大字島字島東87</p>
+
+        <div class="flex justify-center gap-6 mb-10">
+          <a
+            href="https://www.instagram.com/takamoku_yamagata/?utm_source=hp"
+            target="_blank"
+            class="hover-trigger text-2xl text-white/50 hover:text-accent-gold transition"
+          >
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a
+            href="https://www.youtube.com/@%E6%A0%AA%E5%BC%8F%E4%BC%9A%E7%A4%BE%E9%AB%98%E6%9C%A8"
+            target="_blank"
+            class="hover-trigger text-2xl text-white/50 hover:text-accent-gold transition"
+          >
+            <i class="fab fa-youtube"></i>
+          </a>
+        </div>
+
+        <div
+          class="flex flex-wrap justify-center gap-x-8 gap-y-4 mb-12 font-bold text-gray-400 font-en tracking-widest uppercase"
         >
-        <p class="opacity-30 text-xs font-en tracking-widest">
-          &copy; TAKAGI CO., LTD.
+          <a
+            href="index.html"
+            class="hover-trigger hover:text-white transition text-xs"
+            >TOP</a
+          >
+          <a
+            href="industry.html"
+            class="hover-trigger hover:text-white transition text-xs"
+            >建設業について</a
+          >
+          <a
+            href="company.html"
+            class="hover-trigger hover:text-white transition text-xs"
+            >高木について</a
+          >
+          <a
+            href="interview_list.html"
+            class="hover-trigger hover:text-white transition text-xs"
+            >社員インタビュー</a
+          >
+          <a
+            href="recruit_info.html"
+            class="hover-trigger hover:text-white transition text-xs"
+            >採用情報</a
+          >
+          <a
+            href="faq.html"
+            class="hover-trigger hover:text-white transition text-xs"
+            >よくある質問</a
+          >
+          <a
+            href="https://www.takamoku.co.jp/"
+            target="_blank"
+            class="hover-trigger hover:text-white transition text-xs border-b border-white/20 pb-0.5"
+            >OFFICIAL HP</a
+          >
+        </div>
+        <p class="opacity-30 text-xs font-en tracking-widest uppercase">
+          &copy; takamoku CO., LTD. ALL RIGHTS RESERVED.
         </p>
       </div>
     </footer>
@@ -474,8 +527,12 @@
           },
         );
       });
+
+      // ハンバーガーメニューとロゴのスクロール連動修正
       window.addEventListener("scroll", () => {
-        const header = document.getElementById("header");
+        const header = document.getElementById("header"),
+          logo = document.getElementById("header-logo"),
+          hamLines = document.querySelectorAll(".hamburger-line");
         if (window.scrollY > 50) {
           header.classList.add(
             "bg-white/95",
@@ -488,7 +545,13 @@
             .classList.remove("text-white", "mix-blend-difference");
           document
             .getElementById("header-nav")
-            .classList.add("text-takagi-dark");
+            .classList.add("text-takamoku-dark");
+          // ロゴを元の色に戻す（反転を解除）
+          logo.classList.remove("brightness-0", "invert");
+          // ハンバーガーを紺色にする
+          hamLines.forEach((line) => {
+            line.style.backgroundColor = "#0f172a";
+          });
         } else {
           header.classList.remove(
             "bg-white/95",
@@ -501,7 +564,13 @@
             .classList.add("text-white", "mix-blend-difference");
           document
             .getElementById("header-nav")
-            .classList.remove("text-takagi-dark");
+            .classList.remove("text-takamoku-dark");
+          // ロゴを白く反転
+          logo.classList.add("brightness-0", "invert");
+          // ハンバーガーを白に戻す
+          hamLines.forEach((line) => {
+            line.style.backgroundColor = "white";
+          });
         }
       });
     </script>

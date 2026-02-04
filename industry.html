@@ -1,7 +1,8 @@
 <!doctype html>
-<html lang="ja">
+<html lang="ja" translate="no">
   <head>
     <meta charset="UTF-8" />
+    <meta name="google" content="notranslate" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>建設業とは | 高木株式会社</title>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -20,8 +21,8 @@
         theme: {
           extend: {
             colors: {
-              "takagi-blue": "#004098",
-              "takagi-dark": "#0f172a",
+              "takamoku-blue": "#004098",
+              "takamoku-dark": "#0f172a",
               "accent-gold": "#c5a059",
               "light-gray": "#f8fafc",
             },
@@ -126,6 +127,7 @@
       .hamburger-btn.open .hamburger-line:nth-child(1) {
         top: 50%;
         transform: translateY(-50%) rotate(45deg);
+        background-color: white !important;
       }
       .hamburger-btn.open .hamburger-line:nth-child(2) {
         opacity: 0;
@@ -133,6 +135,7 @@
       .hamburger-btn.open .hamburger-line:nth-child(3) {
         bottom: 50%;
         transform: translateY(50%) rotate(-45deg);
+        background-color: white !important;
       }
 
       .hero-dawn-gradient {
@@ -188,35 +191,50 @@
         class="container mx-auto px-6 h-24 flex justify-between items-center"
       >
         <div class="flex items-center gap-3">
-          <a
-            href="index.html"
-            class="hover-trigger bg-white px-2 py-1 rounded shadow-sm"
+          <a href="index.html" class="hover-trigger flex items-center"
             ><img
               src="assets/logo.png"
               onerror="this.src = 'assets/logo.jpg'"
-              class="h-8 md:h-10 w-auto object-contain"
+              class="h-8 md:h-10 w-auto object-contain brightness-0 invert transition-all duration-300"
+              id="header-logo"
+              alt="高木株式会社"
           /></a>
         </div>
         <nav
-          class="hidden md:flex gap-8 text-sm font-bold text-white mix-blend-difference tracking-widest font-en"
+          class="hidden md:flex gap-8 text-sm font-bold text-white mix-blend-difference tracking-widest font-en uppercase"
           id="header-nav"
         >
+          <a
+            href="index.html"
+            class="hover-trigger hover:text-accent-gold transition"
+            >TOP</a
+          >
           <a href="industry.html" class="hover-trigger text-accent-gold"
-            >INDUSTRY</a
+            >建設業について</a
           >
           <a
             href="company.html"
             class="hover-trigger hover:text-accent-gold transition"
-            >ABOUT</a
+            >高木について</a
           >
           <a
             href="interview_list.html"
             class="hover-trigger hover:text-accent-gold transition"
-            >INTERVIEW</a
+            >社員インタビュー</a
+          >
+          <a
+            href="recruit_info.html"
+            class="hover-trigger hover:text-accent-gold transition"
+            >採用情報</a
+          >
+          <a
+            href="faq.html"
+            class="hover-trigger hover:text-accent-gold transition"
+            >よくある質問</a
           >
           <a
             href="index.html#entry"
-            class="hover-trigger bg-white text-takagi-blue px-8 py-3 hover:bg-takagi-dark hover:text-white transition shadow-lg rounded-sm text-xs"
+            class="hover-trigger bg-white text-takamoku-blue px-8 py-3 hover:bg-takamoku-dark hover:text-white transition shadow-lg rounded-sm text-xs"
             >ENTRY</a
           >
         </nav>
@@ -231,34 +249,42 @@
 
     <div id="mobile-menu">
       <nav
-        class="flex flex-col gap-8 text-2xl font-bold text-white font-en tracking-widest text-center"
+        class="flex flex-col gap-8 text-2xl font-bold text-white font-en tracking-widest text-center uppercase"
       >
         <a
           href="index.html"
           class="hover:text-accent-gold transition mobile-link"
           >TOP</a
         >
-        <a href="industry.html" class="text-accent-gold mobile-link"
-          >INDUSTRY</a
+        <a
+          href="industry.html"
+          class="hover:text-accent-gold transition mobile-link"
+          >建設業について</a
         >
         <a
           href="company.html"
           class="hover:text-accent-gold transition mobile-link"
-          >ABOUT</a
+          >高木について</a
         >
         <a
           href="interview_list.html"
           class="hover:text-accent-gold transition mobile-link"
-          >INTERVIEW</a
+          >社員インタビュー</a
         >
-        <a href="index.html#entry" class="text-accent-gold mobile-link"
-          >ENTRY</a
+        <a
+          href="recruit_info.html"
+          class="hover:text-accent-gold transition mobile-link"
+          >採用情報</a
         >
+        <a href="faq.html" class="hover:text-accent-gold transition mobile-link"
+          >よくある質問</a
+        >
+        <a href="#entry" class="text-accent-gold mobile-link">ENTRY</a>
       </nav>
     </div>
 
     <section
-      class="relative h-[60vh] flex items-center justify-center bg-takagi-dark overflow-hidden"
+      class="relative h-[60vh] flex items-center justify-center bg-takamoku-dark overflow-hidden"
     >
       <div class="absolute inset-0">
         <img
@@ -293,7 +319,7 @@
             >01. ROLE</span
           >
           <h2
-            class="text-3xl md:text-4xl font-black font-mincho text-takagi-blue"
+            class="text-3xl md:text-4xl font-black font-mincho text-takamoku-blue"
           >
             ゼネコンの役割
           </h2>
@@ -305,9 +331,9 @@
             </p>
             <div class="grid grid-cols-2 gap-4">
               <div
-                class="bg-light-gray p-4 rounded border-l-4 border-takagi-blue"
+                class="bg-light-gray p-4 rounded border-l-4 border-takamoku-blue"
               >
-                <h4 class="font-bold text-takagi-blue mb-1">作る</h4>
+                <h4 class="font-bold text-takamoku-blue mb-1">作る</h4>
                 <p class="text-xs text-gray-500">学校・病院・商業施設</p>
               </div>
               <div
@@ -340,7 +366,7 @@
       </div>
     </section>
 
-    <section class="py-24 px-6 bg-takagi-dark text-white relative">
+    <section class="py-24 px-6 bg-takamoku-dark text-white relative">
       <div class="container mx-auto max-w-6xl relative z-10">
         <div class="text-center mb-16">
           <span
@@ -356,7 +382,7 @@
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <div
-            class="info-card bg-white/5 border border-white/10 p-8 rounded hover:bg-takagi-blue/40 js-fade-up"
+            class="info-card bg-white/5 border border-white/10 p-8 rounded hover:bg-takamoku-blue/40 js-fade-up"
           >
             <div class="flex justify-between mb-4">
               <h3 class="text-xl font-bold font-mincho">01. 施工計画</h3>
@@ -367,7 +393,7 @@
             </p>
           </div>
           <div
-            class="info-card bg-white/5 border border-white/10 p-8 rounded hover:bg-takagi-blue/40 js-fade-up"
+            class="info-card bg-white/5 border border-white/10 p-8 rounded hover:bg-takamoku-blue/40 js-fade-up"
           >
             <div class="flex justify-between mb-4">
               <h3 class="text-xl font-bold font-mincho">02. 工程管理</h3>
@@ -378,7 +404,7 @@
             </p>
           </div>
           <div
-            class="info-card bg-white/5 border border-white/10 p-8 rounded hover:bg-takagi-blue/40 js-fade-up"
+            class="info-card bg-white/5 border border-white/10 p-8 rounded hover:bg-takamoku-blue/40 js-fade-up"
           >
             <div class="flex justify-between mb-4">
               <h3 class="text-xl font-bold font-mincho">03. 品質管理</h3>
@@ -389,7 +415,7 @@
             </p>
           </div>
           <div
-            class="info-card bg-white/5 border border-white/10 p-8 rounded hover:bg-takagi-blue/40 js-fade-up"
+            class="info-card bg-white/5 border border-white/10 p-8 rounded hover:bg-takamoku-blue/40 js-fade-up"
           >
             <div class="flex justify-between mb-4">
               <h3 class="text-xl font-bold font-mincho">04. 安全管理</h3>
@@ -400,7 +426,7 @@
             </p>
           </div>
           <div
-            class="info-card bg-white/5 border border-white/10 p-8 rounded hover:bg-takagi-blue/40 js-fade-up"
+            class="info-card bg-white/5 border border-white/10 p-8 rounded hover:bg-takamoku-blue/40 js-fade-up"
           >
             <div class="flex justify-between mb-4">
               <h3 class="text-xl font-bold font-mincho">05. 原価管理</h3>
@@ -411,7 +437,7 @@
             </p>
           </div>
           <div
-            class="info-card bg-white/5 border border-white/10 p-8 rounded hover:bg-takagi-blue/40 js-fade-up"
+            class="info-card bg-white/5 border border-white/10 p-8 rounded hover:bg-takamoku-blue/40 js-fade-up"
           >
             <div class="flex justify-between mb-4">
               <h3 class="text-xl font-bold font-mincho">06. 積算</h3>
@@ -435,7 +461,7 @@
             >03. ONE DAY</span
           >
           <h2
-            class="text-3xl md:text-4xl font-black font-mincho text-takagi-blue"
+            class="text-3xl md:text-4xl font-black font-mincho text-takamoku-blue"
           >
             ある1日の流れ
           </h2>
@@ -446,13 +472,13 @@
           ></div>
           <div class="flex flex-col md:flex-row items-center gap-8 js-fade-up">
             <div class="md:w-1/2 md:text-right pl-12 md:pl-0">
-              <span class="text-2xl font-black font-en text-takagi-blue"
+              <span class="text-2xl font-black font-en text-takamoku-blue"
                 >08:00</span
               >
               <h3 class="font-bold">出社・朝礼</h3>
             </div>
             <div
-              class="absolute left-3 w-4 h-4 bg-takagi-blue rounded-full border-4 border-white md:left-1/2 md:-translate-x-[9px]"
+              class="absolute left-3 w-4 h-4 bg-takamoku-blue rounded-full border-4 border-white md:left-1/2 md:-translate-x-[9px]"
             ></div>
             <div class="md:w-1/2 pl-12 md:pl-0">
               <p class="text-sm text-gray-600 bg-white p-4 rounded shadow-sm">
@@ -514,7 +540,7 @@
           </div>
           <div class="flex flex-col md:flex-row items-center gap-8 js-fade-up">
             <div class="md:w-1/2 md:text-right pl-12 md:pl-0">
-              <span class="text-2xl font-black font-en text-takagi-blue"
+              <span class="text-2xl font-black font-en text-takamoku-blue"
                 >17:30</span
               >
               <h3 class="font-bold">退社</h3>
@@ -524,7 +550,7 @@
             ></div>
             <div class="md:w-1/2 pl-12 md:pl-0">
               <p class="text-sm text-gray-600 bg-white p-4 rounded shadow-sm">
-                基本的に残業は少なめ。お疲れ様でした。
+                朝は早い分、退社は早め。お疲れ様でした。
               </p>
             </div>
           </div>
@@ -532,15 +558,88 @@
       </div>
     </section>
 
-    <footer class="bg-takagi-dark text-white py-12 text-sm text-center">
-      <div class="container mx-auto px-6">
-        <a
-          href="index.html"
-          class="hover-trigger inline-block text-4xl font-black font-en tracking-widest mb-6 text-white/20 hover:text-white transition"
-          >TAKAMOKU</a
+    <footer
+      class="bg-takamoku-dark text-white py-20 text-sm border-t border-white/10 relative overflow-hidden"
+    >
+      <div
+        class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"
+      ></div>
+      <div class="container mx-auto px-6 text-center relative z-10">
+        <div class="mb-8">
+          <a
+            href="index.html"
+            class="hover-trigger inline-block transition transform hover:scale-105"
+          >
+            <img
+              src="assets/logo.png"
+              onerror="this.src = 'assets/logo.jpg'"
+              alt="TAKAMOKU"
+              class="h-12 md:h-16 mx-auto object-contain brightness-0 invert"
+            />
+          </a>
+        </div>
+        <p class="font-bold text-lg mb-2">株式会社高木</p>
+        <p class="opacity-60 mb-6">〒991-0043 山形県寒河江市大字島字島東87</p>
+
+        <div class="flex justify-center gap-6 mb-10">
+          <a
+            href="https://www.instagram.com/takamoku_yamagata/?utm_source=hp"
+            target="_blank"
+            class="hover-trigger text-2xl text-white/50 hover:text-accent-gold transition"
+          >
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a
+            href="https://www.youtube.com/@%E6%A0%AA%E5%BC%8F%E4%BC%9A%E7%A4%BE%E9%AB%98%E6%9C%A8"
+            target="_blank"
+            class="hover-trigger text-2xl text-white/50 hover:text-accent-gold transition"
+          >
+            <i class="fab fa-youtube"></i>
+          </a>
+        </div>
+
+        <div
+          class="flex flex-wrap justify-center gap-x-8 gap-y-4 mb-12 font-bold text-gray-400 font-en tracking-widest uppercase"
         >
-        <p class="opacity-30 text-xs font-en tracking-widest">
-          &copy; TAKAGI CO., LTD.
+          <a
+            href="index.html"
+            class="hover-trigger hover:text-white transition text-xs"
+            >TOP</a
+          >
+          <a
+            href="industry.html"
+            class="hover-trigger hover:text-white transition text-xs"
+            >建設業について</a
+          >
+          <a
+            href="company.html"
+            class="hover-trigger hover:text-white transition text-xs"
+            >高木について</a
+          >
+          <a
+            href="interview_list.html"
+            class="hover-trigger hover:text-white transition text-xs"
+            >社員インタビュー</a
+          >
+          <a
+            href="recruit_info.html"
+            class="hover-trigger hover:text-white transition text-xs"
+            >採用情報</a
+          >
+          <a
+            href="faq.html"
+            class="hover-trigger hover:text-white transition text-xs"
+            >よくある質問</a
+          >
+          <a
+            href="https://www.takamoku.co.jp/"
+            target="_blank"
+            class="hover-trigger hover:text-white transition text-xs border-b border-white/20 pb-0.5"
+            >OFFICIAL HP</a
+          >
+        </div>
+        <p class="opacity-30 text-xs font-en tracking-widest uppercase">
+          &copy; takamoku CO., LTD. ALL RIGHTS RESERVED.
         </p>
       </div>
     </footer>
@@ -570,9 +669,6 @@
       hamburgerBtn.addEventListener("click", () => {
         hamburgerBtn.classList.toggle("open");
         mobileMenu.classList.toggle("open");
-        document.body.style.overflow = mobileMenu.classList.contains("open")
-          ? "hidden"
-          : "auto";
       });
 
       gsap.registerPlugin(ScrollTrigger);
@@ -619,8 +715,13 @@
           },
         );
       });
+
+      // スクロール時のハンバーガー色切り替えロジック
       window.addEventListener("scroll", () => {
         const header = document.getElementById("header");
+        const logo = document.getElementById("header-logo");
+        const hamLines = document.querySelectorAll(".hamburger-line");
+
         if (window.scrollY > 50) {
           header.classList.add(
             "bg-white/95",
@@ -633,7 +734,13 @@
             .classList.remove("text-white", "mix-blend-difference");
           document
             .getElementById("header-nav")
-            .classList.add("text-takagi-dark");
+            .classList.add("text-takamoku-dark");
+          // ロゴを元の色に戻す（反転を解除）
+          logo.classList.remove("brightness-0", "invert");
+          // ハンバーガーを紺色にする
+          hamLines.forEach((line) => {
+            line.style.backgroundColor = "#0f172a";
+          });
         } else {
           header.classList.remove(
             "bg-white/95",
@@ -646,7 +753,13 @@
             .classList.add("text-white", "mix-blend-difference");
           document
             .getElementById("header-nav")
-            .classList.remove("text-takagi-dark");
+            .classList.remove("text-takamoku-dark");
+          // ロゴを白く反転
+          logo.classList.add("brightness-0", "invert");
+          // ハンバーガーを白に戻す
+          hamLines.forEach((line) => {
+            line.style.backgroundColor = "white";
+          });
         }
       });
     </script>
