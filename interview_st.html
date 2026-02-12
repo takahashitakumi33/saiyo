@@ -1,609 +1,491 @@
 <!doctype html>
 <html lang="ja" translate="no">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="google" content="notranslate" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>社員インタビュー 高橋 翔大 | 高木株式会社</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;700;900&family=Noto+Sans+JP:wght@400;500;700&display=swap"
-      rel="stylesheet"
-    />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              "takamoku-blue": "#004098",
-              "takamoku-dark": "#0f172a",
-              "accent-gold": "#c5a059",
-              "light-gray": "#f8fafc",
-            },
-            fontFamily: {
-              sans: ['"Noto Sans JP"', "sans-serif"],
-              en: ['"Oswald"', "sans-serif"],
-              mincho: ['"Shippori Mincho"', "serif"],
-            },
-            cursor: { none: "none" },
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="google" content="notranslate" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>社員インタビュー 高橋 翔大 | 高木株式会社</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;700;900&family=Noto+Sans+JP:wght@400;500;700&display=swap"
+    rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            "takamoku-blue": "#004098",
+            "takamoku-dark": "#0f172a",
+            "accent-gold": "#c5a059",
+            "light-gray": "#f8fafc",
           },
+          fontFamily: {
+            sans: ['"Noto Sans JP"', "sans-serif"],
+            en: ['"Oswald"', "sans-serif"],
+            mincho: ['"Shippori Mincho"', "serif"],
+          },
+          cursor: { none: "none" },
         },
-      };
-    </script>
-    <style>
-      body {
-        font-family: "Noto Sans JP", sans-serif;
-        background-color: #ffffff;
-        overflow-x: hidden;
-        cursor: none;
-      }
-      #cursor {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 12px;
-        height: 12px;
-        background-color: #c5a059;
-        border-radius: 50%;
-        pointer-events: none;
-        z-index: 9999;
-        transform: translate(-50%, -50%);
-        mix-blend-mode: difference;
-        transition:
-          width 0.3s,
-          height 0.3s;
-      }
+      },
+    };
+  </script>
+  <style>
+    body {
+      font-family: "Noto Sans JP", sans-serif;
+      background-color: #ffffff;
+      overflow-x: hidden;
+      cursor: none;
+    }
+
+    #cursor {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 12px;
+      height: 12px;
+      background-color: #c5a059;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      mix-blend-mode: difference;
+      transition:
+        width 0.3s,
+        height 0.3s;
+    }
+
+    #cursor-follower {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 40px;
+      height: 40px;
+      border: 1px solid rgba(197, 160, 89, 0.5);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9998;
+      transform: translate(-50%, -50%);
+      transition:
+        width 0.3s,
+        height 0.3s,
+        border-color 0.3s,
+        background-color 0.3s;
+    }
+
+    body.hover-link #cursor-follower {
+      width: 60px;
+      height: 60px;
+      background-color: rgba(0, 64, 152, 0.1);
+      border-color: #004098;
+      border-width: 2px;
+    }
+
+    .hero-img {
+      object-fit: cover;
+      object-position: center;
+      width: 100%;
+      height: 100%;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 4px 16px;
+      background: #f1f5f9;
+      color: #475569;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    #opening-layer {
+      position: fixed;
+      inset: 0;
+      background: #004098;
+      z-index: 10000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+    }
+
+    /* ハンバーガーメニュー */
+    #mobile-menu {
+      position: fixed;
+      inset: 0;
+      background-color: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 49;
+      transform: translateX(100%);
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #mobile-menu.open {
+      transform: translateX(0);
+    }
+
+    .hamburger-btn {
+      z-index: 50;
+      position: relative;
+      width: 30px;
+      height: 20px;
+      cursor: pointer;
+    }
+
+    .hamburger-line {
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      background-color: white;
+      transition: all 0.3s ease;
+    }
+
+    .hamburger-line:nth-child(1) {
+      top: 0;
+    }
+
+    .hamburger-line:nth-child(2) {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .hamburger-line:nth-child(3) {
+      bottom: 0;
+    }
+
+    .hamburger-btn.open .hamburger-line:nth-child(1) {
+      top: 50%;
+      transform: translateY(-50%) rotate(45deg);
+      background-color: white !important;
+    }
+
+    .hamburger-btn.open .hamburger-line:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger-btn.open .hamburger-line:nth-child(3) {
+      bottom: 50%;
+      transform: translateY(50%) rotate(-45deg);
+      background-color: white !important;
+    }
+
+    /* レスポンシブカーソル制御: SPで無効化 */
+    @media (max-width: 768px) {
+
+      #cursor,
       #cursor-follower {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 40px;
-        height: 40px;
-        border: 1px solid rgba(197, 160, 89, 0.5);
-        border-radius: 50%;
-        pointer-events: none;
-        z-index: 9998;
-        transform: translate(-50%, -50%);
-        transition:
-          width 0.3s,
-          height 0.3s,
-          border-color 0.3s,
-          background-color 0.3s;
-      }
-      body.hover-link #cursor-follower {
-        width: 60px;
-        height: 60px;
-        background-color: rgba(0, 64, 152, 0.1);
-        border-color: #004098;
-        border-width: 2px;
-      }
-      .hero-img {
-        object-fit: cover;
-        object-position: center;
-        width: 100%;
-        height: 100%;
-      }
-      .tag {
-        display: inline-block;
-        padding: 4px 16px;
-        background: #f1f5f9;
-        color: #475569;
-        border-radius: 4px;
-        font-size: 0.8rem;
-        font-weight: 700;
-      }
-      #opening-layer {
-        position: fixed;
-        inset: 0;
-        background: #004098;
-        z-index: 10000;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: white;
+        display: none !important;
       }
 
-      /* ハンバーガーメニュー */
-      #mobile-menu {
-        position: fixed;
-        inset: 0;
-        background-color: rgba(15, 23, 42, 0.95);
-        backdrop-filter: blur(10px);
-        z-index: 49;
-        transform: translateX(100%);
-        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        display: flex;
-        justify-content: center;
-        align-items: center;
+      body {
+        cursor: auto !important;
       }
-      #mobile-menu.open {
-        transform: translateX(0);
-      }
-      .hamburger-btn {
-        z-index: 50;
-        position: relative;
-        width: 30px;
-        height: 20px;
-        cursor: pointer;
-      }
-      .hamburger-line {
-        position: absolute;
-        width: 100%;
-        height: 2px;
-        background-color: white;
-        transition: all 0.3s ease;
-      }
-      .hamburger-line:nth-child(1) {
-        top: 0;
-      }
-      .hamburger-line:nth-child(2) {
-        top: 50%;
-        transform: translateY(-50%);
-      }
-      .hamburger-line:nth-child(3) {
-        bottom: 0;
-      }
-      .hamburger-btn.open .hamburger-line:nth-child(1) {
-        top: 50%;
-        transform: translateY(-50%) rotate(45deg);
-        background-color: white !important;
-      }
-      .hamburger-btn.open .hamburger-line:nth-child(2) {
-        opacity: 0;
-      }
-      .hamburger-btn.open .hamburger-line:nth-child(3) {
-        bottom: 50%;
-        transform: translateY(50%) rotate(-45deg);
-        background-color: white !important;
-      }
-    </style>
-  </head>
-  <body class="antialiased text-slate-800">
-    <div id="cursor"></div>
-    <div id="cursor-follower"></div>
-    <div id="opening-layer">
-      <h1 class="text-3xl font-black font-mincho tracking-widest">INTERVIEW</h1>
-    </div>
+    }
+  </style>
+</head>
 
-    <header
-      class="fixed top-0 w-full z-50 transition-all duration-500 bg-transparent"
-      id="header"
-    >
-      <div
-        class="container mx-auto px-6 h-24 flex justify-between items-center"
-      >
-        <div class="flex items-center gap-3">
-          <a href="index.html" class="hover-trigger flex items-center">
-            <img
-              src="assets/logo.png"
-              onerror="this.src = 'assets/logo.jpg'"
-              alt="高木株式会社"
-              class="h-8 md:h-10 w-auto object-contain brightness-0 invert transition-all duration-300"
-              id="header-logo"
-            />
-          </a>
-        </div>
-        <nav
-          class="hidden md:flex gap-8 text-sm font-bold text-white mix-blend-difference tracking-widest font-en uppercase"
-          id="header-nav"
-        >
-          <a
-            href="index.html"
-            class="hover-trigger hover:text-accent-gold transition"
-            >TOP</a
-          >
-          <a
-            href="industry.html"
-            class="hover-trigger hover:text-accent-gold transition"
-            >建設業について</a
-          >
-          <a
-            href="company.html"
-            class="hover-trigger hover:text-accent-gold transition"
-            >高木について</a
-          >
-          <a
-            href="interview_list.html"
-            class="hover-trigger text-accent-gold transition"
-            >社員インタビュー</a
-          >
-          <a
-            href="recruit_info.html"
-            class="hover-trigger hover:text-accent-gold transition"
-            >採用情報</a
-          >
-          <a
-            href="faq.html"
-            class="hover-trigger hover:text-accent-gold transition"
-            >よくある質問</a
-          >
-          <a
-            href="#entry"
-            class="hover-trigger bg-white text-takamoku-blue px-8 py-3 hover:bg-takamoku-dark hover:text-white transition shadow-lg transform hover:scale-105 font-bold rounded-sm text-xs"
-            >ENTRY</a
-          >
-        </nav>
-        <div class="md:hidden hamburger-btn hover-trigger" id="hamburger-btn">
-          <span class="hamburger-line"></span>
-          <span class="hamburger-line"></span>
-          <span class="hamburger-line"></span>
-        </div>
+<body class="antialiased text-slate-800">
+  <div id="cursor"></div>
+  <div id="cursor-follower"></div>
+  <div id="opening-layer">
+    <h1 class="text-3xl font-black font-mincho tracking-widest">INTERVIEW</h1>
+  </div>
+
+  <header class="fixed top-0 w-full z-50 transition-all duration-500 bg-transparent" id="header">
+    <div class="container mx-auto px-6 h-24 flex justify-between items-center">
+      <div class="flex items-center gap-3">
+        <a href="index.html" class="hover-trigger flex items-center">
+          <img src="assets/logo.png" onerror="this.src = 'assets/logo.jpg'" alt="高木株式会社"
+            class="h-8 md:h-10 w-auto object-contain brightness-0 invert transition-all duration-300"
+            id="header-logo" />
+        </a>
       </div>
-    </header>
-
-    <div id="mobile-menu">
       <nav
-        class="flex flex-col gap-8 text-2xl font-bold text-white font-en tracking-widest text-center uppercase"
-      >
-        <a
-          href="index.html"
-          class="hover:text-accent-gold transition mobile-link"
-          >TOP</a
-        >
-        <a
-          href="industry.html"
-          class="hover:text-accent-gold transition mobile-link"
-          >建設業について</a
-        >
-        <a
-          href="company.html"
-          class="hover:text-accent-gold transition mobile-link"
-          >高木について</a
-        >
-        <a
-          href="interview_list.html"
-          class="hover:text-accent-gold transition mobile-link"
-          >社員インタビュー</a
-        >
-        <a
-          href="recruit_info.html"
-          class="hover:text-accent-gold transition mobile-link"
-          >採用情報</a
-        >
-        <a href="faq.html" class="hover:text-accent-gold transition mobile-link"
-          >よくある質問</a
-        >
-        <a href="#entry" class="text-accent-gold mobile-link">ENTRY</a>
+        class="hidden md:flex gap-8 text-sm font-bold text-white mix-blend-difference tracking-widest font-en uppercase"
+        id="header-nav">
+        <a href="index.html" class="hover-trigger hover:text-accent-gold transition">TOP</a>
+        <a href="industry.html" class="hover-trigger hover:text-accent-gold transition">建設業について</a>
+        <a href="company.html" class="hover-trigger hover:text-accent-gold transition">高木について</a>
+        <a href="interview_list.html" class="hover-trigger text-accent-gold transition">社員インタビュー</a>
+        <a href="recruit_info.html" class="hover-trigger hover:text-accent-gold transition">採用情報</a>
+        <a href="faq.html" class="hover-trigger hover:text-accent-gold transition">よくある質問</a>
+        <a href="#entry"
+          class="hover-trigger bg-white text-takamoku-blue px-8 py-3 hover:bg-takamoku-dark hover:text-white transition shadow-lg transform hover:scale-105 font-bold rounded-sm text-xs">ENTRY</a>
       </nav>
+      <div class="md:hidden hamburger-btn hover-trigger" id="hamburger-btn">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </div>
     </div>
+  </header>
 
-    <section
-      class="relative h-[70vh] md:h-[85vh] w-full overflow-hidden bg-takamoku-dark"
-    >
-      <div class="absolute inset-0 z-0">
-        <img
-          src="assets/interview_st.jpg"
-          class="hero-img opacity-80"
-          alt="高橋 翔大"
-        />
+  <div id="mobile-menu">
+    <nav class="flex flex-col gap-8 text-2xl font-bold text-white font-en tracking-widest text-center uppercase">
+      <a href="index.html" class="hover:text-accent-gold transition mobile-link">TOP</a>
+      <a href="industry.html" class="hover:text-accent-gold transition mobile-link">建設業について</a>
+      <a href="company.html" class="hover:text-accent-gold transition mobile-link">高木について</a>
+      <a href="interview_list.html" class="hover:text-accent-gold transition mobile-link">社員インタビュー</a>
+      <a href="recruit_info.html" class="hover:text-accent-gold transition mobile-link">採用情報</a>
+      <a href="faq.html" class="hover:text-accent-gold transition mobile-link">よくある質問</a>
+      <a href="#entry" class="text-accent-gold mobile-link">ENTRY</a>
+    </nav>
+  </div>
+
+  <section class="relative h-[70vh] md:h-[85vh] w-full overflow-hidden bg-takamoku-dark">
+    <div class="absolute inset-0 z-0">
+      <img src="assets/interview_st.jpg" class="hero-img opacity-80" alt="高橋 翔大" />
+    </div>
+    <div class="absolute inset-0 z-1 bg-gradient-to-t from-takamoku-dark via-transparent to-transparent opacity-90">
+    </div>
+    <div class="relative z-20 container mx-auto px-6 h-full flex items-end pb-20 text-white">
+      <div class="w-full md:w-2/3">
+        <p class="text-accent-gold font-bold mb-4 tracking-widest js-fade-up">
+          2019年4月入社 / 建設部
+        </p>
+        <h1 class="text-3xl md:text-6xl font-black font-mincho leading-tight js-fade-up">
+          アットホームな社風と、<br />地図に残る感動を。
+        </h1>
       </div>
-      <div
-        class="absolute inset-0 z-1 bg-gradient-to-t from-takamoku-dark via-transparent to-transparent opacity-90"
-      ></div>
-      <div
-        class="relative z-20 container mx-auto px-6 h-full flex items-end pb-20 text-white"
-      >
-        <div class="w-full md:w-2/3">
-          <p class="text-accent-gold font-bold mb-4 tracking-widest js-fade-up">
-            2019年4月入社 / 建設部
-          </p>
-          <h1
-            class="text-3xl md:text-6xl font-black font-mincho leading-tight js-fade-up"
-          >
-            アットホームな社風と、<br />地図に残る感動を。
-          </h1>
-        </div>
+    </div>
+  </section>
+
+  <section class="py-24 bg-white">
+    <div class="container mx-auto max-w-4xl px-6">
+      <div class="mb-16 bg-light-gray p-8 rounded-sm border border-slate-100 js-fade-up">
+        <h3 class="text-xl font-bold font-mincho mb-4 border-b border-accent-gold pb-2 inline-block">
+          プロフィール
+        </h3>
+        <p class="text-lg font-black font-mincho mt-4 mb-1">高橋 翔大</p>
+        <p class="text-sm text-slate-500 mb-2">建設部</p>
+        <p class="text-xs text-slate-400">創学館高校卒</p>
       </div>
-    </section>
 
-    <section class="py-24 bg-white">
-      <div class="container mx-auto max-w-4xl px-6">
-        <div
-          class="mb-16 bg-light-gray p-8 rounded-sm border border-slate-100 js-fade-up"
-        >
-          <h3
-            class="text-xl font-bold font-mincho mb-4 border-b border-accent-gold pb-2 inline-block"
-          >
-            プロフィール
-          </h3>
-          <p class="text-lg font-black font-mincho mt-4 mb-1">高橋 翔大</p>
-          <p class="text-sm text-slate-500 mb-2">建設部</p>
-          <p class="text-xs text-slate-400">創学館高校卒</p>
-        </div>
-
-        <div class="mb-24 js-fade-up">
-          <h2
-            class="text-2xl font-bold font-mincho text-takamoku-blue mb-8 flex items-center gap-4"
-          >
-            <span class="w-10 h-px bg-accent-gold"></span>現在の仕事について
-          </h2>
-          <p class="text-gray-600 leading-8 text-lg mb-8 text-justify">
-            現在は地元の商業施設のリフォーム工事を担当しています。施工管理として、安全管理・工程管理・品質管理・原価管理まで幅広く関わり、職人さんや関係者と日々やり取りを重ねながら、現場全体が滞りなく進むよう取り組んでいます。
-          </p>
-          <div class="flex flex-wrap gap-2 mb-12">
-            <span class="tag">安全管理</span><span class="tag">工程管理</span
-            ><span class="tag">品質管理</span><span class="tag">原価管理</span>
-          </div>
-        </div>
-
-        <div class="mb-24 rounded-sm overflow-hidden shadow-xl js-fade-up">
-          <img
-            src="assets/scene_1.jpg"
-            onerror="this.src = 'assets/scene_1.jpg'"
-            class="w-full h-auto"
-            alt="現場写真1"
-          />
-        </div>
-
-        <div class="mb-24 js-fade-up">
-          <h2
-            class="text-2xl font-bold font-mincho text-takamoku-blue mb-8 flex items-center gap-4"
-          >
-            <span class="w-10 h-px bg-accent-gold"></span>仕事のやりがい
-          </h2>
-          <div class="space-y-8 text-gray-600 leading-8 text-lg">
-            <p class="text-justify">
-              現場監督という立場で何もないところから建物を作り上げる事に携わることができ、建物が出来た時の達成感を感じることができます。また、自分が関わった建物が地図に残るのもやりがいに繋がっています。
-            </p>
-            <p class="text-justify">
-              以前は新築工事の現場を担当していました。何もなかった場所に少しずつ建物が立ち上がり、完成後に地図にその建物が表示されてるのを見たときは、とても感動しました。携わっていた建物が完成し、引き渡した建物がお客様に喜んでもらえたときに1番やりがいを感じます。
-            </p>
-          </div>
-        </div>
-
-        <div class="mb-24 grid grid-cols-1 md:grid-cols-2 gap-12">
-          <div class="js-fade-up">
-            <h2
-              class="text-2xl font-bold font-mincho text-takamoku-blue mb-8 flex items-center gap-4"
-            >
-              <span class="w-10 h-px bg-accent-gold"></span>建設業を選んだ理由
-            </h2>
-            <p class="text-gray-600 leading-8 text-justify">
-              小学生の頃に見たテレビ番組「大改造!!劇的ビフォーアフター」を見ていたことが、建設業に興味を持ったきっかけです。課題を抱えた家を、一流の建築士である「匠」がリフォームしていく様子が描かれており、工事によって家がきれいに生まれ変わり、依頼主の方が喜ぶ姿が強く印象に残りました。その番組を見て、建設の仕事の面白さや、人の暮らしを支え喜んでもらえる建設の仕事に携わりたいと考えるようになりました。
-            </p>
-          </div>
-          <div class="js-fade-up">
-            <h2
-              class="text-2xl font-bold font-mincho text-takamoku-blue mb-8 flex items-center gap-4"
-            >
-              <span class="w-10 h-px bg-accent-gold"></span>高木への入社理由
-            </h2>
-            <p class="text-gray-600 leading-8 text-justify">
-              会社説明会に参加したことがきっかけです。もともと県内の建設会社で働きたいと考えており、その中で高木の説明会に参加しました。説明会や面接というと正直堅苦しいイメージを持っていましたが、社員の方が挨拶をしてくれたり、仕事の話に加えてプライベートな話も交えながら会話ができたことで、親しみやすい雰囲気を感じました。初めて訪れた際の印象は、とてもアットホームな雰囲気だったことです。また、その中で100年以上の歴史と実績があり、県内トップレベルの完成工事高を誇っている点を知り魅力を感じて入社を志望しました。
-            </p>
-          </div>
-        </div>
-
-        <div class="mb-24 rounded-sm overflow-hidden shadow-xl js-fade-up">
-          <img
-            src="assets/scene_2.jpg"
-            onerror="this.src = 'assets/scene_2.jpg'"
-            class="w-full h-auto"
-            alt="現場写真2"
-          />
-        </div>
-
-        <div class="mb-24 js-fade-up">
-          <h2
-            class="text-2xl font-bold font-mincho text-takamoku-blue mb-8 flex items-center gap-4"
-          >
-            <span class="w-10 h-px bg-accent-gold"></span
-            >ワークライフバランスと家族への感謝
-          </h2>
-          <p class="text-gray-600 leading-8 text-lg text-justify">
-            昨年、第一子が誕生し、育児休暇を取得しました。現場が非常に忙しい時期だったため正直迷いもありましたが、上司から「今家にいないと恨まれるから（笑）」と声をかけてもらい、会社からの全面的なサポートもあって、安心して休暇を取ることができました。産後の特に忙しい時期に育児に専念できたことは、本当にありがたかったです。
-          </p>
-        </div>
-
-        <div class="mb-24 js-fade-up border-t border-gray-100 pt-24">
-          <h2
-            class="text-2xl font-bold font-mincho text-takamoku-blue mb-10 flex items-center gap-4"
-          >
-            <span class="w-10 h-px bg-accent-gold"></span>学生のみなさんへ
-          </h2>
-          <div class="text-gray-600 text-lg leading-loose space-y-6">
-            <p>
-              現場監督として現場に携わることで、日々建物が建っていく過程を体感できるという楽しさもあります。
-            </p>
-            <p>
-              ぜひ会社説明会やインターンシップに参加して、実際の雰囲気を感じてみてください。先輩方も優しいです。
-            </p>
-            <p>
-              完成した建物を引渡し、喜んでもらえた時などやりがいを感じる機会がたくさんあります。
-            </p>
-          </div>
+      <div class="mb-24 js-fade-up">
+        <h2 class="text-2xl font-bold font-mincho text-takamoku-blue mb-8 flex items-center gap-4">
+          <span class="w-10 h-px bg-accent-gold"></span>現在の仕事について
+        </h2>
+        <p class="text-gray-600 leading-8 text-lg mb-8 text-justify">
+          現在は地元の商業施設のリフォーム工事を担当しています。施工管理として、安全管理・工程管理・品質管理・原価管理まで幅広く関わり、職人さんや関係者と日々やり取りを重ねながら、現場全体が滞りなく進むよう取り組んでいます。
+        </p>
+        <div class="flex flex-wrap gap-2 mb-12">
+          <span class="tag">安全管理</span><span class="tag">工程管理</span><span class="tag">品質管理</span><span
+            class="tag">原価管理</span>
         </div>
       </div>
-    </section>
 
-    <footer
-      class="bg-takamoku-dark text-white py-20 text-sm border-t border-white/10 relative overflow-hidden"
-    >
-      <div
-        class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"
-      ></div>
-      <div class="container mx-auto px-6 text-center relative z-10">
-        <div class="mb-8">
-          <a
-            href="index.html"
-            class="hover-trigger inline-block transition transform hover:scale-105"
-          >
-            <img
-              src="assets/logo.png"
-              onerror="this.src = 'assets/logo.jpg'"
-              alt="TAKAMOKU"
-              class="h-12 md:h-16 mx-auto object-contain brightness-0 invert"
-            />
-          </a>
-        </div>
-        <p class="font-bold text-lg mb-2">株式会社高木</p>
-        <p class="opacity-60 mb-6">〒991-0043 山形県寒河江市大字島字島東87</p>
+      <div class="mb-24 rounded-sm overflow-hidden shadow-xl js-fade-up">
+        <img src="assets/scene_1.jpg" onerror="this.src = 'assets/scene_1.jpg'" class="w-full h-auto" alt="現場写真1" />
+      </div>
 
-        <div class="flex justify-center gap-6 mb-10">
-          <a
-            href="https://www.instagram.com/takamoku_yamagata/?utm_source=hp"
-            target="_blank"
-            class="hover-trigger text-2xl text-white/50 hover:text-accent-gold transition"
-          >
-            <i class="fab fa-instagram"></i>
-          </a>
-          <a
-            href="https://www.youtube.com/@%E6%A0%AA%E5%BC%8F%E4%BC%9A%E7%A4%BE%E9%AB%98%E6%9C%A8"
-            target="_blank"
-            class="hover-trigger text-2xl text-white/50 hover:text-accent-gold transition"
-          >
-            <i class="fab fa-youtube"></i>
-          </a>
+      <div class="mb-24 js-fade-up">
+        <h2 class="text-2xl font-bold font-mincho text-takamoku-blue mb-8 flex items-center gap-4">
+          <span class="w-10 h-px bg-accent-gold"></span>仕事のやりがい
+        </h2>
+        <div class="space-y-8 text-gray-600 leading-8 text-lg">
+          <p class="text-justify">
+            現場監督という立場で何もないところから建物を作り上げる事に携わることができ、建物が出来た時の達成感を感じることができます。また、自分が関わった建物が地図に残るのもやりがいに繋がっています。
+          </p>
+          <p class="text-justify">
+            以前は新築工事の現場を担当していました。何もなかった場所に少しずつ建物が立ち上がり、完成後に地図にその建物が表示されてるのを見たときは、とても感動しました。携わっていた建物が完成し、引き渡した建物がお客様に喜んでもらえたときに1番やりがいを感じます。
+          </p>
         </div>
+      </div>
 
-        <div
-          class="flex flex-wrap justify-center gap-x-8 gap-y-4 mb-12 font-bold text-gray-400 font-en tracking-widest uppercase"
-        >
-          <a
-            href="index.html"
-            class="hover-trigger hover:text-white transition text-xs"
-            >TOP</a
-          >
-          <a
-            href="industry.html"
-            class="hover-trigger hover:text-white transition text-xs"
-            >建設業について</a
-          >
-          <a
-            href="company.html"
-            class="hover-trigger hover:text-white transition text-xs"
-            >高木について</a
-          >
-          <a
-            href="interview_list.html"
-            class="hover-trigger hover:text-white transition text-xs"
-            >社員インタビュー</a
-          >
-          <a
-            href="recruit_info.html"
-            class="hover-trigger hover:text-white transition text-xs"
-            >採用情報</a
-          >
-          <a
-            href="faq.html"
-            class="hover-trigger hover:text-white transition text-xs"
-            >よくある質問</a
-          >
-          <a
-            href="https://www.takamoku.co.jp/"
-            target="_blank"
-            class="hover-trigger hover:text-white transition text-xs border-b border-white/20 pb-0.5"
-            >OFFICIAL HP</a
-          >
+      <div class="mb-24 grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div class="js-fade-up">
+          <h2 class="text-2xl font-bold font-mincho text-takamoku-blue mb-8 flex items-center gap-4">
+            <span class="w-10 h-px bg-accent-gold"></span>建設業を選んだ理由
+          </h2>
+          <p class="text-gray-600 leading-8 text-justify">
+            小学生の頃に見たテレビ番組「大改造!!劇的ビフォーアフター」を見ていたことが、建設業に興味を持ったきっかけです。課題を抱えた家を、一流の建築士である「匠」がリフォームしていく様子が描かれており、工事によって家がきれいに生まれ変わり、依頼主の方が喜ぶ姿が強く印象に残りました。その番組を見て、建設の仕事の面白さや、人の暮らしを支え喜んでもらえる建設の仕事に携わりたいと考えるようになりました。
+          </p>
         </div>
-        <p class="opacity-30 text-xs font-en tracking-widest uppercase">
-          &copy; takamoku CO., LTD. ALL RIGHTS RESERVED.
+        <div class="js-fade-up">
+          <h2 class="text-2xl font-bold font-mincho text-takamoku-blue mb-8 flex items-center gap-4">
+            <span class="w-10 h-px bg-accent-gold"></span>高木への入社理由
+          </h2>
+          <p class="text-gray-600 leading-8 text-justify">
+            会社説明会に参加したことがきっかけです。もともと県内の建設会社で働きたいと考えており、その中で高木の説明会に参加しました。説明会や面接というと正直堅苦しいイメージを持っていましたが、社員の方が挨拶をしてくれたり、仕事の話に加えてプライベートな話も交えながら会話ができたことで、親しみやすい雰囲気を感じました。初めて訪れた際の印象は、とてもアットホームな雰囲気だったことです。また、その中で100年以上の歴史と実績があり、県内トップレベルの完成工事高を誇っている点を知り魅力を感じて入社を志望しました。
+          </p>
+        </div>
+      </div>
+
+      <div class="mb-24 rounded-sm overflow-hidden shadow-xl js-fade-up">
+        <img src="assets/scene_2.jpg" onerror="this.src = 'assets/scene_2.jpg'" class="w-full h-auto" alt="現場写真2" />
+      </div>
+
+      <div class="mb-24 js-fade-up">
+        <h2 class="text-2xl font-bold font-mincho text-takamoku-blue mb-8 flex items-center gap-4">
+          <span class="w-10 h-px bg-accent-gold"></span>ワークライフバランスと家族への感謝
+        </h2>
+        <p class="text-gray-600 leading-8 text-lg text-justify">
+          昨年、第一子が誕生し、育児休暇を取得しました。現場が非常に忙しい時期だったため正直迷いもありましたが、上司から「今家にいないと恨まれるから（笑）」と声をかけてもらい、会社からの全面的なサポートもあって、安心して休暇を取ることができました。産後の特に忙しい時期に育児に専念できたことは、本当にありがたかったです。
         </p>
       </div>
-    </footer>
 
-    <script>
-      const cursor = document.getElementById("cursor"),
-        follower = document.getElementById("cursor-follower");
-      document.addEventListener("mousemove", (e) => {
-        gsap.to(cursor, { left: e.clientX, top: e.clientY, duration: 0.1 });
-        gsap.to(follower, { left: e.clientX, top: e.clientY, duration: 0.3 });
-      });
+      <div class="mb-24 js-fade-up border-t border-gray-100 pt-24">
+        <h2 class="text-2xl font-bold font-mincho text-takamoku-blue mb-10 flex items-center gap-4">
+          <span class="w-10 h-px bg-accent-gold"></span>学生のみなさんへ
+        </h2>
+        <div class="text-gray-600 text-lg leading-loose space-y-6">
+          <p>
+            現場監督として現場に携わることで、日々建物が建っていく過程を体感できるという楽しさもあります。
+          </p>
+          <p>
+            ぜひ会社説明会やインターンシップに参加して、実際の雰囲気を感じてみてください。先輩方も優しいです。
+          </p>
+          <p>
+            完成した建物を引渡し、喜んでもらえた時などやりがいを感じる機会がたくさんあります。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-      // 共通hover処理
-      document
-        .querySelectorAll(".hover-trigger, .mobile-link")
-        .forEach((el) => {
-          el.addEventListener("mouseenter", () =>
-            document.body.classList.add("hover-link"),
-          );
-          el.addEventListener("mouseleave", () =>
-            document.body.classList.remove("hover-link"),
-          );
-        });
+  <footer class="bg-takamoku-dark text-white py-20 text-sm border-t border-white/10 relative overflow-hidden">
+    <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+    <div class="container mx-auto px-6 text-center relative z-10">
+      <div class="mb-8">
+        <a href="index.html" class="hover-trigger inline-block transition transform hover:scale-105">
+          <img src="assets/logo.png" onerror="this.src = 'assets/logo.jpg'" alt="TAKAMOKU"
+            class="h-12 md:h-16 mx-auto object-contain brightness-0 invert" />
+        </a>
+      </div>
+      <p class="font-bold text-lg mb-2">株式会社高木</p>
+      <p class="opacity-60 mb-6">〒991-0043 山形県寒河江市大字島字島東87</p>
 
-      // ハンバーガー
-      const hamburgerBtn = document.getElementById("hamburger-btn"),
-        mobileMenu = document.getElementById("mobile-menu");
-      hamburgerBtn.addEventListener("click", () => {
-        hamburgerBtn.classList.toggle("open");
-        mobileMenu.classList.toggle("open");
-        document.body.style.overflow = mobileMenu.classList.contains("open")
-          ? "hidden"
-          : "auto";
-      });
+      <div class="flex justify-center gap-6 mb-10">
+        <a href="https://www.instagram.com/takamoku_yamagata/?utm_source=hp" target="_blank"
+          class="hover-trigger text-2xl text-white/50 hover:text-accent-gold transition">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://www.youtube.com/@%E6%A0%AA%E5%BC%8F%E4%BC%9A%E7%A4%BE%E9%AB%98%E6%9C%A8" target="_blank"
+          class="hover-trigger text-2xl text-white/50 hover:text-accent-gold transition">
+          <i class="fab fa-youtube"></i>
+        </a>
+      </div>
 
-      gsap.registerPlugin(ScrollTrigger);
-      gsap.to("#opening-layer", {
-        y: "-100%",
-        duration: 1,
-        ease: "power4.inOut",
-        delay: 0.5,
-      });
-      gsap.utils.toArray(".js-fade-up").forEach((el) => {
-        gsap.fromTo(
-          el,
-          { y: 30, opacity: 0 },
-          {
-            y: 0,
-            opacity: 1,
-            duration: 1,
-            ease: "power2.out",
-            scrollTrigger: { trigger: el, start: "top 90%" },
-          },
+      <div
+        class="flex flex-wrap justify-center gap-x-8 gap-y-4 mb-12 font-bold text-gray-400 font-en tracking-widest uppercase">
+        <a href="index.html" class="hover-trigger hover:text-white transition text-xs">TOP</a>
+        <a href="industry.html" class="hover-trigger hover:text-white transition text-xs">建設業について</a>
+        <a href="company.html" class="hover-trigger hover:text-white transition text-xs">高木について</a>
+        <a href="interview_list.html" class="hover-trigger hover:text-white transition text-xs">社員インタビュー</a>
+        <a href="recruit_info.html" class="hover-trigger hover:text-white transition text-xs">採用情報</a>
+        <a href="faq.html" class="hover-trigger hover:text-white transition text-xs">よくある質問</a>
+        <a href="https://www.takamoku.co.jp/" target="_blank"
+          class="hover-trigger hover:text-white transition text-xs border-b border-white/20 pb-0.5">OFFICIAL HP</a>
+      </div>
+      <p class="opacity-30 text-xs font-en tracking-widest uppercase">
+        &copy; takamoku CO., LTD. ALL RIGHTS RESERVED.
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    const cursor = document.getElementById("cursor"),
+      follower = document.getElementById("cursor-follower");
+    document.addEventListener("mousemove", (e) => {
+      gsap.to(cursor, { left: e.clientX, top: e.clientY, duration: 0.1 });
+      gsap.to(follower, { left: e.clientX, top: e.clientY, duration: 0.3 });
+    });
+
+    // 共通hover処理
+    document
+      .querySelectorAll(".hover-trigger, .mobile-link")
+      .forEach((el) => {
+        el.addEventListener("mouseenter", () =>
+          document.body.classList.add("hover-link"),
+        );
+        el.addEventListener("mouseleave", () =>
+          document.body.classList.remove("hover-link"),
         );
       });
 
-      window.addEventListener("scroll", () => {
-        const header = document.getElementById("header"),
-          logo = document.getElementById("header-logo"),
-          hamLines = document.querySelectorAll(".hamburger-line");
-        if (window.scrollY > 50) {
-          header.classList.add(
-            "bg-white/95",
-            "backdrop-blur-md",
-            "shadow-sm",
-            "h-20",
-          );
-          document
-            .getElementById("header-nav")
-            .classList.remove("text-white", "mix-blend-difference");
-          document
-            .getElementById("header-nav")
-            .classList.add("text-takamoku-dark");
-          // ロゴを元の色に戻す（反転を解除）
-          logo.classList.remove("brightness-0", "invert");
-          // ハンバーガーを紺色にする
-          hamLines.forEach((line) => {
-            line.style.backgroundColor = "#0f172a";
-          });
-        } else {
-          header.classList.remove(
-            "bg-white/95",
-            "backdrop-blur-md",
-            "shadow-sm",
-            "h-20",
-          );
-          document
-            .getElementById("header-nav")
-            .classList.add("text-white", "mix-blend-difference");
-          document
-            .getElementById("header-nav")
-            .classList.remove("text-takamoku-dark");
-          // ロゴを白く反転
-          logo.classList.add("brightness-0", "invert");
-          // ハンバーガーを白に戻す
-          hamLines.forEach((line) => {
-            line.style.backgroundColor = "white";
-          });
-        }
-      });
-    </script>
-  </body>
+    // ハンバーガー
+    const hamburgerBtn = document.getElementById("hamburger-btn"),
+      mobileMenu = document.getElementById("mobile-menu");
+    hamburgerBtn.addEventListener("click", () => {
+      hamburgerBtn.classList.toggle("open");
+      mobileMenu.classList.toggle("open");
+      document.body.style.overflow = mobileMenu.classList.contains("open")
+        ? "hidden"
+        : "auto";
+    });
+
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.to("#opening-layer", {
+      y: "-100%",
+      duration: 1,
+      ease: "power4.inOut",
+      delay: 0.5,
+    });
+    gsap.utils.toArray(".js-fade-up").forEach((el) => {
+      gsap.fromTo(
+        el,
+        { y: 30, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1,
+          ease: "power2.out",
+          scrollTrigger: { trigger: el, start: "top 90%" },
+        },
+      );
+    });
+
+    window.addEventListener("scroll", () => {
+      const header = document.getElementById("header"),
+        logo = document.getElementById("header-logo"),
+        hamLines = document.querySelectorAll(".hamburger-line");
+      if (window.scrollY > 50) {
+        header.classList.add(
+          "bg-white/95",
+          "backdrop-blur-md",
+          "shadow-sm",
+          "h-20",
+        );
+        document
+          .getElementById("header-nav")
+          .classList.remove("text-white", "mix-blend-difference");
+        document
+          .getElementById("header-nav")
+          .classList.add("text-takamoku-dark");
+        // ロゴを元の色に戻す（反転を解除）
+        logo.classList.remove("brightness-0", "invert");
+        // ハンバーガーを紺色にする
+        hamLines.forEach((line) => {
+          line.style.backgroundColor = "#0f172a";
+        });
+      } else {
+        header.classList.remove(
+          "bg-white/95",
+          "backdrop-blur-md",
+          "shadow-sm",
+          "h-20",
+        );
+        document
+          .getElementById("header-nav")
+          .classList.add("text-white", "mix-blend-difference");
+        document
+          .getElementById("header-nav")
+          .classList.remove("text-takamoku-dark");
+        // ロゴを白く反転
+        logo.classList.add("brightness-0", "invert");
+        // ハンバーガーを白に戻す
+        hamLines.forEach((line) => {
+          line.style.backgroundColor = "white";
+        });
+      }
+    });
+  </script>
+</body>
+
 </html>

@@ -1,599 +1,494 @@
 <!doctype html>
 <html lang="ja" translate="no">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="google" content="notranslate" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>よくある質問 | 高木株式会社 | 新卒採用サイト</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700;900&family=Oswald:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap"
-      rel="stylesheet"
-    />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              "takamoku-blue": "#004098",
-              "takamoku-dark": "#0f172a",
-              "accent-gold": "#c5a059",
-              "light-gray": "#f8fafc",
-            },
-            fontFamily: {
-              sans: ['"Noto Sans JP"', "sans-serif"],
-              en: ['"Oswald"', "sans-serif"],
-              mincho: ['"Shippori Mincho"', "serif"],
-            },
-            cursor: { none: "none" },
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="google" content="notranslate" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>よくある質問 | 高木株式会社 | 新卒採用サイト</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700;900&family=Oswald:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap"
+    rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            "takamoku-blue": "#004098",
+            "takamoku-dark": "#0f172a",
+            "accent-gold": "#c5a059",
+            "light-gray": "#f8fafc",
           },
+          fontFamily: {
+            sans: ['"Noto Sans JP"', "sans-serif"],
+            en: ['"Oswald"', "sans-serif"],
+            mincho: ['"Shippori Mincho"', "serif"],
+          },
+          cursor: { none: "none" },
         },
-      };
-    </script>
-    <style>
-      body {
-        font-family: "Noto Sans JP", sans-serif;
-        background-color: #ffffff;
-        overflow-x: hidden;
-        cursor: none;
-      }
-      #cursor {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 12px;
-        height: 12px;
-        background-color: #c5a059;
-        border-radius: 50%;
-        pointer-events: none;
-        z-index: 9999;
-        transform: translate(-50%, -50%);
-        mix-blend-mode: difference;
-        transition:
-          width 0.3s,
-          height 0.3s;
-      }
+      },
+    };
+  </script>
+  <style>
+    body {
+      font-family: "Noto Sans JP", sans-serif;
+      background-color: #ffffff;
+      overflow-x: hidden;
+      cursor: none;
+    }
+
+    #cursor {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 12px;
+      height: 12px;
+      background-color: #c5a059;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      mix-blend-mode: difference;
+      transition:
+        width 0.3s,
+        height 0.3s;
+    }
+
+    #cursor-follower {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 40px;
+      height: 40px;
+      border: 1px solid rgba(197, 160, 89, 0.5);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9998;
+      transform: translate(-50%, -50%);
+      transition:
+        width 0.3s,
+        height 0.3s,
+        border-color 0.3s,
+        background-color 0.3s;
+    }
+
+    body.hover-link #cursor-follower {
+      width: 60px;
+      height: 60px;
+      background-color: rgba(0, 64, 152, 0.1);
+      border-color: #004098;
+      border-width: 2px;
+    }
+
+    #mobile-menu {
+      position: fixed;
+      inset: 0;
+      background-color: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 49;
+      transform: translateX(100%);
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #mobile-menu.open {
+      transform: translateX(0);
+    }
+
+    .hamburger-btn {
+      z-index: 50;
+      position: relative;
+      width: 30px;
+      height: 20px;
+      cursor: pointer;
+    }
+
+    .hamburger-line {
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      background-color: white;
+      transition: all 0.3s ease;
+    }
+
+    .hamburger-line:nth-child(1) {
+      top: 0;
+    }
+
+    .hamburger-line:nth-child(2) {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .hamburger-line:nth-child(3) {
+      bottom: 0;
+    }
+
+    .hamburger-btn.open .hamburger-line:nth-child(1) {
+      top: 50%;
+      transform: translateY(-50%) rotate(45deg);
+      background-color: white !important;
+    }
+
+    .hamburger-btn.open .hamburger-line:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger-btn.open .hamburger-line:nth-child(3) {
+      bottom: 50%;
+      transform: translateY(50%) rotate(-45deg);
+      background-color: white !important;
+    }
+
+    /* FAQ Accordion Styling */
+    .faq-item {
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .faq-button {
+      width: 100%;
+      text-align: left;
+      padding: 1.5rem 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: color 0.3s;
+    }
+
+    .faq-button:hover {
+      color: #c5a059;
+    }
+
+    .faq-content {
+      max-height: 0;
+      overflow: hidden;
+      transition:
+        max-height 0.3s ease-out,
+        padding 0.3s ease;
+    }
+
+    .faq-item.active .faq-content {
+      max-height: 500px;
+      padding-bottom: 1.5rem;
+    }
+
+    .faq-icon {
+      transition: transform 0.3s;
+    }
+
+    .faq-item.active .faq-icon {
+      transform: rotate(180deg);
+      color: #c5a059;
+    }
+
+    #opening-layer {
+      position: fixed;
+      inset: 0;
+      background: #004098;
+      z-index: 10000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+    }
+
+    /* レスポンシブカーソル制御: SPで無効化 */
+    @media (max-width: 768px) {
+
+      #cursor,
       #cursor-follower {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 40px;
-        height: 40px;
-        border: 1px solid rgba(197, 160, 89, 0.5);
-        border-radius: 50%;
-        pointer-events: none;
-        z-index: 9998;
-        transform: translate(-50%, -50%);
-        transition:
-          width 0.3s,
-          height 0.3s,
-          border-color 0.3s,
-          background-color 0.3s;
-      }
-      body.hover-link #cursor-follower {
-        width: 60px;
-        height: 60px;
-        background-color: rgba(0, 64, 152, 0.1);
-        border-color: #004098;
-        border-width: 2px;
-      }
-      #mobile-menu {
-        position: fixed;
-        inset: 0;
-        background-color: rgba(15, 23, 42, 0.95);
-        backdrop-filter: blur(10px);
-        z-index: 49;
-        transform: translateX(100%);
-        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-      #mobile-menu.open {
-        transform: translateX(0);
-      }
-      .hamburger-btn {
-        z-index: 50;
-        position: relative;
-        width: 30px;
-        height: 20px;
-        cursor: pointer;
-      }
-      .hamburger-line {
-        position: absolute;
-        width: 100%;
-        height: 2px;
-        background-color: white;
-        transition: all 0.3s ease;
-      }
-      .hamburger-line:nth-child(1) {
-        top: 0;
-      }
-      .hamburger-line:nth-child(2) {
-        top: 50%;
-        transform: translateY(-50%);
-      }
-      .hamburger-line:nth-child(3) {
-        bottom: 0;
-      }
-      .hamburger-btn.open .hamburger-line:nth-child(1) {
-        top: 50%;
-        transform: translateY(-50%) rotate(45deg);
-        background-color: white !important;
-      }
-      .hamburger-btn.open .hamburger-line:nth-child(2) {
-        opacity: 0;
-      }
-      .hamburger-btn.open .hamburger-line:nth-child(3) {
-        bottom: 50%;
-        transform: translateY(50%) rotate(-45deg);
-        background-color: white !important;
+        display: none !important;
       }
 
-      /* FAQ Accordion Styling */
-      .faq-item {
-        border-bottom: 1px solid #e2e8f0;
+      body {
+        cursor: auto !important;
       }
-      .faq-button {
-        width: 100%;
-        text-align: left;
-        padding: 1.5rem 0;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        transition: color 0.3s;
-      }
-      .faq-button:hover {
-        color: #c5a059;
-      }
-      .faq-content {
-        max-height: 0;
-        overflow: hidden;
-        transition:
-          max-height 0.3s ease-out,
-          padding 0.3s ease;
-      }
-      .faq-item.active .faq-content {
-        max-height: 500px;
-        padding-bottom: 1.5rem;
-      }
-      .faq-icon {
-        transition: transform 0.3s;
-      }
-      .faq-item.active .faq-icon {
-        transform: rotate(180deg);
-        color: #c5a059;
-      }
+    }
+  </style>
+</head>
 
-      #opening-layer {
-        position: fixed;
-        inset: 0;
-        background: #004098;
-        z-index: 10000;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: white;
-      }
-    </style>
-  </head>
-  <body class="antialiased text-slate-800">
-    <div id="cursor"></div>
-    <div id="cursor-follower"></div>
-    <div id="opening-layer">
-      <h1 class="text-4xl md:text-6xl font-black font-en tracking-tighter">
-        Q&A
+<body class="antialiased text-slate-800">
+  <div id="cursor"></div>
+  <div id="cursor-follower"></div>
+  <div id="opening-layer">
+    <h1 class="text-4xl md:text-6xl font-black font-en tracking-tighter">
+      Q&A
+    </h1>
+  </div>
+
+  <header class="fixed top-0 w-full z-50 transition-all duration-500 bg-transparent" id="header">
+    <div class="container mx-auto px-6 h-24 flex justify-between items-center">
+      <a href="index.html" class="hover-trigger flex items-center">
+        <img src="assets/logo.png" onerror="this.src = 'assets/logo.jpg'"
+          class="h-8 md:h-10 brightness-0 invert transition-all duration-300" id="header-logo" alt="高木株式会社" />
+      </a>
+      <nav
+        class="hidden md:flex gap-8 text-sm font-bold text-white mix-blend-difference tracking-widest font-en uppercase"
+        id="header-nav">
+        <a href="index.html" class="hover-trigger hover:text-accent-gold transition">TOP</a>
+        <a href="industry.html" class="hover-trigger hover:text-accent-gold transition">建設業について</a>
+        <a href="company.html" class="hover-trigger hover:text-accent-gold transition">高木について</a>
+        <a href="interview_list.html" class="hover-trigger hover:text-accent-gold transition">社員インタビュー</a>
+        <a href="recruit_info.html" class="hover-trigger hover:text-accent-gold transition">採用情報</a>
+        <a href="faq.html" class="hover-trigger hover:text-accent-gold transition">よくある質問</a>
+        <a href="index.html#entry"
+          class="hover-trigger bg-white text-takamoku-blue px-6 py-2 rounded-sm text-xs transition">ENTRY</a>
+      </nav>
+      <div class="md:hidden hamburger-btn hover-trigger" id="hamburger-btn">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </div>
+    </div>
+  </header>
+
+  <div id="mobile-menu">
+    <nav class="flex flex-col gap-8 text-2xl font-bold text-white font-en tracking-widest text-center uppercase">
+      <a href="index.html" class="hover:text-accent-gold transition mobile-link">TOP</a>
+      <a href="industry.html" class="hover:text-accent-gold transition mobile-link">建設業について</a>
+      <a href="company.html" class="hover:text-accent-gold transition mobile-link">高木について</a>
+      <a href="interview_list.html" class="hover:text-accent-gold transition mobile-link">社員インタビュー</a>
+      <a href="recruit_info.html" class="hover:text-accent-gold transition mobile-link">採用情報</a>
+      <a href="faq.html" class="hover:text-accent-gold transition mobile-link">よくある質問</a>
+      <a href="#entry" class="text-accent-gold mobile-link">ENTRY</a>
+    </nav>
+  </div>
+
+  <section class="relative h-[40vh] flex items-center justify-center bg-takamoku-dark overflow-hidden">
+    <div class="absolute inset-0 bg-[linear-gradient(135deg,#0f172a,#1e3a8a,#c5a059)] opacity-40"></div>
+    <div class="relative z-10 text-center text-white pt-20">
+      <p class="text-accent-gold font-bold tracking-[0.3em] text-sm font-en mb-4 js-fade-up">
+        FAQ
+      </p>
+      <h1 class="text-5xl md:text-7xl font-black font-en tracking-tighter mb-6 js-fade-up uppercase">
+        よくある質問
       </h1>
     </div>
+  </section>
 
-    <header
-      class="fixed top-0 w-full z-50 transition-all duration-500 bg-transparent"
-      id="header"
-    >
-      <div
-        class="container mx-auto px-6 h-24 flex justify-between items-center"
-      >
-        <a href="index.html" class="hover-trigger flex items-center">
-          <img
-            src="assets/logo.png"
-            onerror="this.src = 'assets/logo.jpg'"
-            class="h-8 md:h-10 brightness-0 invert transition-all duration-300"
-            id="header-logo"
-            alt="高木株式会社"
-          />
-        </a>
-        <nav
-          class="hidden md:flex gap-8 text-sm font-bold text-white mix-blend-difference tracking-widest font-en uppercase"
-          id="header-nav"
-        >
-          <a
-            href="index.html"
-            class="hover-trigger hover:text-accent-gold transition"
-            >TOP</a
-          >
-          <a
-            href="industry.html"
-            class="hover-trigger hover:text-accent-gold transition"
-            >建設業について</a
-          >
-          <a
-            href="company.html"
-            class="hover-trigger hover:text-accent-gold transition"
-            >高木について</a
-          >
-          <a
-            href="interview_list.html"
-            class="hover-trigger hover:text-accent-gold transition"
-            >社員インタビュー</a
-          >
-          <a
-            href="recruit_info.html"
-            class="hover-trigger hover:text-accent-gold transition"
-            >採用情報</a
-          >
-          <a
-            href="faq.html"
-            class="hover-trigger hover:text-accent-gold transition"
-            >よくある質問</a
-          >
-          <a
-            href="index.html#entry"
-            class="hover-trigger bg-white text-takamoku-blue px-6 py-2 rounded-sm text-xs transition"
-            >ENTRY</a
-          >
-        </nav>
-        <div class="md:hidden hamburger-btn hover-trigger" id="hamburger-btn">
-          <span class="hamburger-line"></span>
-          <span class="hamburger-line"></span>
-          <span class="hamburger-line"></span>
+  <section class="py-24 px-6 bg-white">
+    <div class="container mx-auto max-w-4xl">
+      <div class="mb-20 js-fade-up">
+        <h2 class="text-2xl font-bold font-mincho text-takamoku-blue mb-8 flex items-center gap-4">
+          <span class="w-8 h-1 bg-accent-gold"></span> 選考について
+        </h2>
+        <div class="space-y-2">
+          <div class="faq-item">
+            <button class="faq-button hover-trigger">
+              <span class="font-bold pr-8 text-lg">建設に関する知識が全くありませんが、応募は可能ですか？</span>
+              <i class="fas fa-chevron-down faq-icon text-gray-300"></i>
+            </button>
+            <div class="faq-content text-gray-600 leading-relaxed">
+              はい、可能です。文系出身の方や未経験の方でも、入社後の研修や現場でのOJTを通じて一から技術を身に付けていただける環境を整えています。大切なのは「ものづくりへの熱意」です。
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-button hover-trigger">
+              <span class="font-bold pr-8 text-lg">OB・OG訪問は受け付けていますか？</span>
+              <i class="fas fa-chevron-down faq-icon text-gray-300"></i>
+            </button>
+            <div class="faq-content text-gray-600 leading-relaxed">
+              個別のご紹介は行っておりませんが、会社説明会やインターンシップにて、若手社員と直接話せる機会を設けております。ぜひそちらをご活用ください。
+            </div>
+          </div>
         </div>
       </div>
-    </header>
 
-    <div id="mobile-menu">
-      <nav
-        class="flex flex-col gap-8 text-2xl font-bold text-white font-en tracking-widest text-center uppercase"
-      >
-        <a
-          href="index.html"
-          class="hover:text-accent-gold transition mobile-link"
-          >TOP</a
-        >
-        <a
-          href="industry.html"
-          class="hover:text-accent-gold transition mobile-link"
-          >建設業について</a
-        >
-        <a
-          href="company.html"
-          class="hover:text-accent-gold transition mobile-link"
-          >高木について</a
-        >
-        <a
-          href="interview_list.html"
-          class="hover:text-accent-gold transition mobile-link"
-          >社員インタビュー</a
-        >
-        <a
-          href="recruit_info.html"
-          class="hover:text-accent-gold transition mobile-link"
-          >採用情報</a
-        >
-        <a href="faq.html" class="hover:text-accent-gold transition mobile-link"
-          >よくある質問</a
-        >
-        <a href="#entry" class="text-accent-gold mobile-link">ENTRY</a>
-      </nav>
+      <div class="mb-20 js-fade-up">
+        <h2 class="text-2xl font-bold font-mincho text-takamoku-blue mb-8 flex items-center gap-4">
+          <span class="w-8 h-1 bg-accent-gold"></span> 仕事について
+        </h2>
+        <div class="space-y-2">
+          <div class="faq-item">
+            <button class="faq-button hover-trigger">
+              <span class="font-bold pr-8 text-lg">勤務地はどこになりますか？ 転勤はありますか？</span>
+              <i class="fas fa-chevron-down faq-icon text-gray-300"></i>
+            </button>
+            <div class="faq-content text-gray-600 leading-relaxed">
+              勤務地は山形県内の各現場、または本社となります。地域に根ざした事業展開を行っているため、他県への転勤はありません。山形で腰を据えて長く働きたい方に最適な環境です。
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-button hover-trigger">
+              <span class="font-bold pr-8 text-lg">配属先はどのように決まりますか？</span>
+              <i class="fas fa-chevron-down faq-icon text-gray-300"></i>
+            </button>
+            <div class="faq-content text-gray-600 leading-relaxed">
+              本人の希望と適性、各現場の状況を総合的に判断して決定いたします。新入社員研修を通じて、各部門の業務を理解した上で配属を決定します。
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-button hover-trigger">
+              <span class="font-bold pr-8 text-lg">1日の平均的な残業時間を教えてください。</span>
+              <i class="fas fa-chevron-down faq-icon text-gray-300"></i>
+            </button>
+            <div class="faq-content text-gray-600 leading-relaxed">
+              現場の状況により変動はありますが、月平均20時間以内を目指した徹底的な労務管理を行っています。業界内でも「ホワイト」と称される働きやすさが自慢です。
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-20 js-fade-up">
+        <h2 class="text-2xl font-bold font-mincho text-takamoku-blue mb-8 flex items-center gap-4">
+          <span class="w-8 h-1 bg-accent-gold"></span> 制度・環境について
+        </h2>
+        <div class="space-y-2">
+          <div class="faq-item">
+            <button class="faq-button hover-trigger">
+              <span class="font-bold pr-8 text-lg">資格取得の支援制度はありますか？</span>
+              <i class="fas fa-chevron-down faq-icon text-gray-300"></i>
+            </button>
+            <div class="faq-content text-gray-600 leading-relaxed">
+              はい、非常に充実しています。受験料の会社負担はもちろん、1級建築士などの難関資格については学校費用の貸付制度や、合格後の手厚い「資格手当」を毎月支給しています。
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-button hover-trigger">
+              <span class="font-bold pr-8 text-lg">産休・育休の取得実績はありますか？</span>
+              <i class="fas fa-chevron-down faq-icon text-gray-300"></i>
+            </button>
+            <div class="faq-content text-gray-600 leading-relaxed">
+              はい、男性・女性ともに取得実績がございます。ライフステージの変化に合わせ、長くキャリアを継続できるよう会社全体でサポートする文化が定着しています。
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <section
-      class="relative h-[40vh] flex items-center justify-center bg-takamoku-dark overflow-hidden"
-    >
+  <footer class="bg-takamoku-dark text-white py-20 text-sm border-t border-white/10 relative overflow-hidden">
+    <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+    <div class="container mx-auto px-6 text-center relative z-10">
+      <div class="mb-8">
+        <a href="index.html" class="hover-trigger inline-block transition transform hover:scale-105">
+          <img src="assets/logo.png" onerror="this.src = 'assets/logo.jpg'" alt="TAKAMOKU"
+            class="h-12 md:h-16 mx-auto object-contain brightness-0 invert" />
+        </a>
+      </div>
+      <p class="font-bold text-lg mb-2">株式会社高木</p>
+      <p class="opacity-60 mb-6">〒991-0043 山形県寒河江市大字島字島東87</p>
+
+      <div class="flex justify-center gap-6 mb-10">
+        <a href="https://www.instagram.com/takamoku_yamagata/?utm_source=hp" target="_blank"
+          class="hover-trigger text-2xl text-white/50 hover:text-accent-gold transition">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://www.youtube.com/@%E6%A0%AA%E5%BC%8F%E4%BC%9A%E7%A4%BE%E9%AB%98%E6%9C%A8" target="_blank"
+          class="hover-trigger text-2xl text-white/50 hover:text-accent-gold transition">
+          <i class="fab fa-youtube"></i>
+        </a>
+      </div>
+
       <div
-        class="absolute inset-0 bg-[linear-gradient(135deg,#0f172a,#1e3a8a,#c5a059)] opacity-40"
-      ></div>
-      <div class="relative z-10 text-center text-white pt-20">
-        <p
-          class="text-accent-gold font-bold tracking-[0.3em] text-sm font-en mb-4 js-fade-up"
-        >
-          FAQ
-        </p>
-        <h1
-          class="text-5xl md:text-7xl font-black font-en tracking-tighter mb-6 js-fade-up uppercase"
-        >
-          よくある質問
-        </h1>
+        class="flex flex-wrap justify-center gap-x-8 gap-y-4 mb-12 font-bold text-gray-400 font-en tracking-widest uppercase">
+        <a href="index.html" class="hover-trigger hover:text-white transition text-xs">TOP</a>
+        <a href="industry.html" class="hover-trigger hover:text-white transition text-xs">建設業について</a>
+        <a href="company.html" class="hover-trigger hover:text-white transition text-xs">高木について</a>
+        <a href="interview_list.html" class="hover-trigger hover:text-white transition text-xs">社員インタビュー</a>
+        <a href="recruit_info.html" class="hover-trigger hover:text-white transition text-xs">採用情報</a>
+        <a href="faq.html" class="hover-trigger hover:text-white transition text-xs">よくある質問</a>
+        <a href="https://www.takamoku.co.jp/" target="_blank"
+          class="hover-trigger hover:text-white transition text-xs border-b border-white/20 pb-0.5">OFFICIAL HP</a>
       </div>
-    </section>
+      <p class="opacity-30 text-xs font-en tracking-widest uppercase">
+        &copy; takamoku CO., LTD. ALL RIGHTS RESERVED.
+      </p>
+    </div>
+  </footer>
 
-    <section class="py-24 px-6 bg-white">
-      <div class="container mx-auto max-w-4xl">
-        <div class="mb-20 js-fade-up">
-          <h2
-            class="text-2xl font-bold font-mincho text-takamoku-blue mb-8 flex items-center gap-4"
-          >
-            <span class="w-8 h-1 bg-accent-gold"></span> 選考について
-          </h2>
-          <div class="space-y-2">
-            <div class="faq-item">
-              <button class="faq-button hover-trigger">
-                <span class="font-bold pr-8 text-lg"
-                  >建設に関する知識が全くありませんが、応募は可能ですか？</span
-                >
-                <i class="fas fa-chevron-down faq-icon text-gray-300"></i>
-              </button>
-              <div class="faq-content text-gray-600 leading-relaxed">
-                はい、可能です。文系出身の方や未経験の方でも、入社後の研修や現場でのOJTを通じて一から技術を身に付けていただける環境を整えています。大切なのは「ものづくりへの熱意」です。
-              </div>
-            </div>
-            <div class="faq-item">
-              <button class="faq-button hover-trigger">
-                <span class="font-bold pr-8 text-lg"
-                  >OB・OG訪問は受け付けていますか？</span
-                >
-                <i class="fas fa-chevron-down faq-icon text-gray-300"></i>
-              </button>
-              <div class="faq-content text-gray-600 leading-relaxed">
-                個別のご紹介は行っておりませんが、会社説明会やインターンシップにて、若手社員と直接話せる機会を設けております。ぜひそちらをご活用ください。
-              </div>
-            </div>
-          </div>
-        </div>
+  <script>
+    const cursor = document.getElementById("cursor"),
+      follower = document.getElementById("cursor-follower");
+    document.addEventListener("mousemove", (e) => {
+      gsap.to(cursor, { left: e.clientX, top: e.clientY, duration: 0.1 });
+      gsap.to(follower, { left: e.clientX, top: e.clientY, duration: 0.3 });
+    });
 
-        <div class="mb-20 js-fade-up">
-          <h2
-            class="text-2xl font-bold font-mincho text-takamoku-blue mb-8 flex items-center gap-4"
-          >
-            <span class="w-8 h-1 bg-accent-gold"></span> 仕事について
-          </h2>
-          <div class="space-y-2">
-            <div class="faq-item">
-              <button class="faq-button hover-trigger">
-                <span class="font-bold pr-8 text-lg"
-                  >勤務地はどこになりますか？ 転勤はありますか？</span
-                >
-                <i class="fas fa-chevron-down faq-icon text-gray-300"></i>
-              </button>
-              <div class="faq-content text-gray-600 leading-relaxed">
-                勤務地は山形県内の各現場、または本社となります。地域に根ざした事業展開を行っているため、他県への転勤はありません。山形で腰を据えて長く働きたい方に最適な環境です。
-              </div>
-            </div>
-            <div class="faq-item">
-              <button class="faq-button hover-trigger">
-                <span class="font-bold pr-8 text-lg"
-                  >配属先はどのように決まりますか？</span
-                >
-                <i class="fas fa-chevron-down faq-icon text-gray-300"></i>
-              </button>
-              <div class="faq-content text-gray-600 leading-relaxed">
-                本人の希望と適性、各現場の状況を総合的に判断して決定いたします。新入社員研修を通じて、各部門の業務を理解した上で配属を決定します。
-              </div>
-            </div>
-            <div class="faq-item">
-              <button class="faq-button hover-trigger">
-                <span class="font-bold pr-8 text-lg"
-                  >1日の平均的な残業時間を教えてください。</span
-                >
-                <i class="fas fa-chevron-down faq-icon text-gray-300"></i>
-              </button>
-              <div class="faq-content text-gray-600 leading-relaxed">
-                現場の状況により変動はありますが、月平均20時間以内を目指した徹底的な労務管理を行っています。業界内でも「ホワイト」と称される働きやすさが自慢です。
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="mb-20 js-fade-up">
-          <h2
-            class="text-2xl font-bold font-mincho text-takamoku-blue mb-8 flex items-center gap-4"
-          >
-            <span class="w-8 h-1 bg-accent-gold"></span> 制度・環境について
-          </h2>
-          <div class="space-y-2">
-            <div class="faq-item">
-              <button class="faq-button hover-trigger">
-                <span class="font-bold pr-8 text-lg"
-                  >資格取得の支援制度はありますか？</span
-                >
-                <i class="fas fa-chevron-down faq-icon text-gray-300"></i>
-              </button>
-              <div class="faq-content text-gray-600 leading-relaxed">
-                はい、非常に充実しています。受験料の会社負担はもちろん、1級建築士などの難関資格については学校費用の貸付制度や、合格後の手厚い「資格手当」を毎月支給しています。
-              </div>
-            </div>
-            <div class="faq-item">
-              <button class="faq-button hover-trigger">
-                <span class="font-bold pr-8 text-lg"
-                  >産休・育休の取得実績はありますか？</span
-                >
-                <i class="fas fa-chevron-down faq-icon text-gray-300"></i>
-              </button>
-              <div class="faq-content text-gray-600 leading-relaxed">
-                はい、男性・女性ともに取得実績がございます。ライフステージの変化に合わせ、長くキャリアを継続できるよう会社全体でサポートする文化が定着しています。
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <footer
-      class="bg-takamoku-dark text-white py-20 text-sm border-t border-white/10 relative overflow-hidden"
-    >
-      <div
-        class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"
-      ></div>
-      <div class="container mx-auto px-6 text-center relative z-10">
-        <div class="mb-8">
-          <a
-            href="index.html"
-            class="hover-trigger inline-block transition transform hover:scale-105"
-          >
-            <img
-              src="assets/logo.png"
-              onerror="this.src = 'assets/logo.jpg'"
-              alt="TAKAMOKU"
-              class="h-12 md:h-16 mx-auto object-contain brightness-0 invert"
-            />
-          </a>
-        </div>
-        <p class="font-bold text-lg mb-2">株式会社高木</p>
-        <p class="opacity-60 mb-6">〒991-0043 山形県寒河江市大字島字島東87</p>
-
-        <div class="flex justify-center gap-6 mb-10">
-          <a
-            href="https://www.instagram.com/takamoku_yamagata/?utm_source=hp"
-            target="_blank"
-            class="hover-trigger text-2xl text-white/50 hover:text-accent-gold transition"
-          >
-            <i class="fab fa-instagram"></i>
-          </a>
-          <a
-            href="https://www.youtube.com/@%E6%A0%AA%E5%BC%8F%E4%BC%9A%E7%A4%BE%E9%AB%98%E6%9C%A8"
-            target="_blank"
-            class="hover-trigger text-2xl text-white/50 hover:text-accent-gold transition"
-          >
-            <i class="fab fa-youtube"></i>
-          </a>
-        </div>
-
-        <div
-          class="flex flex-wrap justify-center gap-x-8 gap-y-4 mb-12 font-bold text-gray-400 font-en tracking-widest uppercase"
-        >
-          <a
-            href="index.html"
-            class="hover-trigger hover:text-white transition text-xs"
-            >TOP</a
-          >
-          <a
-            href="industry.html"
-            class="hover-trigger hover:text-white transition text-xs"
-            >建設業について</a
-          >
-          <a
-            href="company.html"
-            class="hover-trigger hover:text-white transition text-xs"
-            >高木について</a
-          >
-          <a
-            href="interview_list.html"
-            class="hover-trigger hover:text-white transition text-xs"
-            >社員インタビュー</a
-          >
-          <a
-            href="recruit_info.html"
-            class="hover-trigger hover:text-white transition text-xs"
-            >採用情報</a
-          >
-          <a
-            href="faq.html"
-            class="hover-trigger hover:text-white transition text-xs"
-            >よくある質問</a
-          >
-          <a
-            href="https://www.takamoku.co.jp/"
-            target="_blank"
-            class="hover-trigger hover:text-white transition text-xs border-b border-white/20 pb-0.5"
-            >OFFICIAL HP</a
-          >
-        </div>
-        <p class="opacity-30 text-xs font-en tracking-widest uppercase">
-          &copy; takamoku CO., LTD. ALL RIGHTS RESERVED.
-        </p>
-      </div>
-    </footer>
-
-    <script>
-      const cursor = document.getElementById("cursor"),
-        follower = document.getElementById("cursor-follower");
-      document.addEventListener("mousemove", (e) => {
-        gsap.to(cursor, { left: e.clientX, top: e.clientY, duration: 0.1 });
-        gsap.to(follower, { left: e.clientX, top: e.clientY, duration: 0.3 });
-      });
-
-      document
-        .querySelectorAll(".hover-trigger, .mobile-link")
-        .forEach((el) => {
-          el.addEventListener("mouseenter", () =>
-            document.body.classList.add("hover-link"),
-          );
-          el.addEventListener("mouseleave", () =>
-            document.body.classList.remove("hover-link"),
-          );
-        });
-
-      // Hamburger Menu
-      const hamburgerBtn = document.getElementById("hamburger-btn"),
-        mobileMenu = document.getElementById("mobile-menu");
-      hamburgerBtn.addEventListener("click", () => {
-        hamburgerBtn.classList.toggle("open");
-        mobileMenu.classList.toggle("open");
-      });
-
-      // FAQ Accordion Logic
-      document.querySelectorAll(".faq-button").forEach((button) => {
-        button.addEventListener("click", () => {
-          const item = button.parentElement;
-          item.classList.toggle("active");
-        });
-      });
-
-      gsap.registerPlugin(ScrollTrigger);
-      gsap.to("#opening-layer", {
-        y: "-100%",
-        duration: 1,
-        ease: "power4.inOut",
-        delay: 0.5,
-      });
-      gsap.utils.toArray(".js-fade-up").forEach((el) => {
-        gsap.fromTo(
-          el,
-          { y: 30, opacity: 0 },
-          {
-            y: 0,
-            opacity: 1,
-            duration: 1,
-            ease: "power2.out",
-            scrollTrigger: { trigger: el, start: "top 90%" },
-          },
+    document
+      .querySelectorAll(".hover-trigger, .mobile-link")
+      .forEach((el) => {
+        el.addEventListener("mouseenter", () =>
+          document.body.classList.add("hover-link"),
+        );
+        el.addEventListener("mouseleave", () =>
+          document.body.classList.remove("hover-link"),
         );
       });
 
-      // Header Scroll Effect
-      window.addEventListener("scroll", () => {
-        const header = document.getElementById("header"),
-          logo = document.getElementById("header-logo"),
-          hamLines = document.querySelectorAll(".hamburger-line");
-        if (window.scrollY > 50) {
-          header.classList.add(
-            "bg-white/95",
-            "backdrop-blur-md",
-            "shadow-sm",
-            "h-20",
-          );
-          logo.classList.remove("brightness-0", "invert");
-          hamLines.forEach((line) => {
-            line.style.backgroundColor = "#0f172a";
-          });
-        } else {
-          header.classList.remove(
-            "bg-white/95",
-            "backdrop-blur-md",
-            "shadow-sm",
-            "h-20",
-          );
-          logo.classList.add("brightness-0", "invert");
-          hamLines.forEach((line) => {
-            line.style.backgroundColor = "white";
-          });
-        }
+    // Hamburger Menu
+    const hamburgerBtn = document.getElementById("hamburger-btn"),
+      mobileMenu = document.getElementById("mobile-menu");
+    hamburgerBtn.addEventListener("click", () => {
+      hamburgerBtn.classList.toggle("open");
+      mobileMenu.classList.toggle("open");
+    });
+
+    // FAQ Accordion Logic
+    document.querySelectorAll(".faq-button").forEach((button) => {
+      button.addEventListener("click", () => {
+        const item = button.parentElement;
+        item.classList.toggle("active");
       });
-    </script>
-  </body>
+    });
+
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.to("#opening-layer", {
+      y: "-100%",
+      duration: 1,
+      ease: "power4.inOut",
+      delay: 0.5,
+    });
+    gsap.utils.toArray(".js-fade-up").forEach((el) => {
+      gsap.fromTo(
+        el,
+        { y: 30, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1,
+          ease: "power2.out",
+          scrollTrigger: { trigger: el, start: "top 90%" },
+        },
+      );
+    });
+
+    // Header Scroll Effect
+    window.addEventListener("scroll", () => {
+      const header = document.getElementById("header"),
+        logo = document.getElementById("header-logo"),
+        hamLines = document.querySelectorAll(".hamburger-line");
+      if (window.scrollY > 50) {
+        header.classList.add(
+          "bg-white/95",
+          "backdrop-blur-md",
+          "shadow-sm",
+          "h-20",
+        );
+        logo.classList.remove("brightness-0", "invert");
+        hamLines.forEach((line) => {
+          line.style.backgroundColor = "#0f172a";
+        });
+      } else {
+        header.classList.remove(
+          "bg-white/95",
+          "backdrop-blur-md",
+          "shadow-sm",
+          "h-20",
+        );
+        logo.classList.add("brightness-0", "invert");
+        hamLines.forEach((line) => {
+          line.style.backgroundColor = "white";
+        });
+      }
+    });
+  </script>
+</body>
+
 </html>
