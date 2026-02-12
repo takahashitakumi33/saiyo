@@ -198,6 +198,8 @@
         font-weight: bold;
         position: relative;
         z-index: 1;
+        /* ここを追加：フレックスボックス内で縮まないように固定 */
+        flex-shrink: 0;
       }
 
       #opening-layer {
@@ -230,15 +232,18 @@
       <div
         class="container mx-auto px-6 h-24 flex justify-between items-center"
       >
-        <a href="index.html" class="hover-trigger flex items-center">
-          <img
-            src="assets/logo.png"
-            onerror="this.src = 'assets/logo.jpg'"
-            class="h-8 md:h-10 brightness-0 invert transition-all duration-300"
-            id="header-logo"
-            alt="高木株式会社"
-          />
-        </a>
+        <div class="flex items-center gap-3">
+          <a href="index.html" class="hover-trigger flex items-center">
+            <img
+              src="assets/logo.png"
+              onerror="this.src = 'assets/logo.jpg'"
+              alt="高木株式会社"
+              class="h-8 md:h-10 w-auto object-contain brightness-0 invert transition-all duration-300"
+              id="header-logo"
+            />
+          </a>
+        </div>
+
         <nav
           class="hidden md:flex gap-8 text-sm font-bold text-white mix-blend-difference tracking-widest font-en uppercase"
           id="header-nav"
@@ -265,7 +270,7 @@
           >
           <a
             href="recruit_info.html"
-            class="hover-trigger text-accent-gold transition"
+            class="hover-trigger hover:text-accent-gold transition"
             >採用情報</a
           >
           <a
@@ -274,8 +279,8 @@
             >よくある質問</a
           >
           <a
-            href="index.html#entry"
-            class="hover-trigger bg-white text-takamoku-blue px-6 py-2 rounded-sm text-xs transition font-bold"
+            href="#entry"
+            class="hover-trigger bg-white text-takamoku-blue px-8 py-3 hover:bg-takamoku-dark hover:text-white transition shadow-lg transform hover:scale-105 font-bold rounded-sm text-xs"
             >ENTRY</a
           >
         </nav>
@@ -313,15 +318,13 @@
         >
         <a
           href="recruit_info.html"
-          class="text-accent-gold transition mobile-link"
+          class="hover:text-accent-gold transition mobile-link"
           >採用情報</a
         >
         <a href="faq.html" class="hover:text-accent-gold transition mobile-link"
           >よくある質問</a
         >
-        <a href="index.html#entry" class="text-accent-gold mobile-link"
-          >ENTRY</a
-        >
+        <a href="#entry" class="text-accent-gold mobile-link">ENTRY</a>
       </nav>
     </div>
 
@@ -504,7 +507,7 @@
         </div>
 
         <div class="space-y-0">
-          <div class="flow-step flex gap-8 js-fade-up">
+          <div class="flow-step flex items-start gap-8 js-fade-up">
             <div class="flow-number">01</div>
             <div>
               <h3 class="font-bold text-xl mb-2 text-takamoku-dark">
@@ -516,7 +519,7 @@
             </div>
           </div>
 
-          <div class="flow-step flex gap-8 js-fade-up">
+          <div class="flow-step flex items-start gap-8 js-fade-up">
             <div class="flow-number">02</div>
             <div>
               <h3 class="font-bold text-xl mb-2 text-takamoku-dark">
@@ -531,7 +534,7 @@
             </div>
           </div>
 
-          <div class="flow-step flex gap-8 js-fade-up">
+          <div class="flow-step flex items-start gap-8 js-fade-up">
             <div class="flow-number">03</div>
             <div>
               <h3 class="font-bold text-xl mb-2 text-takamoku-dark">
@@ -543,7 +546,7 @@
             </div>
           </div>
 
-          <div class="flow-step flex gap-8 js-fade-up">
+          <div class="flow-step flex items-start gap-8 js-fade-up">
             <div class="flow-number">04</div>
             <div>
               <h3 class="font-bold text-xl mb-2 text-takamoku-dark">
@@ -555,7 +558,7 @@
             </div>
           </div>
 
-          <div class="flow-step flex gap-8 js-fade-up">
+          <div class="flow-step flex items-start gap-8 js-fade-up">
             <div class="flow-number">05</div>
             <div>
               <h3 class="font-bold text-xl mb-2 text-takamoku-dark">
@@ -567,7 +570,7 @@
             </div>
           </div>
 
-          <div class="flow-step flex gap-8 js-fade-up">
+          <div class="flow-step flex items-start gap-8 js-fade-up">
             <div class="flow-number">06</div>
             <div>
               <h3 class="font-bold text-xl mb-2 text-takamoku-dark font-en">
@@ -758,6 +761,12 @@
             "shadow-sm",
             "h-20",
           );
+          document
+            .getElementById("header-nav")
+            .classList.remove("text-white", "mix-blend-difference");
+          document
+            .getElementById("header-nav")
+            .classList.add("text-takamoku-dark");
           logo.classList.remove("brightness-0", "invert");
           hamLines.forEach((line) => {
             line.style.backgroundColor = "#0f172a";
@@ -769,6 +778,12 @@
             "shadow-sm",
             "h-20",
           );
+          document
+            .getElementById("header-nav")
+            .classList.add("text-white", "mix-blend-difference");
+          document
+            .getElementById("header-nav")
+            .classList.remove("text-takamoku-dark");
           logo.classList.add("brightness-0", "invert");
           hamLines.forEach((line) => {
             line.style.backgroundColor = "white";

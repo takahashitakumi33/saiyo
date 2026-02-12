@@ -131,19 +131,25 @@
         }
       }
 
-      /* スライドショー */
+      /* スライドショー (PC/SP切り替え対応) */
       .slideshow-image {
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        object-fit: cover;
         opacity: 0;
         transition:
           opacity 2s ease-in-out,
           transform 10s ease-out;
         transform: scale(1);
+        /* pictureタグ自体はobject-fitを持たないので、中のimgに適用 */
+      }
+      .slideshow-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
       }
       .slideshow-image.active {
         opacity: 1;
@@ -195,8 +201,7 @@
         line-height: 1.8;
         color: #fff;
         text-shadow: 0 2px 15px rgba(0, 0, 0, 0.6);
-        /* 修正箇所：初期状態で非表示にする */
-        opacity: 0;
+        opacity: 0; /* 初期状態で非表示 */
       }
 
       .hand-line-container {
@@ -505,13 +510,27 @@
       style="clip-path: polygon(0 0, 100% 0, 100% 90vh, 0 100%)"
     >
       <div class="absolute inset-0 z-0 bg-black">
-        <img
-          src="assets/top_hero_1.jpg"
-          class="slideshow-image active"
-          alt="Hero 1"
-        />
-        <img src="assets/top_hero_2.jpg" class="slideshow-image" alt="Hero 2" />
-        <img src="assets/top_hero_3.jpg" class="slideshow-image" alt="Hero 3" />
+        <picture class="slideshow-image active">
+          <source
+            media="(max-width: 768px)"
+            srcset="assets/top_hero_1_sp.jpg"
+          />
+          <img src="assets/top_hero_1.jpg" alt="Hero 1" />
+        </picture>
+        <picture class="slideshow-image">
+          <source
+            media="(max-width: 768px)"
+            srcset="assets/top_hero_2_sp.jpg"
+          />
+          <img src="assets/top_hero_2.jpg" alt="Hero 2" />
+        </picture>
+        <picture class="slideshow-image">
+          <source
+            media="(max-width: 768px)"
+            srcset="assets/top_hero_3_sp.jpg"
+          />
+          <img src="assets/top_hero_3.jpg" alt="Hero 3" />
+        </picture>
       </div>
       <div class="absolute inset-0 z-1 hero-dawn-gradient opacity-80"></div>
       <canvas id="network-canvas"></canvas>
@@ -601,8 +620,1155 @@
               <span class="keep-word">私たち高木は、老舗でありながら</span
               ><span class="keep-word">直近5年で建築賞を連続受賞し、</span
               ><br class="pc-br" />
-              <span class="keep-word">今まさに全盛期を迎えています。</span
-              ><br /><br />
+              <span class="keep-word">今まさに過去最高の</span
+              ><span class="keep-word">全盛期を迎えています。</span><br /><br />
+
+              <span class="keep-word">その原動力は、</span
+              ><span class="keep-word">社員の約3割を占める</span
+              ><span class="keep-word">20代の若い力と、</span
+              ><br class="pc-br" />
+              <span class="keep-word">若手に任される大きな裁量、</span
+              ><span class="keep-word">そして100年の技術に</span
+              ><span class="keep-word">挑戦を重ねる風土です。</span><br /><br />
+
+              <span class="keep-word">安定した基盤の上で、</span
+              ><span class="keep-word">未経験からでも最速で</span
+              ><span class="keep-word">現場の主役へと成長できる</span
+              ><span class="keep-word">環境があります。</span><br />
+              <span class="keep-word font-bold text-white tracking-wider"
+                >100年の伝統を武器に、誰よりも自由に。</span
+              ><br />
+              <span class="keep-word">地図に残る仕事を、</span
+              ><span class="keep-word">次はあなたの手で。</span>
+            </p>
+            <div class="js-fade-up">
+              <img
+                src="assets/logo.png"
+                onerror="this.src = 'assets/logo.jpg'"
+                alt="TAKAMOKU"
+                class="h-10 w-auto opacity-50 brightness-0 invert"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="ticker-wrap relative z-30">
+      <div
+        class="absolute left-0 bg-takamoku-dark text-white font-en font-bold px-6 h-full flex items-center z-10 text-xs tracking-widest border-r border-white/10"
+      >
+        NEWS
+      </div>
+      <div class="ticker">
+        <div class="ticker-item">
+          <span
+            class="border border-takamoku-dark px-2 py-0.5 text-[10px] rounded font-bold"
+            >2024.04.01</span
+          >山形放送にて弊社代表のインタビューが放映されました。
+        </div>
+        <div class="ticker-item">
+          <span
+            class="border border-takamoku-dark px-2 py-0.5 text-[10px] rounded font-bold"
+            >2024.03.15</span
+          >春の合同企業説明会（山形ビッグウイング）に出展します。
+        </div>
+        <div class="ticker-item">
+          <span
+            class="border border-takamoku-dark px-2 py-0.5 text-[10px] rounded font-bold"
+            >2024.02.01</span
+          >2025年度 新卒採用のエントリー受付を開始。
+        </div>
+      </div>
+    </div>
+
+    <section class="py-32 bg-takamoku-dark overflow-hidden">
+      <div class="container mx-auto px-6">
+        <div class="feature-grid">
+          <a
+            href="industry.html"
+            class="feature-card group hover-trigger js-fade-up"
+          >
+            <img
+              src="assets/industry_1.jpg"
+              onerror="this.src = 'assets/top_hero_2.jpg'"
+              alt="Industry"
+            />
+            <div class="feature-overlay">
+              <span
+                class="text-accent-gold font-en font-bold text-sm tracking-widest mb-4"
+                >01. INDUSTRY</span
+              >
+              <h3 class="text-3xl font-bold font-mincho text-white mb-4">
+                建設業とは
+              </h3>
+              <p
+                class="text-gray-300 text-sm leading-relaxed mb-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500 hidden md:block"
+              >
+                地図に残り、社会を守る。ゼネコンの役割と、スケールの大きな仕事の魅力について。
+              </p>
+              <div class="flex items-center gap-4">
+                <span
+                  class="text-white font-en text-xs font-bold tracking-widest uppercase"
+                  >Read More</span
+                >
+                <div
+                  class="w-12 h-[1px] bg-accent-gold group-hover:w-20 transition-all duration-500"
+                ></div>
+              </div>
+            </div>
+          </a>
+          <a
+            href="company.html"
+            class="feature-card group hover-trigger js-fade-up"
+            style="transition-delay: 0.1s"
+          >
+            <img src="assets/company3.jpg" alt="Company" />
+            <div class="feature-overlay">
+              <span
+                class="text-accent-gold font-en font-bold text-sm tracking-widest mb-4"
+                >02. ABOUT US</span
+              >
+              <h3 class="text-3xl font-bold font-mincho text-white mb-4">
+                高木について
+              </h3>
+              <p
+                class="text-gray-300 text-sm leading-relaxed mb-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500 hidden md:block"
+              >
+                創業100年の歴史と、先進性。数字で見る高木の実績と働く環境について。
+              </p>
+              <div class="flex items-center gap-4">
+                <span
+                  class="text-white font-en text-xs font-bold tracking-widest uppercase"
+                  >Read More</span
+                >
+                <div
+                  class="w-12 h-[1px] bg-accent-gold group-hover:w-20 transition-all duration-500"
+                ></div>
+              </div>
+            </div>
+          </a>
+          <a
+            href="interview_list.html"
+            class="feature-card group hover-trigger js-fade-up"
+            style="transition-delay: 0.2s"
+          >
+            <img src="assets/interview_st_list.jpg" alt="People" />
+            <div class="feature-overlay">
+              <span
+                class="text-accent-gold font-en font-bold text-sm tracking-widest mb-4"
+                >03. PEOPLE</span
+              >
+              <h3 class="text-3xl font-bold font-mincho text-white mb-4">
+                社員インタビュー
+              </h3>
+              <p
+                class="text-gray-300 text-sm leading-relaxed mb-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500 hidden md:block"
+              >
+                現場最前線で働く社員たちのリアルな声。入社の決め手ややりがいについて。
+              </p>
+              <div class="flex items-center gap-4">
+                <span
+                  class="text-white font-en text-xs font-bold tracking-widest uppercase"
+                  >Read More</span
+                >
+                <div
+                  class="w-12 h-[1px] bg-accent-gold group-hover:w-20 transition-all duration-500"
+                ></div>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="py-32 bg-white text-center relative overflow-hidden"
+      id="entry"
+    >
+      <div
+        class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"
+      ></div>
+      <div class="container mx-auto px-6 relative z-10">
+        <h2
+          class="text-5xl md:text-8xl font-black font-en text-takamoku-dark/10 mb-8 js-fade-up"
+        >
+          RECRUITING
+        </h2>
+        <p
+          class="text-xl md:text-2xl font-bold font-mincho mb-12 js-fade-up text-takamoku-blue"
+        >
+          まずは、会社説明会へ。
+        </p>
+        <div class="flex flex-col md:flex-row justify-center gap-6 js-fade-up">
+          <a
+            href="#"
+            class="hover-trigger bg-takamoku-blue text-white px-12 py-5 font-bold tracking-widest hover:bg-takamoku-dark transition transform hover:scale-105 rounded-sm shadow-xl"
+            >マイナビ2025</a
+          >
+          <a
+            href="#"
+            class="hover-trigger bg-white border-2 border-takamoku-blue text-takamoku-blue px-12 py-5 font-bold tracking-widest hover:bg-blue-50 transition transform hover:scale-105 rounded-sm shadow-lg"
+            >リクナビ2025</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <footer
+      class="bg-takamoku-dark text-white py-20 text-sm border-t border-white/10 relative overflow-hidden"
+    >
+      <div
+        class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"
+      ></div>
+      <div class="container mx-auto px-6 text-center relative z-10">
+        <div class="mb-8">
+          <a
+            href="index.html"
+            class="hover-trigger inline-block transition transform hover:scale-105"
+          >
+            <img
+              src="assets/logo.png"
+              onerror="this.src = 'assets/logo.jpg'"
+              alt="TAKAMOKU"
+              class="h-12 md:h-16 mx-auto object-contain brightness-0 invert"
+            />
+          </a>
+        </div>
+        <p class="font-bold text-lg mb-2">株式会社高木</p>
+        <p class="opacity-60 mb-6">〒991-0043 山形県寒河江市大字島字島東87</p>
+
+        <div class="flex justify-center gap-6 mb-10">
+          <a
+            href="https://www.instagram.com/takamoku_yamagata/?utm_source=hp"
+            target="_blank"
+            class="hover-trigger text-2xl text-white/50 hover:text-accent-gold transition"
+          >
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a
+            href="https://www.youtube.com/@%E6%A0%AA%E5%BC%8F%E4%BC%9A%E7%A4%BE%E9%AB%98%E6%9C%A8"
+            target="_blank"
+            class="hover-trigger text-2xl text-white/50 hover:text-accent-gold transition"
+          >
+            <i class="fab fa-youtube"></i>
+          </a>
+        </div>
+
+        <div
+          class="flex flex-wrap justify-center gap-x-8 gap-y-4 mb-12 font-bold text-gray-400 font-en tracking-widest uppercase"
+        >
+          <a
+            href="index.html"
+            class="hover-trigger hover:text-white transition text-xs"
+            >TOP</a
+          >
+          <a
+            href="industry.html"
+            class="hover-trigger hover:text-white transition text-xs"
+            >建設業について</a
+          >
+          <a
+            href="company.html"
+            class="hover-trigger hover:text-white transition text-xs"
+            >高木について</a
+          >
+          <a
+            href="interview_list.html"
+            class="hover-trigger hover:text-white transition text-xs"
+            >社員インタビュー</a
+          >
+          <a
+            href="recruit_info.html"
+            class="hover-trigger hover:text-white transition text-xs"
+            >採用情報</a
+          >
+          <a
+            href="faq.html"
+            class="hover-trigger hover:text-white transition text-xs"
+            >よくある質問</a
+          >
+          <a
+            href="https://www.takamoku.co.jp/"
+            target="_blank"
+            class="hover-trigger hover:text-white transition text-xs border-b border-white/20 pb-0.5"
+            >OFFICIAL HP</a
+          >
+        </div>
+        <p class="opacity-30 text-xs font-en tracking-widest uppercase">
+          &copy; takamoku CO., LTD. ALL RIGHTS RESERVED.
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      gsap.registerPlugin(ScrollTrigger);
+
+      // 1. Mouse Cursor
+      const cursor = document.getElementById("cursor"),
+        follower = document.getElementById("cursor-follower");
+      const hoverTriggers = document.querySelectorAll(".hover-trigger");
+      document.addEventListener("mousemove", (e) => {
+        cursor.style.left = e.clientX + "px";
+        cursor.style.top = e.clientY + "px";
+        follower.style.left = e.clientX + "px";
+        follower.style.top = e.clientY + "px";
+      });
+      hoverTriggers.forEach((trigger) => {
+        trigger.addEventListener("mouseenter", () =>
+          document.body.classList.add("hover-link"),
+        );
+        trigger.addEventListener("mouseleave", () =>
+          document.body.classList.remove("hover-link"),
+        );
+      });
+
+      // 2. Hamburger Menu
+      const hamburgerBtn = document.getElementById("hamburger-btn"),
+        mobileMenu = document.getElementById("mobile-menu");
+      hamburgerBtn.addEventListener("click", () => {
+        hamburgerBtn.classList.toggle("open");
+        mobileMenu.classList.toggle("open");
+        document.body.style.overflow = mobileMenu.classList.contains("open")
+          ? "hidden"
+          : "auto";
+      });
+
+      // 3. Canvas Background
+      const canvas = document.getElementById("network-canvas"),
+        ctx = canvas.getContext("2d");
+      let width,
+        height,
+        points = [];
+      function resize() {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+      }
+      window.addEventListener("resize", resize);
+      resize();
+      class Point {
+        constructor() {
+          this.x = Math.random() * width;
+          this.y = Math.random() * height;
+          this.vx = (Math.random() - 0.5) * 0.5;
+          this.vy = (Math.random() - 0.5) * 0.5;
+          this.size = Math.random() * 2;
+        }
+        update() {
+          this.x += this.vx;
+          this.y += this.vy;
+          if (this.x < 0 || this.x > width) this.vx *= -1;
+          if (this.y < 0 || this.y > height) this.vy *= -1;
+        }
+        draw() {
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+          ctx.fillStyle = "rgba(255, 255, 255, 0.3)";
+          ctx.fill();
+        }
+      }
+      for (let i = 0; i < 60; i++) points.push(new Point());
+      function animateCanvas() {
+        ctx.clearRect(0, 0, width, height);
+        points.forEach((point) => {
+          point.update();
+          point.draw();
+          points.forEach((other) => {
+            const dx = point.x - other.x,
+              dy = point.y - other.y,
+              dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < 150) {
+              ctx.beginPath();
+              ctx.moveTo(point.x, point.y);
+              ctx.lineTo(other.x, other.y);
+              ctx.strokeStyle = `rgba(197, 160, 89, ${0.4 - dist / 150})`;
+              ctx.lineWidth = 0.5;
+              ctx.stroke();
+            }
+          });
+        });
+        requestAnimationFrame(animateCanvas);
+      }
+      animateCanvas();
+
+      // 4. Slideshow
+      const slides = document.querySelectorAll(".slideshow-image");
+      let currentSlide = 0;
+      setTimeout(() => {
+        setInterval(() => {
+          slides[currentSlide].classList.remove("active");
+          currentSlide = (currentSlide + 1) % slides.length;
+          slides[currentSlide].classList.add("active");
+        }, 5000);
+      }, 8000);
+
+      // 5. GSAP Timing & Copy Animation
+      const opTl = gsap.timeline();
+      opTl
+        .from("#op-title", {
+          y: 100,
+          opacity: 0,
+          duration: 1,
+          ease: "power4.out",
+          delay: 0.5,
+        })
+        .from(
+          "#op-subtitle",
+          { y: 20, opacity: 0, duration: 0.8, ease: "power4.out" },
+          "-=0.5",
+        )
+        .to("#opening-layer", {
+          y: "-100%",
+          duration: 1.2,
+          ease: "power4.inOut",
+          delay: 0.5,
+        })
+        .add(() => {
+          // オープニング終了後にキャッチコピーを出す。
+          gsap.fromTo(
+            ".js-copy-reveal",
+            { opacity: 0, x: 5 },
+            {
+              opacity: 1,
+              x: 0,
+              duration: 1.5,
+              ease: "power2.out",
+              onComplete: () => {
+                gsap.to("#draw-line", {
+                  width: "105%",
+                  duration: 0.8,
+                  ease: "expo.inOut",
+                });
+              },
+            },
+          );
+        });
+
+      window.addEventListener("scroll", () => {
+        const header = document.getElementById("header"),
+          logo = document.getElementById("header-logo"),
+          hamLines = document.querySelectorAll(".hamburger-line");
+        if (window.scrollY > 50) {
+          header.classList.remove("bg-transparent");
+          header.classList.add(
+            "bg-white/95",
+            "backdrop-blur-md",
+            "shadow-sm",
+            "h-20",
+          );
+          document
+            .getElementById("header-nav")
+            .classList.remove("text-white", "mix-blend-difference");
+          document
+            .getElementById("header-nav")
+            .classList.add("text-takamoku-dark");
+          logo.classList.remove("brightness-0", "invert");
+          hamLines.forEach((line) => {
+            line.style.backgroundColor = "#0f172a";
+          });
+        } else {
+          header.classList.add("bg-transparent");
+          header.classList.remove(
+            "bg-white/95",
+            "backdrop-blur-md",
+            "shadow-sm",
+            "h-20",
+          );
+          document
+            .getElementById("header-nav")
+            .classList.add("text-white", "mix-blend-difference");
+          document
+            .getElementById("header-nav")
+            .classList.remove("text-takamoku-dark");
+          logo.classList.add("brightness-0", "invert");
+          hamLines.forEach((line) => {
+            line.style.backgroundColor = "white";
+          });
+        }
+      });
+
+      const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+      document.querySelectorAll(".js-scramble-text").forEach((el) => {
+        const originalText = el.innerText;
+        ScrollTrigger.create({
+          trigger: el,
+          start: "top 90%",
+          onEnter: () => {
+            let iterations = 0;
+            const interval = setInterval(() => {
+              el.innerText = originalText
+                .split("")
+                .map((letter, index) => {
+                  if (index < iterations) return originalText[index];
+                  return chars[Math.floor(Math.random() * chars.length)];
+                })
+                .join("");
+              if (iterations >= originalText.length) clearInterval(interval);
+              iterations += 1 / 2;
+            }, 30);
+          },
+        });
+      });
+
+      gsap.utils.toArray(".js-text-reveal").forEach((el, i) => {
+        gsap.fromTo(
+          el,
+          { y: 30, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 1,
+            ease: "power3.out",
+            delay: 2.5 + i * 0.1,
+          },
+        );
+      });
+      gsap.to(".animate-slide-right", {
+        x: "100%",
+        duration: 2,
+        repeat: -1,
+        ease: "power2.inOut",
+      });
+      gsap.utils.toArray(".js-fade-up").forEach((el) => {
+        gsap.fromTo(
+          el,
+          { y: 40, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.8,
+            ease: "power2.out",
+            scrollTrigger: { trigger: el, start: "top 85%" },
+          },
+        );
+      });
+    </script>
+  </body>
+</html>
+<!doctype html>
+<html lang="ja" translate="no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="google" content="notranslate" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>高木株式会社 | 新卒採用サイト</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600;700;900&family=Oswald:wght@400;500;700&family=Noto+Sans+JP:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              "takamoku-blue": "#004098",
+              "takamoku-dark": "#0f172a",
+              "accent-gold": "#c5a059",
+              "light-gray": "#f8fafc",
+            },
+            fontFamily: {
+              sans: ['"Noto Sans JP"', "sans-serif"],
+              en: ['"Oswald"', "sans-serif"],
+              mincho: ['"Shippori Mincho"', "serif"],
+            },
+            cursor: { none: "none" },
+          },
+        },
+      };
+    </script>
+    <style>
+      body {
+        font-family: "Noto Sans JP", sans-serif;
+        background-color: #0f172a;
+        overflow-x: hidden;
+        cursor: none;
+        color: white;
+      }
+      .font-en {
+        font-family: "Oswald", sans-serif;
+      }
+      .font-mincho {
+        font-family: "Shippori Mincho", serif;
+      }
+
+      /* カスタムカーソル */
+      #cursor {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 12px;
+        height: 12px;
+        background-color: #c5a059;
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 9999;
+        transform: translate(-50%, -50%);
+        mix-blend-mode: difference;
+        transition:
+          width 0.3s,
+          height 0.3s;
+      }
+      #cursor-follower {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 40px;
+        height: 40px;
+        border: 1px solid rgba(197, 160, 89, 0.5);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 9998;
+        transform: translate(-50%, -50%);
+        transition:
+          width 0.3s,
+          height 0.3s,
+          border-color 0.3s,
+          background-color 0.3s;
+      }
+      body.hover-link #cursor-follower {
+        width: 80px;
+        height: 80px;
+        background-color: rgba(197, 160, 89, 0.2);
+        border-color: #c5a059;
+        border-width: 1px;
+      }
+      body.hover-link #cursor-follower::after {
+        content: "VIEW";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-family: "Oswald", sans-serif;
+        font-size: 10px;
+        color: #fff;
+        letter-spacing: 0.1em;
+      }
+
+      /* 夜明けグラデーション */
+      .hero-dawn-gradient {
+        background: linear-gradient(135deg, #0f172a, #1e3a8a, #fb923c, #8b5cf6);
+        background-size: 400% 400%;
+        animation: dawnAnimation 20s ease infinite;
+        mix-blend-mode: multiply;
+        pointer-events: none;
+      }
+      @keyframes dawnAnimation {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      /* スライドショー (PC/SP切り替え対応) */
+      .slideshow-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition:
+          opacity 2s ease-in-out,
+          transform 10s ease-out;
+        transform: scale(1);
+        /* pictureタグ自体はobject-fitを持たないので、中のimgに適用 */
+      }
+      .slideshow-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+      }
+      .slideshow-image.active {
+        opacity: 1;
+        transform: scale(1.1);
+      }
+
+      /* ニュースティッカー */
+      .ticker-wrap {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        background: #c5a059;
+        color: #0f172a;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        z-index: 40;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .ticker {
+        display: flex;
+        white-space: nowrap;
+        animation: ticker 40s linear infinite;
+      }
+      .ticker-item {
+        margin-right: 4rem;
+        font-weight: 700;
+        font-family: "Oswald", sans-serif;
+        letter-spacing: 0.1em;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        font-size: 0.8rem;
+      }
+      @keyframes ticker {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-100%);
+        }
+      }
+
+      /* キャッチコピーのタイポグラフィ演出 */
+      .copy-text {
+        font-family: "Shippori Mincho", serif;
+        font-weight: 200;
+        letter-spacing: 0.15em;
+        line-height: 1.8;
+        color: #fff;
+        text-shadow: 0 2px 15px rgba(0, 0, 0, 0.6);
+        opacity: 0; /* 初期状態で非表示 */
+      }
+
+      .hand-line-container {
+        position: relative;
+        display: inline-block;
+      }
+
+      .hand-line {
+        position: absolute;
+        left: 0;
+        bottom: 2px;
+        width: 0;
+        height: 6px;
+        background: rgba(197, 160, 89, 0.8);
+        border-radius: 20% 80% 30% 70% / 60% 30% 70% 40%;
+        z-index: -1;
+      }
+
+      /* レスポンシブ改行制御 */
+      .keep-word {
+        display: inline-block;
+        vertical-align: top;
+      }
+
+      @media (max-width: 767px) {
+        .pc-br {
+          display: none;
+        }
+      }
+
+      /* タイルレイアウト用 */
+      .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+      }
+      .feature-card {
+        position: relative;
+        height: 600px;
+        overflow: hidden;
+        border-radius: 4px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: border-color 0.5s ease;
+      }
+      .feature-card:hover {
+        border-color: #c5a059;
+      }
+      .feature-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+      }
+      .feature-card:hover img {
+        transform: scale(1.1);
+      }
+      .feature-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to top,
+          rgba(15, 23, 42, 0.95) 0%,
+          rgba(15, 23, 42, 0.4) 50%,
+          transparent 100%
+        );
+        padding: 3rem 2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+      }
+      @media (max-width: 1024px) {
+        .feature-grid {
+          grid-template-columns: 1fr;
+        }
+        .feature-card {
+          height: 450px;
+        }
+      }
+
+      /* MESSAGEセクション */
+      .message-bg-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 20vw;
+        font-weight: 900;
+        font-family: "Oswald", sans-serif;
+        color: rgba(255, 255, 255, 0.03);
+        white-space: nowrap;
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      /* ハンバーガーメニュー */
+      #mobile-menu {
+        position: fixed;
+        inset: 0;
+        background-color: rgba(15, 23, 42, 0.95);
+        backdrop-filter: blur(10px);
+        z-index: 49;
+        transform: translateX(100%);
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      #mobile-menu.open {
+        transform: translateX(0);
+      }
+      .hamburger-btn {
+        z-index: 50;
+        position: relative;
+        width: 30px;
+        height: 20px;
+        cursor: pointer;
+      }
+      .hamburger-line {
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        background-color: white;
+        transition: all 0.3s ease;
+      }
+      .hamburger-line:nth-child(1) {
+        top: 0;
+      }
+      .hamburger-line:nth-child(2) {
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      .hamburger-line:nth-child(3) {
+        bottom: 0;
+      }
+      .hamburger-btn.open .hamburger-line:nth-child(1) {
+        top: 50%;
+        transform: translateY(-50%) rotate(45deg);
+        background-color: white !important;
+      }
+      .hamburger-btn.open .hamburger-line:nth-child(2) {
+        opacity: 0;
+      }
+      .hamburger-btn.open .hamburger-line:nth-child(3) {
+        bottom: 50%;
+        transform: translateY(50%) rotate(-45deg);
+        background-color: white !important;
+      }
+
+      /* Canvas & Opening */
+      #network-canvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 10;
+        opacity: 0.5;
+        pointer-events: none;
+        mix-blend-mode: screen;
+      }
+      #opening-layer {
+        position: fixed;
+        inset: 0;
+        background: #004098;
+        z-index: 10000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+      }
+      .vertical-rl {
+        writing-mode: vertical-rl;
+      }
+    </style>
+  </head>
+  <body class="antialiased">
+    <div id="cursor"></div>
+    <div id="cursor-follower"></div>
+
+    <div id="opening-layer">
+      <div class="text-center relative z-10">
+        <div class="overflow-hidden mb-2">
+          <h1
+            class="text-6xl md:text-8xl font-black font-en tracking-tighter"
+            id="op-title"
+          >
+            TAKAMOKU
+          </h1>
+        </div>
+        <div class="overflow-hidden">
+          <p
+            class="text-xl md:text-3xl font-en tracking-[0.5em] text-accent-gold"
+            id="op-subtitle"
+          >
+            SINCE 1923
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <header
+      class="fixed top-0 w-full z-50 transition-all duration-500 bg-transparent"
+      id="header"
+    >
+      <div
+        class="container mx-auto px-6 h-24 flex justify-between items-center"
+      >
+        <div class="flex items-center gap-3">
+          <a href="index.html" class="hover-trigger flex items-center">
+            <img
+              src="assets/logo.png"
+              onerror="this.src = 'assets/logo.jpg'"
+              alt="高木株式会社"
+              class="h-8 md:h-10 w-auto object-contain brightness-0 invert transition-all duration-300"
+              id="header-logo"
+            />
+          </a>
+        </div>
+
+        <nav
+          class="hidden md:flex gap-8 text-sm font-bold text-white mix-blend-difference tracking-widest font-en"
+          id="header-nav"
+        >
+          <a
+            href="index.html"
+            class="hover-trigger hover:text-accent-gold transition"
+            >TOP</a
+          >
+          <a
+            href="industry.html"
+            class="hover-trigger hover:text-accent-gold transition"
+            >建設業について</a
+          >
+          <a
+            href="company.html"
+            class="hover-trigger hover:text-accent-gold transition"
+            >高木について</a
+          >
+          <a
+            href="interview_list.html"
+            class="hover-trigger hover:text-accent-gold transition"
+            >社員インタビュー</a
+          >
+          <a
+            href="recruit_info.html"
+            class="hover-trigger hover:text-accent-gold transition"
+            >採用情報</a
+          >
+          <a
+            href="faq.html"
+            class="hover-trigger hover:text-accent-gold transition"
+            >よくある質問</a
+          >
+          <a
+            href="#entry"
+            class="hover-trigger bg-white text-takamoku-blue px-8 py-3 hover:bg-takamoku-dark hover:text-white transition shadow-lg transform hover:scale-105 font-bold rounded-sm text-xs"
+            >ENTRY</a
+          >
+        </nav>
+        <div class="md:hidden hamburger-btn hover-trigger" id="hamburger-btn">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </div>
+      </div>
+    </header>
+
+    <div id="mobile-menu">
+      <nav
+        class="flex flex-col gap-8 text-2xl font-bold text-white font-en tracking-widest text-center"
+      >
+        <a
+          href="index.html"
+          class="hover:text-accent-gold transition mobile-link"
+          >TOP</a
+        >
+        <a
+          href="industry.html"
+          class="hover:text-accent-gold transition mobile-link"
+          >建設業について</a
+        >
+        <a
+          href="company.html"
+          class="hover:text-accent-gold transition mobile-link"
+          >高木について</a
+        >
+        <a
+          href="interview_list.html"
+          class="hover:text-accent-gold transition mobile-link"
+          >社員インタビュー</a
+        >
+        <a
+          href="recruit_info.html"
+          class="hover:text-accent-gold transition mobile-link"
+          >採用情報</a
+        >
+        <a href="faq.html" class="hover:text-accent-gold transition mobile-link"
+          >よくある質問</a
+        >
+        <a href="#entry" class="text-accent-gold mobile-link">ENTRY</a>
+      </nav>
+    </div>
+
+    <section
+      class="relative h-screen w-full overflow-hidden bg-takamoku-dark"
+      style="clip-path: polygon(0 0, 100% 0, 100% 90vh, 0 100%)"
+    >
+      <div class="absolute inset-0 z-0 bg-black">
+        <picture class="slideshow-image active">
+          <source
+            media="(max-width: 768px)"
+            srcset="assets/top_hero_1_sp.jpg"
+          />
+          <img src="assets/top_hero_1.jpg" alt="Hero 1" />
+        </picture>
+        <picture class="slideshow-image">
+          <source
+            media="(max-width: 768px)"
+            srcset="assets/top_hero_2_sp.jpg"
+          />
+          <img src="assets/top_hero_2.jpg" alt="Hero 2" />
+        </picture>
+        <picture class="slideshow-image">
+          <source
+            media="(max-width: 768px)"
+            srcset="assets/top_hero_3_sp.jpg"
+          />
+          <img src="assets/top_hero_3.jpg" alt="Hero 3" />
+        </picture>
+      </div>
+      <div class="absolute inset-0 z-1 hero-dawn-gradient opacity-80"></div>
+      <canvas id="network-canvas"></canvas>
+
+      <div
+        class="relative z-20 container mx-auto px-6 h-full flex items-center pointer-events-none"
+      >
+        <div class="grid grid-cols-12 w-full">
+          <div
+            class="col-span-12 md:col-span-10 text-white pt-10 pointer-events-auto"
+          >
+            <div class="mb-6 overflow-hidden">
+              <p
+                class="text-accent-gold font-bold tracking-[0.3em] text-sm font-en js-text-reveal flex items-center gap-4"
+              >
+                <span class="w-12 h-[1px] bg-accent-gold inline-block"></span>
+                SINCE 1923 / YAMAGATA
+              </p>
+            </div>
+            <h1
+              class="text-6xl md:text-8xl lg:text-9xl font-black leading-[0.9] font-en mb-6"
+            >
+              <div class="overflow-hidden">
+                <span class="block js-scramble-text">RECRUITING</span>
+              </div>
+            </h1>
+            <h2
+              class="text-2xl md:text-4xl font-mincho leading-tight mb-8 overflow-hidden backdrop-blur-[1px] py-4 pr-4 inline-block"
+            >
+              <span class="block copy-text js-copy-reveal">
+                <span class="keep-word">100年の伝統を</span
+                ><span class="keep-word">武器に、</span><br class="pc-br" />
+                <span class="hand-line-container">
+                  <span class="keep-word">誰よりも自由に。</span>
+                  <span class="hand-line" id="draw-line"></span>
+                </span>
+              </span>
+            </h2>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="absolute bottom-24 left-10 z-20 text-white flex items-center gap-4"
+      >
+        <span
+          class="font-en text-xs tracking-widest mb-1 text-accent-gold uppercase"
+          >Scroll</span
+        >
+        <div class="w-24 h-[1px] bg-white/20 relative overflow-hidden">
+          <div
+            class="absolute top-0 left-0 w-full h-full bg-accent-gold animate-slide-right"
+          ></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-40 bg-takamoku-dark relative overflow-hidden text-white">
+      <div class="message-bg-text">OUR PRIDE</div>
+      <div class="container mx-auto px-6 relative z-10">
+        <div
+          class="flex flex-col md:flex-row gap-20 justify-center items-center"
+        >
+          <div class="md:w-auto">
+            <h2
+              class="text-3xl md:text-5xl font-black font-en tracking-[0.2em] vertical-rl text-white js-fade-up"
+              style="
+                max-height: 400px;
+                text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+              "
+            >
+              MESSAGE
+            </h2>
+          </div>
+          <div class="md:w-1/2 max-w-2xl">
+            <p
+              class="text-accent-gold font-bold font-en tracking-widest mb-8 js-fade-up flex items-center gap-4 text-sm"
+            >
+              <span class="w-8 h-[1px] bg-accent-gold"></span> OUR VISION
+            </p>
+            <p
+              class="leading-loose text-justify font-medium mb-10 text-gray-300 js-fade-up text-base md:text-lg lg:text-xl"
+            >
+              <span class="keep-word">山形県内の公共施設や</span
+              ><span class="keep-word">大型プロジェクトを担い、102年。</span
+              ><br class="pc-br" />
+              <span class="keep-word">私たち高木は、老舗でありながら</span
+              ><span class="keep-word">直近5年で建築賞を連続受賞し、</span
+              ><br class="pc-br" />
+              <span class="keep-word">今まさに過去最高の</span
+              ><span class="keep-word">全盛期を迎えています。</span><br /><br />
 
               <span class="keep-word">その原動力は、</span
               ><span class="keep-word">社員の約3割を占める</span
